@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PotatoMaths", "PotatoMaths\PotatoMaths.vcxproj", "{407B4D74-CC7D-4637-8F69-F037E7178CCB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{E2E31DAB-3371-423B-B453-01FE4099FC1D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{407B4D74-CC7D-4637-8F69-F037E7178CCB} = {407B4D74-CC7D-4637-8F69-F037E7178CCB}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +26,14 @@ Global
 		{407B4D74-CC7D-4637-8F69-F037E7178CCB}.Release|x64.Build.0 = Release|x64
 		{407B4D74-CC7D-4637-8F69-F037E7178CCB}.Release|x86.ActiveCfg = Release|Win32
 		{407B4D74-CC7D-4637-8F69-F037E7178CCB}.Release|x86.Build.0 = Release|Win32
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Debug|x64.ActiveCfg = Debug|x64
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Debug|x64.Build.0 = Debug|x64
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Debug|x86.ActiveCfg = Debug|Win32
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Debug|x86.Build.0 = Debug|Win32
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Release|x64.ActiveCfg = Release|x64
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Release|x64.Build.0 = Release|x64
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Release|x86.ActiveCfg = Release|Win32
+		{E2E31DAB-3371-423B-B453-01FE4099FC1D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
