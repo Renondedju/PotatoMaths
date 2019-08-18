@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="Sources\Src\Sandbox.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\Includes\Benchmark.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E2E31DAB-3371-423B-B453-01FE4099FC1D}</ProjectGuid>
@@ -75,25 +78,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</IncludePath>
     <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</IncludePath>
     <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</IncludePath>
     <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</IncludePath>
     <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -109,7 +112,7 @@
       </PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,7 +133,7 @@
       </PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderOutputFile />
-      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,7 +158,7 @@
       <PrecompiledHeaderOutputFile />
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -182,7 +185,7 @@
       <PrecompiledHeaderOutputFile />
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PotatoMaths\Sources\Includes;$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

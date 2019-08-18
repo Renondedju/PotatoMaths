@@ -26,6 +26,8 @@
 
 #include <Matrix/GenericMatrix.hpp>
 
+#include "Benchmark.hpp"
+
 int main(int in_argc, char const** in_argv)
 {
     static_cast<void>(in_argc);
