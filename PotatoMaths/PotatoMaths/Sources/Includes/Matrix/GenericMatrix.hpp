@@ -26,6 +26,9 @@
 
 #include <type_traits>
 
+template <size_t TRows, size_t TColumns, typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+class GenericMatrix;
+
 /**
  * \brief Generic matrix implementation
  * 
@@ -35,27 +38,43 @@
  * 
  * \note The matrix convention can be useful if you use multiple graphics API such as OpenGL, Vulkan or Direct3D
  */
-template <size_t TRows, size_t TColumns, typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
-class GenericMatrix
+template <size_t TRows, size_t TColumns, typename TType>
+class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 {
-	public:
+	protected:
 
 		#pragma region Members
 
-		TType data[TRows * TColumns];
+		TType m_data[TRows * TColumns];
 
 		#pragma endregion
 
+	public:
+
 		#pragma region Constructors
 
-		constexpr GenericMatrix()                               noexcept = default;
+		constexpr GenericMatrix() noexcept;
 		constexpr GenericMatrix(GenericMatrix const& in_matrix) noexcept = default;
 		constexpr GenericMatrix(GenericMatrix&&      in_matrix) noexcept = default;
-		constexpr ~GenericMatrix()                              noexcept = default;
+		virtual  ~GenericMatrix()                               noexcept = default;
+
+		/**
+		 * \brief Element by element constructor
+		 * \tparam TValues Initial values types
+		 * \param in_values Initial values
+		 */
+		template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TRows * TColumns>>
+		constexpr GenericMatrix(TValues... in_values) noexcept;
 
 		#pragma endregion
 
 		#pragma region Methods
+
+		/**
+		 * \brief Gets the number of elements stored in the matrix
+		 * \return Elements count of the matrix
+		 */
+		constexpr size_t Elements() const noexcept;
 
 		/**
 		 * \brief Computes the transposed matrix
@@ -64,7 +83,7 @@ class GenericMatrix
 		constexpr GenericMatrix<TColumns, TRows, TType> GetTransposed() const noexcept;
 
 		/**
-		 * \brief Multiplies 2 matrices together. 
+		 * \brief Multiplies this matrix with another one and returns the new resultant matrix 
 		 * 
 		 * \tparam TOtherRows Other matrix rows count
 		 * \tparam TOtherColumns Other matrix columns count
@@ -76,19 +95,7 @@ class GenericMatrix
 		template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType,
 			typename TReturnType = std::common_type_t<TType, TOtherType>,
 			typename			 = std::enable_if_t<TColumns == TOtherRows>>
-		constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> Multiply(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept;
-		 
-		/**
-		 * \brief Inverses the matrix
-		 * \return Matrix instance
-		 */
-		constexpr GenericMatrix& Inverse() noexcept;
-
-		/**
-		 * \brief Returns the inverted version of the matrix
-		 * \return New inverted matrix
-		 */
-		constexpr GenericMatrix GetInversed() const noexcept;
+		constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept;
 
 		/**
 		 * \brief Data getter/setter
@@ -102,7 +109,7 @@ class GenericMatrix
 		constexpr TType&	   At(size_t in_row, size_t in_column)		 noexcept;
 
 		/**
-		 * \brief Data getter/setter
+		 * \brief Templated data getter/setter
 		 * 
 		 * \tparam TInRow Row index (from 0 to TRows - 1)
 		 * \tparam TInColumn Column index (from 0 to TColumns - 1)
@@ -111,10 +118,10 @@ class GenericMatrix
 		 * 
 		 * \return Value at the selected position
 		 */
-		template<size_t TInRow, size_t TInColumn, typename = std::enable_if_t<TInRow < TRows && TInColumn < TColumns>>
+		template<size_t TInRow, size_t TInColumn>
 		constexpr TType const& At() const noexcept;
 		
-		template<size_t TInRow, size_t TInColumn, typename = std::enable_if_t<TInRow < TRows && TInColumn < TColumns>>
+		template<size_t TInRow, size_t TInColumn>
 		constexpr TType&	   At()		  noexcept;
 
 		#pragma endregion

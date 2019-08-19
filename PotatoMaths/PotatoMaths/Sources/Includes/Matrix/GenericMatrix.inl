@@ -22,10 +22,42 @@
  * SOFTWARE.
  */
 
-template <size_t TRows, size_t TColumns, typename TType, typename>
+template <size_t TRows, size_t TColumns, typename TType>
+constexpr GenericMatrix<TRows, TColumns, TType>
+	::GenericMatrix() noexcept:
+		m_data {static_cast<TType>(0)}
+{}
+
+template <size_t TRows, size_t TColumns, typename TType>
+template <typename ... TValues, typename>
+constexpr GenericMatrix<TRows, TColumns, TType>
+	::GenericMatrix(TValues... in_values) noexcept:
+		m_data {TType(in_values)...}
+{}
+
+template <size_t TRows, size_t TColumns, typename TType>
+constexpr size_t GenericMatrix<TRows, TColumns, TType>
+	::Elements() const noexcept
+{
+	return TRows * TColumns;
+}
+
+template <size_t TRows, size_t TColumns, typename TType>
+constexpr GenericMatrix<TColumns, TRows, TType> GenericMatrix<TRows, TColumns, TType>
+	::GetTransposed() const noexcept
+{
+	GenericMatrix<TColumns, TRows, TType> transposed;
+
+	for (size_t i = 0ull; i < Elements() / 2ull; ++i)
+		transposed.m_data[i] = m_data[Elements() - i];
+
+	return transposed;
+}
+
+template <size_t TRows, size_t TColumns, typename TType>
 template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType, typename TReturnType, typename>
 constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GenericMatrix<TRows, TColumns, TType>
-	::Multiply(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept
+	::GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept
 {
 	GenericMatrix<TRows, TOtherColumns, TReturnType> new_matrix;
 
@@ -42,32 +74,32 @@ constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GenericMatrix<TRows, 
 	return new_matrix;
 }
 
-template <size_t TRows, size_t TColumns, typename TType, typename>
+template <size_t TRows, size_t TColumns, typename TType>
 constexpr TType const& GenericMatrix<TRows, TColumns, TType>
 	::At(size_t in_row, size_t in_column) const noexcept
 {
-	return data[TRows * in_row + in_column];
+	return m_data[TRows * in_row + in_column];
 }
 
-template <size_t TRows, size_t TColumns, typename TType, typename>
+template <size_t TRows, size_t TColumns, typename TType>
 constexpr TType& GenericMatrix<TRows, TColumns, TType>
 	::At(size_t in_row, size_t in_column) noexcept
 {
-	return data[TRows * in_row + in_column];
+	return m_data[TRows * in_row + in_column];
 }
 
-template <size_t TRows, size_t TColumns, typename TType, typename>
-template <size_t TInRow, size_t TInColumn, typename>
+template <size_t TRows, size_t TColumns, typename TType>
+template <size_t TInRow, size_t TInColumn>
 constexpr TType const& GenericMatrix<TRows, TColumns, TType>
 	::At() const noexcept
 {
-	return data[TRows * TInRow + TInColumn];
+	return m_data[TRows * TInRow + TInColumn];
 }
 
-template <size_t TRows, size_t TColumns, typename TType, typename>
-template <size_t TInRow, size_t TInColumn, typename>
+template <size_t TRows, size_t TColumns, typename TType>
+template <size_t TInRow, size_t TInColumn>
 constexpr TType& GenericMatrix<TRows, TColumns, TType>
 	::At() noexcept
 {
-	return data[TRows * TInRow + TInColumn];
+	return m_data[TRows * TInRow + TInColumn];
 }
