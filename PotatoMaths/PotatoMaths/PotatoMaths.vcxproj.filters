@@ -27,6 +27,7 @@
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp">
     <ClInclude Include="Sources\Includes\Matrix\Matrix2x2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,6 +54,9 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Sources\Includes\Vector\GenericVector.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
