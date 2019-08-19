@@ -25,6 +25,8 @@
 #pragma once
 
 #include <type_traits>
+#include <iomanip>
+#include <ostream>
 
 template <size_t TRows, size_t TColumns, typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
 class GenericMatrix;
@@ -74,12 +76,14 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		 * \brief Gets the number of elements stored in the matrix
 		 * \return Elements count of the matrix
 		 */
+		[[nodiscard]]
 		constexpr size_t Elements() const noexcept;
 
 		/**
 		 * \brief Computes the transposed matrix
 		 * \return Transposed matrix
 		 */
+		[[nodiscard]]
 		constexpr GenericMatrix<TColumns, TRows, TType> GetTransposed() const noexcept;
 
 		/**
@@ -95,6 +99,7 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType,
 			typename TReturnType = std::common_type_t<TType, TOtherType>,
 			typename			 = std::enable_if_t<TColumns == TOtherRows>>
+		[[nodiscard]]
 		constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept;
 
 		/**
@@ -105,7 +110,9 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		 * 
 		 * \return Value at the selected position
 		 */
+		[[nodiscard]]
 		constexpr TType const& At(size_t in_row, size_t in_column) const noexcept;
+		[[nodiscard]]
 		constexpr TType&	   At(size_t in_row, size_t in_column)		 noexcept;
 
 		/**
@@ -119,9 +126,11 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		 * \return Value at the selected position
 		 */
 		template<size_t TInRow, size_t TInColumn>
+		[[nodiscard]]
 		constexpr TType const& At() const noexcept;
 		
 		template<size_t TInRow, size_t TInColumn>
+		[[nodiscard]]
 		constexpr TType&	   At()		  noexcept;
 
 		#pragma endregion
@@ -134,4 +143,39 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		#pragma endregion
 };
 
+/**
+ * \brief ostream <<operator overload for the GenericMatrix class
+ * 
+ * \tparam TRows Number of rows of the matrix to display
+ * \tparam TColumns Number of columns of the matrix to display
+ * \tparam TType Type of the matrix to display
+ * 
+ * \param inout_stream Output stream 
+ * \param in_matrix Matrix to display
+ * 
+ * \return Output stream instance
+ */
+template <size_t TRows, size_t TColumns, typename TType>
+std::ostream& operator<<(std::ostream& inout_stream, GenericMatrix<TRows, TColumns, TType> const& in_matrix);
+
 #include "Matrix/GenericMatrix.inl"
+
+template<size_t TRows, size_t TColumns, typename TType>
+std::ostream & operator<<(std::ostream & inout_stream, GenericMatrix<TRows, TColumns, TType> const & in_matrix)
+{
+	inout_stream << std::setprecision(3);
+	for (size_t row = 0ull; row < TRows; ++row)
+	{
+		for (size_t column = 0ull; column < TColumns; ++column)
+		{
+			TType value = in_matrix.At(row, column);
+			if (std::signbit(value))
+				inout_stream << value;
+			else
+				inout_stream << ' ' << value;
+		}
+		inout_stream << '\n';
+	}
+
+	return inout_stream;
+}

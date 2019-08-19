@@ -27,8 +27,12 @@
 #include "Matrix/GenericMatrix.hpp"
 
 template<size_t TSize, typename TType = float>
-class SquareMatrix : public GenericMatrix<TSize, TSize, TType>
+class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TType>
 {
+	private:
+
+		using Parent = GenericMatrix<TSize, TSize, TType>;
+
 	public:
 
 		#pragma region Constructors
@@ -36,7 +40,9 @@ class SquareMatrix : public GenericMatrix<TSize, TSize, TType>
 		constexpr SquareMatrix()                              noexcept = default;
 		constexpr SquareMatrix(SquareMatrix const& in_matrix) noexcept = default;
 		constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
-		constexpr ~SquareMatrix()                             noexcept = default;
+		virtual  ~SquareMatrix()                              noexcept = default;
+
+		using GenericMatrix<TSize, TSize, TType>::GenericMatrix;
 
 		#pragma endregion
 
@@ -58,6 +64,14 @@ class SquareMatrix : public GenericMatrix<TSize, TSize, TType>
 		 */
 		constexpr SquareMatrix& Transpose() noexcept;
 
+		/**
+		 * \brief Lower–upper (LU) decomposition or factorization factors a matrix as the product of a lower triangular matrix and an upper triangular matrix.
+		 * 
+		 * \param out_l_matrix Lower triangular matrix
+		 * \param out_u_matrix Upper triangular matrix
+		 */
+		constexpr void LUDecomposition(SquareMatrix<TSize, TType>& out_l_matrix, SquareMatrix<TSize, TType>& out_u_matrix) const noexcept;
+
 		#pragma endregion 
 
 		#pragma region Operators
@@ -68,4 +82,4 @@ class SquareMatrix : public GenericMatrix<TSize, TSize, TType>
 		#pragma endregion
 };
 
-		
+#include "Matrix/SquareMatrix.inl"

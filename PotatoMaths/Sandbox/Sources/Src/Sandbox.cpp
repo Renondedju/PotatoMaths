@@ -23,15 +23,27 @@
  */
 
 #include <cstdlib>
+#include <iostream>
 
 #include <Matrix/GenericMatrix.hpp>
+#include <Matrix/SquareMatrix.hpp>
 
 #include "Benchmark.hpp"
 
-int main(int in_argc, char const** in_argv)
+int main(int, char const**)
 {
-    static_cast<void>(in_argc);
-    static_cast<void>(in_argv);
+	SquareMatrix<4, float> const matrix(1, 2, 3, 4,
+										5, 6, 7, 8,
+										9, 0, 1, 2,
+										3, 4, 5, 6);
+
+	SquareMatrix<4, float> Lmatrix;
+	SquareMatrix<4, float> Umatrix;
+
+	matrix.LUDecomposition(Lmatrix, Umatrix);
+
+	std::cout << Lmatrix << std::endl;
+	std::cout << Umatrix << std::endl;
 
 	system("pause");
 
