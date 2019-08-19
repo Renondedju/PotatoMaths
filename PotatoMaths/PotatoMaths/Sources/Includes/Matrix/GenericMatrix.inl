@@ -37,7 +37,7 @@ constexpr GenericMatrix<TRows, TColumns, TType>
 
 template <size_t TRows, size_t TColumns, typename TType>
 constexpr size_t GenericMatrix<TRows, TColumns, TType>
-	::Elements() const noexcept
+	::Elements() noexcept
 {
 	return TRows * TColumns;
 }
@@ -76,14 +76,14 @@ constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GenericMatrix<TRows, 
 
 template <size_t TRows, size_t TColumns, typename TType>
 constexpr TType const& GenericMatrix<TRows, TColumns, TType>
-	::At(size_t in_row, size_t in_column) const noexcept
+	::At(size_t const in_row, size_t const in_column) const noexcept
 {
 	return m_data[TRows * in_row + in_column];
 }
 
 template <size_t TRows, size_t TColumns, typename TType>
 constexpr TType& GenericMatrix<TRows, TColumns, TType>
-	::At(size_t in_row, size_t in_column) noexcept
+	::At(size_t const in_row, size_t const in_column) noexcept
 {
 	return m_data[TRows * in_row + in_column];
 }

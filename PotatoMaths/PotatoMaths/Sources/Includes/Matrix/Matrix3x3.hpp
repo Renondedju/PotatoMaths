@@ -26,8 +26,33 @@
 
 #include "Matrix/SquareMatrix.hpp"
 
+/**
+ * \brief 3x3 Matrix class
+ * \tparam TType Matrix data type
+ */
 template<typename TType = float>
-class Matrix3x3 : public SquareMatrix<3, TType>
+class Matrix3x3 final : public SquareMatrix<3, TType>
 {
-	
+	public:
+
+		#pragma region Constructors
+
+		constexpr Matrix3x3()							noexcept = default;
+		constexpr Matrix3x3(Matrix3x3 const& in_matrix) noexcept = default;
+		constexpr Matrix3x3(Matrix3x3&&      in_matrix) noexcept = default;
+		virtual  ~Matrix3x3()							noexcept = default;
+
+		#pragma endregion
+
+		#pragma region Operators
+
+		constexpr Matrix3x3& operator=(Matrix3x3 const& in_other) noexcept = default;
+		constexpr Matrix3x3& operator=(Matrix3x3&&	  in_other) noexcept = default;
+
+		#pragma endregion
 };
+
+// Matrix specializations
+using Matrix3x3f = Matrix3x3<float>;
+using Matrix3x3d = Matrix3x3<double>;
+using Matrix3x3i = Matrix3x3<int>;

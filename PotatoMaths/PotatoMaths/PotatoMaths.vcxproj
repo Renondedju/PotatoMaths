@@ -20,7 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix1x4.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix2x2.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix3x3.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix3x4.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix4x1.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix4x3.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
   </ItemGroup>

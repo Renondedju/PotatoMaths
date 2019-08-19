@@ -22,25 +22,37 @@
  * SOFTWARE.
  */
 
-#include <cstdlib>
-#include <iostream>
+#pragma once
 
-#include <Matrix/Matrix4x4.hpp>
-#include <Matrix/Matrix4x1.hpp>
+#include "Matrix/GenericMatrix.hpp"
 
-#include "Benchmark.hpp"
-
-int main(int, char const**)
+/**
+ * \brief 3x4 Matrix class
+ * \tparam TType Matrix data type
+ */
+template<typename TType = float>
+class Matrix3x4 final : public GenericMatrix<3, 4, TType>
 {
-	Matrix4x4f const matrix = Matrix4x4f::Identity();
-	Matrix4x1f vector;
-	
-	LOOPED_BENCHMARK("Vector multiplication", 5000)
-	{
-		vector = matrix.GetMultiplied(vector);
-	}
-	
-	system("pause");
+	public:
 
-    return EXIT_SUCCESS;
-}
+		#pragma region Constructors
+
+		constexpr Matrix3x4()							noexcept = default;
+		constexpr Matrix3x4(Matrix3x4 const& in_matrix) noexcept = default;
+		constexpr Matrix3x4(Matrix3x4&&      in_matrix) noexcept = default;
+		virtual  ~Matrix3x4()							noexcept = default;
+
+		#pragma endregion
+
+		#pragma region Operators
+
+		constexpr Matrix3x4& operator=(Matrix3x4 const& in_other) noexcept = default;
+		constexpr Matrix3x4& operator=(Matrix3x4&&	    in_other) noexcept = default;
+
+		#pragma endregion
+};
+
+// Matrix specializations
+using Matrix3x4f = Matrix3x4<float>;
+using Matrix3x4d = Matrix3x4<double>;
+using Matrix3x4i = Matrix3x4<int>;

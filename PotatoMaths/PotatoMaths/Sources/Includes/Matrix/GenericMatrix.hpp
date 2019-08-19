@@ -70,15 +70,19 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 
 		#pragma endregion
 
-		#pragma region Methods
+		#pragma region Static Methods
 
 		/**
 		 * \brief Gets the number of elements stored in the matrix
 		 * \return Elements count of the matrix
 		 */
 		[[nodiscard]]
-		constexpr size_t Elements() const noexcept;
+		static constexpr size_t Elements() noexcept;
 
+		#pragma endregion 
+	
+		#pragma region Methods
+	
 		/**
 		 * \brief Computes the transposed matrix
 		 * \return Transposed matrix
@@ -143,6 +147,8 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		#pragma endregion
 };
 
+#include "Matrix/GenericMatrix.inl"
+
 /**
  * \brief ostream <<operator overload for the GenericMatrix class
  * 
@@ -155,11 +161,6 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
  * 
  * \return Output stream instance
  */
-template <size_t TRows, size_t TColumns, typename TType>
-std::ostream& operator<<(std::ostream& inout_stream, GenericMatrix<TRows, TColumns, TType> const& in_matrix);
-
-#include "Matrix/GenericMatrix.inl"
-
 template<size_t TRows, size_t TColumns, typename TType>
 std::ostream & operator<<(std::ostream & inout_stream, GenericMatrix<TRows, TColumns, TType> const & in_matrix)
 {

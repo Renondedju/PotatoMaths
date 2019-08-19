@@ -26,8 +26,33 @@
 
 #include "Matrix/SquareMatrix.hpp"
 
+/**
+ * \brief 4x4 Matrix class
+ * \tparam TType Matrix data type
+ */
 template<typename TType = float>
-class Matrix4x4 : public SquareMatrix<4, TType>
+class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 {
-	
+	public:
+
+		#pragma region Constructors
+
+		constexpr Matrix4x4()							noexcept = default;
+		constexpr Matrix4x4(Matrix4x4 const& in_matrix) noexcept = default;
+		constexpr Matrix4x4(Matrix4x4&&      in_matrix) noexcept = default;
+		virtual  ~Matrix4x4()							noexcept = default;
+
+		#pragma endregion
+
+		#pragma region Operators
+
+		constexpr Matrix4x4& operator=(Matrix4x4 const& in_other) noexcept = default;
+		constexpr Matrix4x4& operator=(Matrix4x4&&	  in_other) noexcept = default;
+
+		#pragma endregion
 };
+
+// Matrix specializations
+using Matrix4x4f = Matrix4x4<float>;
+using Matrix4x4d = Matrix4x4<double>;
+using Matrix4x4i = Matrix4x4<int>;
