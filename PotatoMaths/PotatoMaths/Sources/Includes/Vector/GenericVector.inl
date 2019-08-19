@@ -22,6 +22,25 @@
  * SOFTWARE.
  */
 
+#pragma once
+
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType>
+    ::GenericVector() noexcept :
+        data {static_cast<TType>(0)}
+{}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+    ::Lerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept
+{
+    //TODO
+
+    return GenericVector<TLength, TType>();
+}
+
+
 template <size_t TLength, typename TType>
 constexpr TType& GenericVector<TLength, TType>
     ::At(size_t in_index) noexcept
@@ -53,4 +72,27 @@ constexpr TType GenericVector<TLength, TType>
     ::Length() const noexcept
 {
     return sqrt(SqrLength());
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+    ::Normalize() noexcept
+{
+    TType const length (Length());
+
+    if (length)
+    {
+        for (size_t i = 0; i < TLength; i++)
+            data[i] /= length;
+    }
+
+    return *this;
+}
+
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+    ::GetNormalized() const noexcept
+{
+    return GenericVector<TLength, TType>(*this).Normalize();
 }
