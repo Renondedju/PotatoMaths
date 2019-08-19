@@ -163,17 +163,11 @@ std::ostream& operator<<(std::ostream& inout_stream, GenericMatrix<TRows, TColum
 template<size_t TRows, size_t TColumns, typename TType>
 std::ostream & operator<<(std::ostream & inout_stream, GenericMatrix<TRows, TColumns, TType> const & in_matrix)
 {
-	inout_stream << std::setprecision(3);
+	inout_stream << std::setprecision(3) << std::fixed;
 	for (size_t row = 0ull; row < TRows; ++row)
 	{
 		for (size_t column = 0ull; column < TColumns; ++column)
-		{
-			TType value = in_matrix.At(row, column);
-			if (std::signbit(value))
-				inout_stream << value;
-			else
-				inout_stream << ' ' << value;
-		}
+			inout_stream << ' ' << in_matrix.At(row, column);
 		inout_stream << '\n';
 	}
 
