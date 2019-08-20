@@ -1,63 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="Sources\Src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\Matrix3x3.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp">
-    <ClInclude Include="Sources\Includes\Matrix\Matrix2x2.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\Matrix3x4.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\Matrix4x3.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\Matrix1x4.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Includes\Matrix\Matrix4x1.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix1x4.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix2x2.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix3x3.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix3x4.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix4x1.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix4x3.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Addition.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Decrement.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Division.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Increment.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Modulo.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Multiplication.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Subtraction.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\UnaryMinus.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\UnaryPlus.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\And.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\LeftShift.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Not.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Or.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\RightShift.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Xor.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Equal.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Greater.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\GreaterEqual.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Less.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\LessEqual.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\NotEqual.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Spaceship.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalAnd.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalNot.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalOr.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
+    <ClInclude Include="Sources\Includes\Types\NamedType.hpp" />
+    <ClInclude Include="Sources\Includes\Meta\Meta.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Sources\Includes\Matrix\GenericMatrix.inl">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="Sources\Includes\Matrix\SquareMatrix.inl">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="Sources\Includes\Vector\GenericVector.inl">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
+    <None Include="Sources\Includes\Vector\GenericVector.inl" />
+    <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
+    <None Include="Sources\Includes\Types\NamedType.inl" />
   </ItemGroup>
 </Project>

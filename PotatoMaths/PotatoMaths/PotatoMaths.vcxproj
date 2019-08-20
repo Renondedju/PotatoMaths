@@ -28,6 +28,38 @@
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x3.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
+    <ClInclude Include="Sources\Includes\Meta\Meta.hpp" />
+    <ClInclude Include="Sources\Includes\Types\NamedType.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Addition.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Decrement.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Division.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Increment.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Modulo.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Multiplication.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Subtraction.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\UnaryMinus.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\UnaryPlus.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\And.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\LeftShift.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Not.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Or.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\RightShift.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Xor.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Equal.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Greater.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\GreaterEqual.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Less.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\LessEqual.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\NotEqual.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Spaceship.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalAnd.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalNot.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalOr.hpp" />
+    <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
+    <None Include="Sources\Includes\Types\NamedType.inl" />
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
   </ItemGroup>
