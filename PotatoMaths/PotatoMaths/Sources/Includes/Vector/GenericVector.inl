@@ -24,7 +24,6 @@
 
 #pragma once
 
-
 template <size_t TLength, typename TType>
 constexpr GenericVector<TLength, TType>
     ::GenericVector() noexcept :
@@ -95,4 +94,44 @@ constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
     ::GetNormalized() const noexcept
 {
     return GenericVector<TLength, TType>(*this).Normalize();
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+    ::Add(GenericVector const& in_other) noexcept
+{
+    for (size_t i = 0; i < TLength; i++)
+        data[i] += in_other.At(i);
+
+    return *this;
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+    ::Subtract(GenericVector const& in_other) noexcept
+{
+    for (size_t i = 0; i < TLength; i++)
+        data[i] -= in_other.At(i);
+
+    return *this;
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+    ::Multiply(GenericVector const& in_other) noexcept
+{
+    for (size_t i = 0; i < TLength; i++)
+        data[i] *= in_other.At(i);
+
+    return *this;
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+    ::Divide(GenericVector const& in_other) noexcept
+{
+    for (size_t i = 0; i < TLength; i++)
+        data[i] = (in_other.At(i) != 0) ? data[i] / in_other.At(i) : 0;
+
+    return *this;
 }
