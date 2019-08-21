@@ -33,6 +33,10 @@
 template<typename TType = float>
 class Matrix3x3 final : public SquareMatrix<3, TType>
 {
+    private:
+
+        using Parent = SquareMatrix<3, TType>;
+
 	public:
 
 		#pragma region Constructors
@@ -41,6 +45,8 @@ class Matrix3x3 final : public SquareMatrix<3, TType>
 		constexpr Matrix3x3(Matrix3x3 const& in_matrix) noexcept = default;
 		constexpr Matrix3x3(Matrix3x3&&      in_matrix) noexcept = default;
 		virtual  ~Matrix3x3()							noexcept = default;
+
+        using Parent::Parent;
 
 		#pragma endregion
 

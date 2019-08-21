@@ -33,6 +33,10 @@
 template<typename TType = float>
 class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 {
+    private:
+
+        using Parent = SquareMatrix<4, TType>;
+
 	public:
 
 		#pragma region Constructors
@@ -42,12 +46,14 @@ class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 		constexpr Matrix4x4(Matrix4x4&&      in_matrix) noexcept = default;
 		virtual  ~Matrix4x4()							noexcept = default;
 
+        using Parent::Parent;
+
 		#pragma endregion
 
 		#pragma region Operators
 
 		constexpr Matrix4x4& operator=(Matrix4x4 const& in_other) noexcept = default;
-		constexpr Matrix4x4& operator=(Matrix4x4&&	  in_other) noexcept = default;
+		constexpr Matrix4x4& operator=(Matrix4x4&&	    in_other) noexcept = default;
 
 		#pragma endregion
 };

@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "Types/NamedType.hpp"
+//#include "Types/NamedType.hpp"
 
 /**
  * \brief Spaceship than or equal class

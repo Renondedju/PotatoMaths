@@ -36,6 +36,14 @@ constexpr GenericMatrix<TRows, TColumns, TType>
 {}
 
 template <size_t TRows, size_t TColumns, typename TType>
+constexpr GenericMatrix<TRows, TColumns, TType>
+	::GenericMatrix(TType const (&in_values)[TRows * TColumns]) noexcept:
+		m_data {}
+{
+    std::memcpy(&m_data, &in_values, sizeof(m_data));
+}
+
+template <size_t TRows, size_t TColumns, typename TType>
 constexpr size_t GenericMatrix<TRows, TColumns, TType>
 	::Elements() noexcept
 {

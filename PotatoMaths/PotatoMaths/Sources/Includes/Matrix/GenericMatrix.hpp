@@ -68,6 +68,12 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 		template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TRows * TColumns>>
 		constexpr GenericMatrix(TValues... in_values) noexcept;
 
+        /**
+         * \brief Array constructor
+         * \param in_values array
+         */
+        constexpr GenericMatrix(TType const (&in_values)[TRows * TColumns]) noexcept;
+
 		#pragma endregion
 
 		#pragma region Static Methods

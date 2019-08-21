@@ -42,7 +42,7 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
 		constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
 		virtual  ~SquareMatrix()                              noexcept = default;
 
-		using GenericMatrix<TSize, TSize, TType>::GenericMatrix;
+		using Parent::Parent;
 
 		#pragma endregion
 

@@ -33,6 +33,10 @@
 template<typename TType = float>
 class Matrix3x4 final : public GenericMatrix<3, 4, TType>
 {
+    private:
+
+        using Parent = GenericMatrix<3, 4, TType>;
+
 	public:
 
 		#pragma region Constructors
@@ -41,6 +45,8 @@ class Matrix3x4 final : public GenericMatrix<3, 4, TType>
 		constexpr Matrix3x4(Matrix3x4 const& in_matrix) noexcept = default;
 		constexpr Matrix3x4(Matrix3x4&&      in_matrix) noexcept = default;
 		virtual  ~Matrix3x4()							noexcept = default;
+
+        using Parent::Parent;
 
 		#pragma endregion
 
