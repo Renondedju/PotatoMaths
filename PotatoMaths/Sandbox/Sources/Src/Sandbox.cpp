@@ -28,17 +28,19 @@
 #include <Matrix/Matrix4x4.hpp>
 #include <Matrix/Matrix4x1.hpp>
 
+#include <Vector/GenericVector.hpp>
+
 #include "Benchmark.hpp"
 
 int main(int, char const**)
 {
-	Matrix4x4f const matrix = Matrix4x4f::Identity();
+	/*Matrix4x4f const matrix = Matrix4x4f::Identity();
 	Matrix4x1f vector;
 
 	LOOPED_BENCHMARK("Vector multiplication", 500e6)
 	{
 		vector = matrix.GetMultiplied(vector);
-	}
+	}*/
 	
 	system("pause");
 

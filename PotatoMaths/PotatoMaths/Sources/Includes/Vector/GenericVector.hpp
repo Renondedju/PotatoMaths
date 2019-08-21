@@ -52,13 +52,25 @@ class _declspec(novtable) GenericVector<TLength, TType>
         #pragma region Methods
 
         /**
-         * Performs a linear interpolation between 2 vectors of the same type
+         * \brief Performs a linear interpolation between 2 vectors of the same type.
+         *
+         * \param in_from 
+         * \param in_to 
+         * \param in_ratio
+         *
+         * \return 
          */
         [[nodiscard]]
         constexpr static GenericVector Lerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept;
 
         /**
+         * \brief
          *
+         * \param in_from 
+         * \param in_to 
+         * \param in_ratio
+         *
+         * \return 
          */
         [[nodiscard]]
         constexpr static GenericVector Slerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept;
@@ -71,7 +83,7 @@ class _declspec(novtable) GenericVector<TLength, TType>
          * \return The data at the given index.
          */
         [[nodiscard]]
-        constexpr TType const&   At(size_t in_index) const noexcept;
+        constexpr TType const& At(size_t in_index) const noexcept;
 
         /**
          * \brief Data getter/setter
@@ -81,7 +93,7 @@ class _declspec(novtable) GenericVector<TLength, TType>
          * \return The data at the given index.
          */
         [[nodiscard]]
-        constexpr TType&         At(size_t in_index) noexcept;
+        constexpr TType& At(size_t in_index) noexcept;
 
         /**
          * \brief Computes the length of the vector in TType value.
@@ -90,7 +102,7 @@ class _declspec(novtable) GenericVector<TLength, TType>
          * \return The length of the vector.
          */
         [[nodiscard]]
-        constexpr TType          Length() const noexcept;
+        constexpr TType Length() const noexcept;
 
         /**
          * \brief Computes the squared length of the vector in TType value.
@@ -98,7 +110,7 @@ class _declspec(novtable) GenericVector<TLength, TType>
          * \return The squared length of the vector.
          */
         [[nodiscard]] 
-        constexpr TType          SqrLength() const noexcept;
+        constexpr TType SqrLength() const noexcept;
 
         /**
          * \brief Normalize the vector. If the vector is null (all components are set to 0), nothing is done.
@@ -111,14 +123,155 @@ class _declspec(novtable) GenericVector<TLength, TType>
          * \return The normalized vector.
          */
         [[nodiscard]]
-        constexpr GenericVector  GetNormalized() const noexcept;
+        constexpr GenericVector GetNormalized() const noexcept;
+
+        /**
+         * \brief Adds the current vector with another.
+         *
+         * \param in_other The other vector to add with.
+         *
+         * \return The result of the addition.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Add(GenericVector const& in_other) noexcept;
+
+        /**
+         * \brief Subtracts the current vector with another.
+         *
+         * \param in_other The other vector to subtract with.
+         *
+         * \return The result of the subtraction.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Subtract(GenericVector const& in_other) noexcept;
+
+        /**
+         * \brief Multiplies the current vector with another.
+         *
+         * \param in_other The other vector to multiply with.
+         *
+         * \return The result of the multiplication.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Multiply(GenericVector const& in_other) noexcept;
+
+        /**
+         * \brief Divides the current vector with another.
+         * If a component of the given vector is equal to 0, the current vector equivalent component is set to 0.
+         *
+         * \param in_other The other vector to divide with.
+         *
+         * \return The result of the division.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Divide(GenericVector const& in_other) noexcept;
+
+        /**
+         * \brief Adds the current vector with another.
+         *
+         * \param in_value The other vector to add with.
+         *
+         * \return The result of the addition.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Add(TType in_value) noexcept;
+
+        /**
+         * \brief Subtracts the current vector with another.
+         *
+         * \param in_value The other vector to subtract with.
+         *
+         * \return The result of the subtraction.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Subtract(TType in_value) noexcept;
+
+        /**
+         * \brief Multiplies the current vector with another.
+         *
+         * \param in_value The other vector to multiply with.
+         *
+         * \return The result of the multiplication.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Multiply(TType in_value) noexcept;
+
+        /**
+         * \brief Divides the current vector with another.
+         * If a component of the given vector is equal to 0, the current vector equivalent component is set to 0.
+         *
+         * \param in_value The other vector to divide with.
+         *
+         * \return The result of the division.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Divide(TType in_value) noexcept;
+
+        /**
+         * \brief Checks if the vector is equals to the given one.
+         *
+         * \param in_other The other vector given to perform the check.
+         *
+         * \return True if they are equal, false otherwise.
+         */
+        [[nodiscard]]
+        constexpr bool IsEqual(GenericVector const& in_other) const noexcept;
+
+        /**
+         * \brief Checks if the vector is not equals to the given one.
+         *
+         * \param in_other The other vector given to perform the check.
+         *
+         * \return True if they are not equal, false otherwise.
+         */
+        [[nodiscard]]
+        constexpr bool IsNotEqual(GenericVector const& in_other) const noexcept;
 
         #pragma endregion
 
         #pragma region Operators
 
         constexpr GenericVector& operator=(GenericVector const& in_vector) noexcept = default;
+
         constexpr GenericVector& operator=(GenericVector&&      in_vector) noexcept = default;
+
+        constexpr bool operator==(GenericVector const& in_rhs) const noexcept;
+
+        constexpr bool operator!=(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector operator+(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector operator-(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector operator*(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector operator/(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector& operator+=(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector& operator-=(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector& operator*=(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector& operator/=(GenericVector const& in_rhs) const noexcept;
+
+        constexpr GenericVector operator+(TType in_factor) const noexcept;
+
+        constexpr GenericVector operator-(TType in_factor) const noexcept;
+
+        constexpr GenericVector operator*(TType in_factor) const noexcept;
+
+        constexpr GenericVector operator/(TType in_factor) const noexcept;
+
+        constexpr GenericVector& operator+=(TType in_factor) const noexcept;
+
+        constexpr GenericVector& operator-=(TType in_factor) const noexcept;
+
+        constexpr GenericVector& operator*=(TType in_factor) const noexcept;
+
+        constexpr GenericVector& operator/=(TType in_factor) const noexcept;
+
+        constexpr GenericVector operator-() const noexcept;
 
         #pragma endregion
 };
