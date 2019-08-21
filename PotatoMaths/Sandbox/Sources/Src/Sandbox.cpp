@@ -34,8 +34,8 @@ int main(int, char const**)
 {
 	Matrix4x4f const matrix = Matrix4x4f::Identity();
 	Matrix4x1f vector;
-	
-	LOOPED_BENCHMARK("Vector multiplication", 5000)
+
+	LOOPED_BENCHMARK("Vector multiplication", 500e6)
 	{
 		vector = matrix.GetMultiplied(vector);
 	}

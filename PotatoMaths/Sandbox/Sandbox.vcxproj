@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Src\Benchmark.cpp" />
     <ClCompile Include="Sources\Src\Sandbox.cpp" />
   </ItemGroup>
   <ItemGroup>
