@@ -167,6 +167,47 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr GenericVector& Divide(GenericVector const& in_other) noexcept;
 
         /**
+         * \brief Adds the current vector with another.
+         *
+         * \param in_value The other vector to add with.
+         *
+         * \return The result of the addition.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Add(TType in_value) noexcept;
+
+        /**
+         * \brief Subtracts the current vector with another.
+         *
+         * \param in_value The other vector to subtract with.
+         *
+         * \return The result of the subtraction.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Subtract(TType in_value) noexcept;
+
+        /**
+         * \brief Multiplies the current vector with another.
+         *
+         * \param in_value The other vector to multiply with.
+         *
+         * \return The result of the multiplication.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Multiply(TType in_value) noexcept;
+
+        /**
+         * \brief Divides the current vector with another.
+         * If a component of the given vector is equal to 0, the current vector equivalent component is set to 0.
+         *
+         * \param in_value The other vector to divide with.
+         *
+         * \return The result of the division.
+         */
+        [[nodiscard]]
+        constexpr GenericVector& Divide(TType in_value) noexcept;
+
+        /**
          * \brief Checks if the vector is equals to the given one.
          *
          * \param in_other The other vector given to perform the check.
@@ -214,8 +255,6 @@ class _declspec(novtable) GenericVector<TLength, TType>
 
         constexpr GenericVector& operator/=(GenericVector const& in_rhs) const noexcept;
 
-        constexpr GenericVector operator-() const noexcept;
-
         constexpr GenericVector operator+(TType in_factor) const noexcept;
 
         constexpr GenericVector operator-(TType in_factor) const noexcept;
@@ -231,6 +270,8 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr GenericVector& operator*=(TType in_factor) const noexcept;
 
         constexpr GenericVector& operator/=(TType in_factor) const noexcept;
+
+        constexpr GenericVector operator-() const noexcept;
 
         #pragma endregion
 };
