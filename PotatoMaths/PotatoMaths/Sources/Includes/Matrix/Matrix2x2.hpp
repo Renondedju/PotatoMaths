@@ -46,6 +46,12 @@ class Matrix2x2 final : public SquareMatrix<2, TType>
 		constexpr Matrix2x2(Matrix2x2&&      in_matrix) noexcept = default;
 		virtual  ~Matrix2x2()							noexcept = default;
 
+        DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix2x2, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix2x2, Parent)
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix2x2, typename Parent::Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix2x2, typename Parent::Parent)
+
         using Parent::Parent;
 
 		#pragma endregion
@@ -54,6 +60,12 @@ class Matrix2x2 final : public SquareMatrix<2, TType>
 
 		constexpr Matrix2x2& operator=(Matrix2x2 const& in_other) noexcept = default;
 		constexpr Matrix2x2& operator=(Matrix2x2&&	    in_other) noexcept = default;
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix2x2, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix2x2, Parent)
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix2x2, typename Parent::Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix2x2, typename Parent::Parent)
 
 		#pragma endregion
 };

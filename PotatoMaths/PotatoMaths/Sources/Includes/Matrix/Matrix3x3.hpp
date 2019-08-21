@@ -46,6 +46,12 @@ class Matrix3x3 final : public SquareMatrix<3, TType>
 		constexpr Matrix3x3(Matrix3x3&&      in_matrix) noexcept = default;
 		virtual  ~Matrix3x3()							noexcept = default;
 
+        DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix3x3, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix3x3, Parent)
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix3x3, typename Parent::Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix3x3, typename Parent::Parent)
+
         using Parent::Parent;
 
 		#pragma endregion
@@ -53,7 +59,13 @@ class Matrix3x3 final : public SquareMatrix<3, TType>
 		#pragma region Operators
 
 		constexpr Matrix3x3& operator=(Matrix3x3 const& in_other) noexcept = default;
-		constexpr Matrix3x3& operator=(Matrix3x3&&	  in_other) noexcept = default;
+		constexpr Matrix3x3& operator=(Matrix3x3&&	    in_other) noexcept = default;
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix3x3, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix3x3, Parent)
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix3x3, typename Parent::Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix3x3, typename Parent::Parent)
 
 		#pragma endregion
 };

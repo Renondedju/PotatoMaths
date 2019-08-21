@@ -33,11 +33,9 @@
 template<typename TType = float>
 class Matrix4x3 final : public GenericMatrix<4, 3, TType>
 {
-    private:
+	public:
 
         using Parent = GenericMatrix<4, 3, TType>;
-
-	public:
 
 		#pragma region Constructors
 
@@ -45,6 +43,9 @@ class Matrix4x3 final : public GenericMatrix<4, 3, TType>
 		constexpr Matrix4x3(Matrix4x3 const& in_matrix) noexcept = default;
 		constexpr Matrix4x3(Matrix4x3&&      in_matrix) noexcept = default;
 		virtual  ~Matrix4x3()							noexcept = default;
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix4x3, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix4x3, Parent)
 
         using Parent::Parent;
 
@@ -54,6 +55,9 @@ class Matrix4x3 final : public GenericMatrix<4, 3, TType>
 
 		constexpr Matrix4x3& operator=(Matrix4x3 const& in_other) noexcept = default;
 		constexpr Matrix4x3& operator=(Matrix4x3&&	    in_other) noexcept = default;
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix4x3, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix4x3, Parent)
 
 		#pragma endregion
 };

@@ -180,3 +180,39 @@ std::ostream & operator<<(std::ostream & inout_stream, GenericMatrix<TRows, TCol
 
 	return inout_stream;
 }
+
+/**
+ * \brief Declares a compatibility copy constructor 
+ * \param in_this_type class requiring the compatibility
+ * \param in_parent_type Parent class
+ */
+#define DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(in_this_type, in_parent_type) \
+    constexpr in_this_type(in_parent_type const& in_matrix) noexcept \
+    { *this = static_cast<in_this_type>(in_matrix); }
+
+/**
+ * \brief Declares a compatibility move constructor 
+ * \param in_this_type class requiring the compatibility
+ * \param in_parent_type Parent class
+ */
+#define DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(in_this_type, in_parent_type) \
+    constexpr in_this_type(in_parent_type&& in_matrix) noexcept \
+    { *this = std::forward<in_this_type>(static_cast<in_this_type&&>(in_matrix)); }
+
+/**
+ * \brief Declares a compatibility copy operator
+ * \param in_this_type class requiring the compatibility
+ * \param in_parent_type Parent class
+ */
+#define DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(in_this_type, in_parent_type) \
+    constexpr in_this_type& operator=(in_parent_type const& in_matrix) noexcept \
+    { *this = static_cast<in_this_type>(in_matrix); return *this; }
+
+/**
+ * \brief Declares a compatibility move operator 
+ * \param in_this_type class requiring the compatibility
+ * \param in_parent_type Parent class
+ */
+#define DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(in_this_type, in_parent_type) \
+    constexpr in_this_type& operator=(in_parent_type&& in_matrix) noexcept \
+    { *this = std::forward<in_this_type>(static_cast<in_this_type&&>(in_matrix)); return *this; }

@@ -29,11 +29,9 @@
 template<size_t TSize, typename TType = float>
 class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TType>
 {
-	private:
+    public:
 
-		using Parent = GenericMatrix<TSize, TSize, TType>;
-
-	public:
+        using Parent = GenericMatrix<TSize, TSize, TType>;
 
 		#pragma region Constructors
 
@@ -41,6 +39,9 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
 		constexpr SquareMatrix(SquareMatrix const& in_matrix) noexcept = default;
 		constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
 		virtual  ~SquareMatrix()                              noexcept = default;
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(SquareMatrix, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(SquareMatrix, Parent)
 
 		using Parent::Parent;
 
@@ -78,6 +79,9 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
 
 		constexpr SquareMatrix& operator=(SquareMatrix const& in_other) noexcept = default;
 		constexpr SquareMatrix& operator=(SquareMatrix&&	  in_other) noexcept = default;
+
+        DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(SquareMatrix, Parent)
+        DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(SquareMatrix, Parent)
 
 		#pragma endregion
 };
