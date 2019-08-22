@@ -95,4 +95,4 @@ namespace internal
  * \param in_benchmark_exection_count Number of times to execute the benchmark
  */
 #define LOOPED_BENCHMARK(in_benchmark_label, in_benchmark_exection_count) \
-	for (internal::BenchmarkIterator benchmark_iterator = {0, Benchmark(in_benchmark_label, in_benchmark_exection_count)}; benchmark_iterator.loop_count < in_benchmark_exection_count; ++benchmark_iterator.loop_count)
+	for (internal::BenchmarkIterator benchmark_iterator = {0Ui64, Benchmark(in_benchmark_label, in_benchmark_exection_count)}; benchmark_iterator.loop_count < in_benchmark_exection_count; ++benchmark_iterator.loop_count)
