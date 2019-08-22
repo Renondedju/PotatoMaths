@@ -39,7 +39,7 @@ constexpr SquareMatrix<TSize, TType>& SquareMatrix<TSize, TType>
 	::Transpose() noexcept
 {
 	for (size_t i = 0ull; i < Parent::Elements() / 2; ++i)
-		std::swap(Parent::m_data[i], Parent::m_data[Parent::Elements() - i]);
+		std::swap(Parent::data[i], Parent::data[Parent::Elements() - i]);
 
 	return *this;
 }

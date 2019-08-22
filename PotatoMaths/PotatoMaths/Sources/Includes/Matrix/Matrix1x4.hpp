@@ -33,11 +33,9 @@
 template<typename TType = float>
 class Matrix1x4 final : public GenericMatrix<1, 4, TType>
 {
-    private:
+    public:
 
         using Parent = GenericMatrix<1, 4, TType>;
-
-	public:
 
 		#pragma region Constructors
 

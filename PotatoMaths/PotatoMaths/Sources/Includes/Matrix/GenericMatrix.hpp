@@ -43,15 +43,13 @@ class GenericMatrix;
 template <size_t TRows, size_t TColumns, typename TType>
 class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 {
-	protected:
+	public:
 
 		#pragma region Members
 
-		TType m_data[TRows * TColumns];
+		TType data[TRows * TColumns];
 
 		#pragma endregion
-
-	public:
 
 		#pragma region Constructors
 
