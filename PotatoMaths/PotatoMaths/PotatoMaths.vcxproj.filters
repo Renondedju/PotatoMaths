@@ -46,11 +46,19 @@
     <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
     <ClInclude Include="Sources\Includes\Types\NamedType.hpp" />
     <ClInclude Include="Sources\Includes\Meta\Meta.hpp" />
+    <ClInclude Include="Sources\Includes\Angles\Degrees.hpp" />
+    <ClInclude Include="Sources\Includes\Angles\Radians.hpp" />
+    <ClInclude Include="Sources\Includes\Angles\Angle.hpp" />
+    <ClInclude Include="Sources\Includes\Constants.hpp" />
+    <ClInclude Include="Sources\Includes\Angles\EAngleUnit.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
     <None Include="Sources\Includes\Types\NamedType.inl" />
+    <None Include="Sources\Includes\Angles\Angle.inl" />
+    <None Include="Sources\Includes\Angles\Degree.inl" />
+    <None Include="Sources\Includes\Angles\Radians.inl" />
   </ItemGroup>
 </Project>
