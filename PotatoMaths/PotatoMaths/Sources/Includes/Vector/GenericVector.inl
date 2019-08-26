@@ -24,7 +24,7 @@
 
 #pragma once
 
-#pragma region Methods
+#pragma region Constructors
 
 template <size_t TLength, typename TType>
 constexpr GenericVector<TLength, TType>
@@ -33,14 +33,50 @@ constexpr GenericVector<TLength, TType>
 {}
 
 template <size_t TLength, typename TType>
+template <typename ... TValues, typename>
+constexpr GenericVector<TLength, TType>
+    ::GenericVector(TValues ... in_values) noexcept :
+        data {TType(in_values)...}
+{}
+
+#pragma endregion
+
+#pragma region Methods
+
+template <size_t TLength, typename TType>
 constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
     ::Lerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept
 {
-    //TODO
-
-    return GenericVector<TLength, TType>();
+    return in_from + in_ratio * (in_to - in_from);
 }
 
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+    ::Slerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept
+{
+    TType const dot = Dot(in_from, in_to);
+    TType const theta = acos(dot) * in_ratio;
+
+    GenericVector relativeVec = in_from - in_to * dot;
+
+    relativeVec.Normalize();
+
+    return ((in_from * cos(theta)) + relativeVec * sin(theta));
+}
+
+template <size_t TLength, typename TType>
+constexpr TType GenericVector<TLength, TType>
+    ::Dot(GenericVector const& in_lhs, GenericVector const& in_rhs) noexcept
+{
+    return in_lhs.Dot(in_rhs);
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+    ::Cross(GenericVector const& in_lhs, GenericVector const& in_rhs) noexcept
+{
+    return in_lhs.Cross(in_rhs);
+}
 
 template <size_t TLength, typename TType>
 constexpr TType& GenericVector<TLength, TType>
@@ -89,7 +125,6 @@ constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
 
     return *this;
 }
-
 
 template <size_t TLength, typename TType>
 constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
@@ -202,6 +237,31 @@ constexpr bool GenericVector<TLength, TType>
     }
 
     return true;
+}
+
+template <size_t TLength, typename TType>
+constexpr TType GenericVector<TLength, TType>
+    ::Dot(GenericVector const& in_other) const noexcept
+{
+    TType dot = 0;
+
+    for (size_t i = 0; i < TLength; i++)
+        dot += data[i] * in_other.At(i);
+
+    return dot;
+}
+
+template <size_t TLength, typename TType>
+constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+    ::Cross(GenericVector const& in_other) const noexcept
+{
+    GenericVector result;
+
+    for (size_t i = 0; i < TLength; i++)
+        result.At(i) =  data[(i + 1) % TLength] * in_other.At((i + 2) % TLength) -
+                        in_other.At((i + 1) % TLength) * data[(i + 2) % TLength];
+
+    return result;
 }
 
 #pragma endregion
@@ -333,11 +393,24 @@ constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
 }
 
 template <size_t TLength, typename TType>
+constexpr TType const& GenericVector<TLength, TType>
+    ::operator[](size_t in_index) const noexcept
+{
+    return At(in_index);
+}
+
+template <size_t TLength, typename TType>
+constexpr TType& GenericVector<TLength, TType>
+    ::operator[](size_t in_index) noexcept
+{
+    return At(in_index);
+}
+
+template <size_t TLength, typename TType>
 constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
     ::operator-() const noexcept
 {
     return GenericVector(*this).Multiply(-1);
 }
-
 
 #pragma endregion 

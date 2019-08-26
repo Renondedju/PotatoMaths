@@ -47,6 +47,9 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr GenericVector(GenericVector&&      in_vector) noexcept = default;
         virtual  ~GenericVector()                               noexcept = default;
 
+        template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TLength>>
+        constexpr GenericVector(TValues... in_values) noexcept;
+
         #pragma endregion
 
         #pragma region Methods
@@ -64,16 +67,37 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr static GenericVector Lerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept;
 
         /**
-         * \brief
+         * \brief Performs a circular interpolation between 2 vectors of the same type.
          *
-         * \param in_from 
-         * \param in_to 
+         * \param in_from
+         * \param in_to
          * \param in_ratio
          *
-         * \return 
+         * \return
          */
         [[nodiscard]]
         constexpr static GenericVector Slerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept;
+        /**
+         * \brief Return the dot product value performed with 2 vectors
+         *
+         * \param in_lhs The first vector
+         * \param in_rhs The second vector
+         *
+         * \return The dot product
+         */
+        [[nodiscard]]
+        constexpr static TType Dot(GenericVector const& in_lhs, GenericVector const& in_rhs) noexcept;
+
+        /**
+         * \brief Return the cross product value performed with 2 vectors
+         *
+         * \param in_lhs The first vector
+         * \param in_rhs The second vector
+         *
+         * \return The cross product
+         */
+        [[nodiscard]]
+        constexpr static GenericVector Cross(GenericVector const& in_lhs, GenericVector const& in_rhs) noexcept;
 
         /**
          * \brief Data getter
@@ -227,6 +251,26 @@ class _declspec(novtable) GenericVector<TLength, TType>
         [[nodiscard]]
         constexpr bool IsNotEqual(GenericVector const& in_other) const noexcept;
 
+        /**
+         * \brief Return the dot product value performed with another vector
+         *
+         * \param in_other The other vector
+         *
+         * \return The dot product 
+         */
+        [[nodiscard]]
+        constexpr TType Dot(GenericVector const& in_other) const noexcept;
+
+        /**
+         * \brief Return the cross product value performed with another vector
+         *
+         * \param in_other The other vector
+         *
+         * \return The cross product
+         */
+        [[nodiscard]]
+        constexpr GenericVector Cross(GenericVector const& in_other) const noexcept;
+
         #pragma endregion
 
         #pragma region Operators
@@ -270,6 +314,10 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr GenericVector& operator*=(TType in_factor) const noexcept;
 
         constexpr GenericVector& operator/=(TType in_factor) const noexcept;
+
+        constexpr TType const& operator[](size_t in_index) const noexcept;
+
+        constexpr TType& operator[](size_t in_index) noexcept;
 
         constexpr GenericVector operator-() const noexcept;
 
