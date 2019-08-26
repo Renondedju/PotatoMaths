@@ -29,17 +29,29 @@
 #include "Angles/Degrees.hpp"
 #include "Angles/Radians.hpp"
 
-template <typename TType = float>
-class Quaternion
+template <typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+class Quaternion;
+
+/**
+ * \brief Quaternion class, used to represent 3D orientations and rotations.
+ *
+ * Unit quaternions provide a convenient mathematical notation for representing orientations and rotations of objects in three dimensions.
+ * Compared to Euler angles they are simpler to compose and avoid the problem of gimbal lock.
+ * Compared to rotation matrices they are more compact, more numerically stable, and more efficient.
+ *
+ * \tparam TType Base type of the quaternion
+ */
+template <typename TType>
+class Quaternion<TType>
 {
     public:
 
         #pragma region Members
 
-        TType w;
-        TType x;
-        TType y;
-        TType z;
+        union { TType w; TType a; };
+        union { TType x; TType b; };
+        union { TType y; TType c; };
+        union { TType z; TType d; };
 
         #pragma endregion
 
@@ -143,6 +155,14 @@ class Quaternion
          * \return Inverted quaternion
          */
         static constexpr Quaternion Invert(Quaternion const& in_quaternion) noexcept;
+
+        /**
+         * \brief Multiplies 2 quaternions together. This effectively represents composing the two rotations.
+         * \param in_lhs Left hand side quaternion
+         * \param in_rhs Right hand side quaternion
+         * \return Resulting quaternions
+         */
+        static constexpr Quaternion Multiply(Quaternion const& in_lhs, Quaternion const& in_rhs) noexcept;
 
         #pragma endregion
 

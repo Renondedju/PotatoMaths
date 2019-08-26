@@ -136,6 +136,15 @@ constexpr Quaternion<TType> Quaternion<TType>::Invert(Quaternion const& in_quate
 }
 
 template <typename TType>
+constexpr Quaternion<TType> Quaternion<TType>::Multiply(Quaternion const& in_lhs, Quaternion const& in_rhs) noexcept
+{
+    return Quaternion(in_lhs.w * in_rhs.w - (in_lhs.x * in_rhs.x + in_lhs.y * in_rhs.y + in_lhs.z * in_rhs.z),
+                      in_lhs.w * in_rhs.x + in_rhs.w * in_lhs.x + (in_lhs.y * in_rhs.z - in_rhs.y * in_lhs.z),
+                      in_lhs.w * in_rhs.y + in_rhs.w * in_lhs.y + (in_lhs.z * in_rhs.x - in_rhs.z * in_lhs.x),
+                      in_lhs.w * in_rhs.z + in_rhs.w * in_lhs.z + (in_lhs.x * in_rhs.y - in_rhs.x * in_lhs.y));
+}
+
+template <typename TType>
 template <typename TOtherType>
 constexpr Quaternion<TType>::operator Quaternion<TOtherType>() const noexcept
 {
