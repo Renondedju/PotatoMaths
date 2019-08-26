@@ -33,57 +33,63 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
 
         using Parent = GenericMatrix<TSize, TSize, TType>;
 
-		#pragma region Constructors
+        #pragma region Constructors
 
-		constexpr SquareMatrix()                              noexcept = default;
-		constexpr SquareMatrix(SquareMatrix const& in_matrix) noexcept = default;
-		constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
-		virtual  ~SquareMatrix()                              noexcept = default;
+        constexpr SquareMatrix()                              noexcept = default;
+        constexpr SquareMatrix(SquareMatrix const& in_matrix) noexcept = default;
+        constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
+        virtual  ~SquareMatrix()                              noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(SquareMatrix, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(SquareMatrix, Parent)
 
-		using Parent::Parent;
+        using Parent::Parent;
 
-		#pragma endregion
+        #pragma endregion
 
-		#pragma region Static Methods
+        #pragma region Static Methods
 
-		/**
-		 * \brief Creates an identity matrix, also called unit matrix
-		 * \return Identity matrix
-		 */
-		static constexpr SquareMatrix Identity() noexcept;
+        /**
+         * \brief Creates an identity matrix, also called unit matrix
+         * \return Identity matrix
+         */
+        static constexpr SquareMatrix Identity() noexcept;
 
-		#pragma endregion 
+        #pragma endregion 
 
-		#pragma region Methods
+        #pragma region Methods
 
-		/**
-		 * \brief Computes the transposed matrix
-		 * \return Transposed matrix
-		 */
-		constexpr SquareMatrix& Transpose() noexcept;
+        /**
+         * \brief Computes the transposed matrix
+         * \return Transposed matrix
+         */
+        constexpr SquareMatrix& Transpose() noexcept;
 
-		/**
-		 * \brief Lower–upper (LU) decomposition or factorization factors a matrix as the product of a lower triangular matrix and an upper triangular matrix.
-		 * 
-		 * \param out_l_matrix Lower triangular matrix
-		 * \param out_u_matrix Upper triangular matrix
-		 */
-		constexpr void LUDecomposition(SquareMatrix<TSize, TType>& out_l_matrix, SquareMatrix<TSize, TType>& out_u_matrix) const noexcept;
+        /**
+         * \brief Lower–upper (LU) decomposition or factorization factors a matrix as the product of a lower triangular matrix and an upper triangular matrix.
+         * 
+         * \param out_l_matrix Lower triangular matrix
+         * \param out_u_matrix Upper triangular matrix
+         */
+        constexpr void LUDecomposition(SquareMatrix<TSize, TType>& out_l_matrix, SquareMatrix<TSize, TType>& out_u_matrix) const noexcept;
 
-		#pragma endregion 
+        /**
+         * \brief Inverts this matrix and returns the result
+         * \return Inverted matrix
+         */
+        constexpr SquareMatrix<TSize, TType> GetInverted() const noexcept; 
 
-		#pragma region Operators
+        #pragma endregion 
 
-		constexpr SquareMatrix& operator=(SquareMatrix const& in_other) noexcept = default;
-		constexpr SquareMatrix& operator=(SquareMatrix&&	  in_other) noexcept = default;
+        #pragma region Operators
+
+        constexpr SquareMatrix& operator=(SquareMatrix const& in_other) noexcept = default;
+        constexpr SquareMatrix& operator=(SquareMatrix&&	  in_other) noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(SquareMatrix, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(SquareMatrix, Parent)
 
-		#pragma endregion
+        #pragma endregion
 };
 
 #include "Matrix/SquareMatrix.inl"

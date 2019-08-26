@@ -82,3 +82,33 @@ constexpr void SquareMatrix<TSize, TType>
 		}
 	}
 }
+
+// FIXME: Not working yet
+template <size_t TSize, typename TType>
+constexpr SquareMatrix<TSize, TType> SquareMatrix<TSize, TType>
+    ::GetInverted() const noexcept
+{
+    SquareMatrix<TSize, TType> inverted_matrix;
+
+    // Computing the LU matrices
+    SquareMatrix<TSize, TType> l_matrix;
+    SquareMatrix<TSize, TType> u_matrix;
+    LUDecomposition(l_matrix, u_matrix);
+
+    GenericMatrix<TSize, 1, TType> column_matrix;
+    for (size_t column = 0Ui64; column < TSize; ++column)
+    {
+        // Filling the column matrix
+        for (size_t row = 0Ui64; row < TSize; ++row)
+            column_matrix.At(row, 0) = Parent::At(row, column);
+
+        // Computing the inverted column
+        column_matrix = u_matrix.GetMultiplied(l_matrix.GetMultiplied(column_matrix));
+
+        // Filling the inverted matrix with the newly computed column
+        for (size_t row = 0Ui64; row < TSize; ++row)
+            inverted_matrix.At(row, column) = column_matrix.At(row, 0);
+    }
+
+    return inverted_matrix;
+}
