@@ -48,10 +48,10 @@ class Angle;
  */
 template <enum class EAngleUnit TAngleUnit, typename TType>
 class __declspec(novtable) Angle<TAngleUnit, TType> final:
-    NamedType<TType, internal::AnglePhantom>,
-    Arithmetic<Angle<TAngleUnit, TType>>,
-    Comparison<Angle<TAngleUnit, TType>>,
-    Bitwise   <Angle<TAngleUnit, TType>>
+    public NamedType<TType, internal::AnglePhantom>,
+    public Arithmetic<Angle<TAngleUnit, TType>>,
+    public Comparison<Angle<TAngleUnit, TType>>,
+    public Bitwise   <Angle<TAngleUnit, TType>>
 {
     public:
 
