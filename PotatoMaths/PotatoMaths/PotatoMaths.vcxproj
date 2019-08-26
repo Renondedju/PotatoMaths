@@ -34,6 +34,7 @@
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
     <ClInclude Include="Sources\Includes\Meta\Meta.hpp" />
+    <ClInclude Include="Sources\Includes\Quaternion\Quaternion.hpp" />
     <ClInclude Include="Sources\Includes\Types\NamedType.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Addition.hpp" />
@@ -75,6 +76,7 @@
     <None Include="Sources\Includes\Angles\Degree.inl" />
     <None Include="Sources\Includes\Angles\Radians.inl" />
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
+    <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
     <None Include="Sources\Includes\Types\NamedType.inl" />
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />

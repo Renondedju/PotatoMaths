@@ -51,6 +51,7 @@
     <ClInclude Include="Sources\Includes\Angles\Angle.hpp" />
     <ClInclude Include="Sources\Includes\Constants.hpp" />
     <ClInclude Include="Sources\Includes\Angles\EAngleUnit.hpp" />
+    <ClInclude Include="Sources\Includes\Quaternion\Quaternion.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
@@ -60,5 +61,6 @@
     <None Include="Sources\Includes\Angles\Angle.inl" />
     <None Include="Sources\Includes\Angles\Degree.inl" />
     <None Include="Sources\Includes\Angles\Radians.inl" />
+    <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
   </ItemGroup>
 </Project>
