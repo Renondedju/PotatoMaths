@@ -39,12 +39,15 @@ namespace internal
     struct AnglePhantom {};
 }
 
+template <enum class EAngleUnit TAngleUnit, typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+class Angle;
+
 /**
  * \brief Degrees strong typing class
  * \tparam TType Underlying type
  */
-template <enum class EAngleUnit TAngleUnit, typename TType = float>
-class __declspec(novtable) Angle final:
+template <enum class EAngleUnit TAngleUnit, typename TType>
+class __declspec(novtable) Angle<TAngleUnit, TType> final:
     NamedType<TType, internal::AnglePhantom>,
     Arithmetic<Angle<TAngleUnit, TType>>,
     Comparison<Angle<TAngleUnit, TType>>,

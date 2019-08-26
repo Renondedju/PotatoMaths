@@ -27,7 +27,7 @@ template <typename TOtherType>
 constexpr Angle<TAngleUnit, TType>::operator Angle<EAngleUnit::Degree, TOtherType>() const noexcept
 {
     if constexpr (TAngleUnit == EAngleUnit::Radian)
-		return Angle<EAngleUnit::Degree, TOtherType>(static_cast<TOtherType>(*this) * static_cast<TOtherType>(180.0) / static_cast<TOtherType>(POTATO_PI));
+        return Angle<EAngleUnit::Degree, TOtherType>(static_cast<TOtherType>(*this) * static_cast<TOtherType>(180.0) / static_cast<TOtherType>(POTATO_PI));
 
     return Angle<EAngleUnit::Degree, TOtherType>(static_cast<TOtherType>(*this));
 }
@@ -37,7 +37,7 @@ template <typename TOtherType>
 constexpr Angle<TAngleUnit, TType>::operator Angle<EAngleUnit::Radian, TOtherType>() const noexcept
 {
     if constexpr (TAngleUnit == EAngleUnit::Degree)
-		return Angle<EAngleUnit::Radian, TOtherType>(static_cast<TOtherType>(*this) * static_cast<TOtherType>(POTATO_PI) / static_cast<TOtherType>(180.0));
+        return Angle<EAngleUnit::Radian, TOtherType>(static_cast<TOtherType>(*this) * static_cast<TOtherType>(POTATO_PI) / static_cast<TOtherType>(180.0));
 
     return Angle<EAngleUnit::Radian, TOtherType>(static_cast<TOtherType>(*this));
 }
