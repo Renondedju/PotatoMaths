@@ -43,28 +43,28 @@ class GenericMatrix;
 template <size_t TRows, size_t TColumns, typename TType>
 class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 {
-	public:
+    public:
 
-		#pragma region Members
+        #pragma region Members
 
-		TType data[TRows * TColumns];
+        TType data[TRows * TColumns];
 
-		#pragma endregion
+        #pragma endregion
 
-		#pragma region Constructors
+        #pragma region Constructors
 
-		constexpr GenericMatrix() noexcept;
-		constexpr GenericMatrix(GenericMatrix const& in_matrix) noexcept = default;
-		constexpr GenericMatrix(GenericMatrix&&      in_matrix) noexcept = default;
-		virtual  ~GenericMatrix()                               noexcept = default;
+        constexpr GenericMatrix()                               noexcept;
+        constexpr GenericMatrix(GenericMatrix const& in_matrix) noexcept = default;
+        constexpr GenericMatrix(GenericMatrix&&      in_matrix) noexcept = default;
+                 ~GenericMatrix()                               noexcept = default;
 
-		/**
-		 * \brief Element by element constructor
-		 * \tparam TValues Initial values types
-		 * \param in_values Initial values
-		 */
-		template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TRows * TColumns>>
-		constexpr GenericMatrix(TValues... in_values) noexcept;
+        /**
+         * \brief Element by element constructor
+         * \tparam TValues Initial values types
+         * \param in_values Initial values
+         */
+        template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TRows * TColumns>>
+        constexpr GenericMatrix(TValues... in_values) noexcept;
 
         /**
          * \brief Array constructor
@@ -72,83 +72,83 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
          */
         constexpr GenericMatrix(TType const (&in_values)[TRows * TColumns]) noexcept;
 
-		#pragma endregion
+        #pragma endregion
 
-		#pragma region Static Methods
+        #pragma region Static Methods
 
-		/**
-		 * \brief Gets the number of elements stored in the matrix
-		 * \return Elements count of the matrix
-		 */
-		[[nodiscard]]
-		static constexpr size_t Elements() noexcept;
+        /**
+         * \brief Gets the number of elements stored in the matrix
+         * \return Elements count of the matrix
+         */
+        [[nodiscard]]
+        static constexpr size_t Elements() noexcept;
 
-		#pragma endregion 
-	
-		#pragma region Methods
-	
-		/**
-		 * \brief Computes the transposed matrix
-		 * \return Transposed matrix
-		 */
-		[[nodiscard]]
-		constexpr GenericMatrix<TColumns, TRows, TType> GetTransposed() const noexcept;
+        #pragma endregion 
+    
+        #pragma region Methods
+    
+        /**
+         * \brief Computes the transposed matrix
+         * \return Transposed matrix
+         */
+        [[nodiscard]]
+        constexpr GenericMatrix<TColumns, TRows, TType> GetTransposed() const noexcept;
 
-		/**
-		 * \brief Multiplies this matrix with another one and returns the new resultant matrix 
-		 * 
-		 * \tparam TOtherRows Other matrix rows count
-		 * \tparam TOtherColumns Other matrix columns count
-		 * \tparam TOtherType Other matrix type
-		 * \tparam TReturnType Type of the new matrix (default is std::common_type_t<TType, TOtherType>)
-		 * 
-		 * \return New matrix resulting of the multiplication of the 2 previous matrices
-		 */
-		template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType,
-			typename TReturnType = std::common_type_t<TType, TOtherType>,
-			typename			 = std::enable_if_t<TColumns == TOtherRows>>
-		[[nodiscard]]
-		constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept;
+        /**
+         * \brief Multiplies this matrix with another one and returns the new resultant matrix 
+         * 
+         * \tparam TOtherRows Other matrix rows count
+         * \tparam TOtherColumns Other matrix columns count
+         * \tparam TOtherType Other matrix type
+         * \tparam TReturnType Type of the new matrix (default is std::common_type_t<TType, TOtherType>)
+         * 
+         * \return New matrix resulting of the multiplication of the 2 previous matrices
+         */
+        template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType,
+            typename TReturnType = std::common_type_t<TType, TOtherType>,
+            typename			 = std::enable_if_t<TColumns == TOtherRows>>
+        [[nodiscard]]
+        constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept;
 
-		/**
-		 * \brief Data getter/setter
-		 * 
-		 * \param in_row Row index (from 0 to TRows - 1)
-		 * \param in_column Column index (from 0 to TColumns - 1)
-		 * 
-		 * \return Value at the selected position
-		 */
-		[[nodiscard]]
-		constexpr TType const& At(size_t in_row, size_t in_column) const noexcept;
-		[[nodiscard]]
-		constexpr TType&	   At(size_t in_row, size_t in_column)		 noexcept;
+        /**
+         * \brief Data getter/setter
+         * 
+         * \param in_row Row index (from 0 to TRows - 1)
+         * \param in_column Column index (from 0 to TColumns - 1)
+         * 
+         * \return Value at the selected position
+         */
+        [[nodiscard]]
+        constexpr TType const& At(size_t in_row, size_t in_column) const noexcept;
+        [[nodiscard]]
+        constexpr TType&	   At(size_t in_row, size_t in_column)		 noexcept;
 
-		/**
-		 * \brief Templated data getter/setter
-		 * 
-		 * \tparam TInRow Row index (from 0 to TRows - 1)
-		 * \tparam TInColumn Column index (from 0 to TColumns - 1)
-		 * 
-		 * \note Use this method instead of the non templated method at as much as possible
-		 * 
-		 * \return Value at the selected position
-		 */
-		template<size_t TInRow, size_t TInColumn>
-		[[nodiscard]]
-		constexpr TType const& At() const noexcept;
-		
-		template<size_t TInRow, size_t TInColumn>
-		[[nodiscard]]
-		constexpr TType&	   At()		  noexcept;
+        /**
+         * \brief Templated data getter/setter
+         * 
+         * \tparam TInRow Row index (from 0 to TRows - 1)
+         * \tparam TInColumn Column index (from 0 to TColumns - 1)
+         * 
+         * \note Use this method instead of the non templated method at as much as possible
+         * 
+         * \return Value at the selected position
+         */
+        template<size_t TInRow, size_t TInColumn>
+        [[nodiscard]]
+        constexpr TType const& At() const noexcept;
+        
+        template<size_t TInRow, size_t TInColumn>
+        [[nodiscard]]
+        constexpr TType&	   At()		  noexcept;
 
-		#pragma endregion
+        #pragma endregion
 
-		#pragma region Operators
+        #pragma region Operators
 
-		constexpr GenericMatrix& operator=(GenericMatrix const& in_other) noexcept = default;
-		constexpr GenericMatrix& operator=(GenericMatrix&&		in_other) noexcept = default;
+        constexpr GenericMatrix& operator=(GenericMatrix const& in_other) noexcept = default;
+        constexpr GenericMatrix& operator=(GenericMatrix&&		in_other) noexcept = default;
 
-		#pragma endregion
+        #pragma endregion
 };
 
 #include "Matrix/GenericMatrix.inl"
@@ -168,15 +168,15 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 template<size_t TRows, size_t TColumns, typename TType>
 std::ostream & operator<<(std::ostream & inout_stream, GenericMatrix<TRows, TColumns, TType> const & in_matrix)
 {
-	inout_stream << std::setprecision(3) << std::fixed;
-	for (size_t row = 0ull; row < TRows; ++row)
-	{
-		for (size_t column = 0ull; column < TColumns; ++column)
-			inout_stream << ' ' << in_matrix.At(row, column);
-		inout_stream << '\n';
-	}
+    inout_stream << std::setprecision(3) << std::fixed;
+    for (size_t row = 0ull; row < TRows; ++row)
+    {
+        for (size_t column = 0ull; column < TColumns; ++column)
+            inout_stream << ' ' << in_matrix.At(row, column);
+        inout_stream << '\n';
+    }
 
-	return inout_stream;
+    return inout_stream;
 }
 
 /**

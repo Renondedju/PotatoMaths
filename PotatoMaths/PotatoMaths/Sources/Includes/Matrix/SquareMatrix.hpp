@@ -38,7 +38,7 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
         constexpr SquareMatrix()                              noexcept = default;
         constexpr SquareMatrix(SquareMatrix const& in_matrix) noexcept = default;
         constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
-        virtual  ~SquareMatrix()                              noexcept = default;
+                 ~SquareMatrix()                              noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(SquareMatrix, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(SquareMatrix, Parent)
@@ -84,7 +84,7 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
         #pragma region Operators
 
         constexpr SquareMatrix& operator=(SquareMatrix const& in_other) noexcept = default;
-        constexpr SquareMatrix& operator=(SquareMatrix&&	  in_other) noexcept = default;
+        constexpr SquareMatrix& operator=(SquareMatrix&&      in_other) noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(SquareMatrix, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(SquareMatrix, Parent)

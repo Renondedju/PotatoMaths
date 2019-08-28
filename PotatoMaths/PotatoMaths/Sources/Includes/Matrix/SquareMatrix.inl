@@ -24,63 +24,63 @@
 
 template <size_t TSize, typename TType>
 constexpr SquareMatrix<TSize, TType> SquareMatrix<TSize, TType>
-	::Identity() noexcept
+    ::Identity() noexcept
 {
-	SquareMatrix<TSize, TType> identity_matrix;
+    SquareMatrix<TSize, TType> identity_matrix;
 
-	for (size_t i = 0ull; i < TSize; ++i)
-		identity_matrix.At(i, i) = static_cast<TType>(1);
+    for (size_t i = 0ull; i < TSize; ++i)
+        identity_matrix.At(i, i) = static_cast<TType>(1);
 
-	return identity_matrix;
+    return identity_matrix;
 }
 
 template <size_t TSize, typename TType>
 constexpr SquareMatrix<TSize, TType>& SquareMatrix<TSize, TType>
-	::Transpose() noexcept
+    ::Transpose() noexcept
 {
-	for (size_t i = 0ull; i < Parent::Elements() / 2; ++i)
-		std::swap(Parent::data[i], Parent::data[Parent::Elements() - i]);
+    for (size_t i = 0ull; i < Parent::Elements() / 2; ++i)
+        std::swap(Parent::data[i], Parent::data[Parent::Elements() - i]);
 
-	return *this;
+    return *this;
 }
 
 template <size_t TSize, typename TType>
 constexpr void SquareMatrix<TSize, TType>
-	::LUDecomposition(SquareMatrix<TSize, TType>& out_l_matrix, SquareMatrix<TSize, TType>& out_u_matrix) const noexcept
+    ::LUDecomposition(SquareMatrix<TSize, TType>& out_l_matrix, SquareMatrix<TSize, TType>& out_u_matrix) const noexcept
 {
-	// Decomposing matrix into Upper and Lower
-	// Triangular matrix 
-	for (size_t i = 0ull; i < TSize; ++i)
-	{
-		// Upper Triangular 
-		for (size_t k = i; k < TSize; ++k)
-		{
-			// Summation of L(i, j) * U(j, k) 
-			TType sum = 0; 
-			for (size_t j = 0ull; j < i; ++j) 
-				sum += out_l_matrix.At(i, j) * out_u_matrix.At(j, k); 
+    // Decomposing matrix into Upper and Lower
+    // Triangular matrix 
+    for (size_t i = 0ull; i < TSize; ++i)
+    {
+        // Upper Triangular 
+        for (size_t k = i; k < TSize; ++k)
+        {
+            // Summation of L(i, j) * U(j, k) 
+            TType sum = 0; 
+            for (size_t j = 0ull; j < i; ++j) 
+                sum += out_l_matrix.At(i, j) * out_u_matrix.At(j, k); 
 
-			// Evaluating U(i, k) 
-			out_u_matrix.At(i, k) = Parent::At(i, k) - sum; 
-		}
+            // Evaluating U(i, k) 
+            out_u_matrix.At(i, k) = Parent::At(i, k) - sum; 
+        }
 
-		// Lower Triangular 
-		for (size_t k = i; k < TSize; ++k)
-		{
-			if (i == k) 
-				out_l_matrix.At(i, i) = static_cast<TType>(1); // Diagonal as 1 
-			else
-			{ 
-				// Summation of L(k, j) * U(j, i) 
-				TType sum = 0; 
-				for (int j = 0; j < i; j++) 
-					sum += out_l_matrix.At(k, j) * out_u_matrix.At(j, i); 
+        // Lower Triangular 
+        for (size_t k = i; k < TSize; ++k)
+        {
+            if (i == k) 
+                out_l_matrix.At(i, i) = static_cast<TType>(1); // Diagonal as 1 
+            else
+            { 
+                // Summation of L(k, j) * U(j, i) 
+                TType sum = 0; 
+                for (int j = 0; j < i; j++) 
+                    sum += out_l_matrix.At(k, j) * out_u_matrix.At(j, i); 
 
-				// Evaluating L(k, i) 
-				out_l_matrix.At(k, i) = (Parent::At(k, i) - sum) / out_u_matrix.At(i, i); 
-			} 
-		}
-	}
+                // Evaluating L(k, i) 
+                out_l_matrix.At(k, i) = (Parent::At(k, i) - sum) / out_u_matrix.At(i, i); 
+            } 
+        }
+    }
 }
 
 // FIXME: Not working yet

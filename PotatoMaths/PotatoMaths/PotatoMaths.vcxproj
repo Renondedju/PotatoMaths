@@ -27,6 +27,7 @@
     <ClInclude Include="Sources\Includes\Ext\D3D\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\OpenGL\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Ext.hpp" />
+    <ClInclude Include="Sources\Includes\Matrix\EMatrixLayout.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix1x4.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix2x2.hpp" />

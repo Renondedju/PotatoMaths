@@ -33,33 +33,33 @@
 template<typename TType = float>
 class Matrix4x3 final : public GenericMatrix<4, 3, TType>
 {
-	public:
+    public:
 
         using Parent = GenericMatrix<4, 3, TType>;
 
-		#pragma region Constructors
+        #pragma region Constructors
 
-		constexpr Matrix4x3()							noexcept = default;
-		constexpr Matrix4x3(Matrix4x3 const& in_matrix) noexcept = default;
-		constexpr Matrix4x3(Matrix4x3&&      in_matrix) noexcept = default;
-		virtual  ~Matrix4x3()							noexcept = default;
+        constexpr Matrix4x3()                           noexcept = default;
+        constexpr Matrix4x3(Matrix4x3 const& in_matrix) noexcept = default;
+        constexpr Matrix4x3(Matrix4x3&&      in_matrix) noexcept = default;
+                 ~Matrix4x3()                           noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix4x3, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix4x3, Parent)
 
         using Parent::Parent;
 
-		#pragma endregion
+        #pragma endregion
 
-		#pragma region Operators
+        #pragma region Operators
 
-		constexpr Matrix4x3& operator=(Matrix4x3 const& in_other) noexcept = default;
-		constexpr Matrix4x3& operator=(Matrix4x3&&	    in_other) noexcept = default;
+        constexpr Matrix4x3& operator=(Matrix4x3 const& in_other) noexcept = default;
+        constexpr Matrix4x3& operator=(Matrix4x3&&	    in_other) noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix4x3, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix4x3, Parent)
 
-		#pragma endregion
+        #pragma endregion
 };
 
 // Matrix specializations

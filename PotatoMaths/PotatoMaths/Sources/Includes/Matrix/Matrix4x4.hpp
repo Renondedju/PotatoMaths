@@ -33,16 +33,16 @@
 template<typename TType = float>
 class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 {
-	public:
+    public:
 
         using Parent = SquareMatrix<4, TType>;
 
-	    #pragma region Constructors
+        #pragma region Constructors
 
-		constexpr Matrix4x4()							noexcept = default;
-		constexpr Matrix4x4(Matrix4x4 const& in_matrix) noexcept = default;
-		constexpr Matrix4x4(Matrix4x4&&      in_matrix) noexcept = default;
-		virtual  ~Matrix4x4()							noexcept = default;
+        constexpr Matrix4x4()                           noexcept = default;
+        constexpr Matrix4x4(Matrix4x4 const& in_matrix) noexcept = default;
+        constexpr Matrix4x4(Matrix4x4&&      in_matrix) noexcept = default;
+                 ~Matrix4x4()                           noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix4x4, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix4x4, Parent)
@@ -52,12 +52,12 @@ class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 
         using Parent::Parent;
 
-		#pragma endregion
+        #pragma endregion
 
-		#pragma region Operators
+        #pragma region Operators
 
-		constexpr Matrix4x4& operator=(Matrix4x4 const& in_other) noexcept = default;
-		constexpr Matrix4x4& operator=(Matrix4x4&&	    in_other) noexcept = default;
+        constexpr Matrix4x4& operator=(Matrix4x4 const& in_other) noexcept = default;
+        constexpr Matrix4x4& operator=(Matrix4x4&&	    in_other) noexcept = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix4x4, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix4x4, Parent)
@@ -65,7 +65,7 @@ class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
         DECLARE_MATRIX_COMPATIBILITY_COPY_OPERATOR(Matrix4x4, typename Parent::Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_OPERATOR(Matrix4x4, typename Parent::Parent)
 
-		#pragma endregion
+        #pragma endregion
 };
 
 // Matrix specializations
