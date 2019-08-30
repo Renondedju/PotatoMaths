@@ -80,7 +80,7 @@ class Quaternion<TType>
          * \param in_angle_z Angle to rotate around the z axis (in degrees)
          */
         template<typename TAngleType>
-        constexpr Quaternion(GeneralDegrees<TAngleType> in_angle_x, GeneralDegrees<TAngleType> in_angle_y, GeneralDegrees<TAngleType> in_angle_z) noexcept;
+        constexpr Quaternion(GenericDegrees<TAngleType> in_angle_x, GenericDegrees<TAngleType> in_angle_y, GenericDegrees<TAngleType> in_angle_z) noexcept;
 
         #pragma endregion
 

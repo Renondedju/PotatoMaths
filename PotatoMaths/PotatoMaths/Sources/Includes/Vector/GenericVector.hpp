@@ -45,7 +45,7 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr GenericVector()                               noexcept;
         constexpr GenericVector(GenericVector const& in_vector) noexcept = default;
         constexpr GenericVector(GenericVector&&      in_vector) noexcept = default;
-        virtual  ~GenericVector()                               noexcept = default;
+                 ~GenericVector()                               noexcept = default;
 
         template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TLength>>
         constexpr GenericVector(TValues... in_values) noexcept;

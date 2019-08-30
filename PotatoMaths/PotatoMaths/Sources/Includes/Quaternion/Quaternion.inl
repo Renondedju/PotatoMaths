@@ -41,13 +41,13 @@ constexpr Quaternion<TType>::Quaternion(TType const in_w, TType const in_x, TTyp
 
 template <typename TType>
 template<typename TAngleType>
-constexpr Quaternion<TType>::Quaternion(GeneralDegrees<TAngleType> const in_angle_x,
-                                        GeneralDegrees<TAngleType> const in_angle_y,
-                                        GeneralDegrees<TAngleType> const in_angle_z) noexcept
+constexpr Quaternion<TType>::Quaternion(GenericDegrees<TAngleType> const in_angle_x,
+                                        GenericDegrees<TAngleType> const in_angle_y,
+                                        GenericDegrees<TAngleType> const in_angle_z) noexcept
 {
-    GeneralRadians<TAngleType> half_x_angle = static_cast<GeneralRadians<TAngleType>>(in_angle_x) / 2.0f;
-    GeneralRadians<TAngleType> half_y_angle = static_cast<GeneralRadians<TAngleType>>(in_angle_y) / 2.0f;
-    GeneralRadians<TAngleType> half_z_angle = static_cast<GeneralRadians<TAngleType>>(in_angle_z) / 2.0f;
+    GenericRadians<TAngleType> half_x_angle = static_cast<GenericRadians<TAngleType>>(in_angle_x) / 2.0f;
+    GenericRadians<TAngleType> half_y_angle = static_cast<GenericRadians<TAngleType>>(in_angle_y) / 2.0f;
+    GenericRadians<TAngleType> half_z_angle = static_cast<GenericRadians<TAngleType>>(in_angle_z) / 2.0f;
 
     TType const cos_x = std::cos(static_cast<TType>(half_x_angle));
     TType const cos_y = std::cos(static_cast<TType>(half_y_angle));

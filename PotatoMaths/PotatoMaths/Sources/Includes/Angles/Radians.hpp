@@ -30,7 +30,7 @@
  * \brief Radians (float)
  */
 template<typename TType = float>
-using GeneralRadians = Angle<EAngleUnit::Radian, TType>;
+using GenericRadians = Angle<EAngleUnit::Radian, TType>;
 using Radians        = Angle<EAngleUnit::Radian, float>;
 
 constexpr Angle<EAngleUnit::Radian, float> operator"" _rad(long double in_angle) noexcept;

@@ -30,7 +30,7 @@
  * \brief Degrees (float)
  */
 template<typename TType = float>
-using GeneralDegrees = Angle<EAngleUnit::Degree, TType>;
+using GenericDegrees = Angle<EAngleUnit::Degree, TType>;
 using Degrees        = Angle<EAngleUnit::Degree, float>;
 
 constexpr Angle<EAngleUnit::Degree, float> operator"" _deg(long double in_angle) noexcept;
