@@ -27,6 +27,7 @@
     <ClInclude Include="Sources\Includes\Ext\D3D\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\OpenGL\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Ext.hpp" />
+    <ClInclude Include="Sources\Includes\Ext\Vulkan\Matrix.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\EMatrixLayout.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix1x4.hpp" />
@@ -80,6 +81,7 @@
     <None Include="Sources\Includes\Angles\Angle.inl" />
     <None Include="Sources\Includes\Angles\Degree.inl" />
     <None Include="Sources\Includes\Angles\Radians.inl" />
+    <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
     <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
     <None Include="Sources\Includes\Types\NamedType.inl" />

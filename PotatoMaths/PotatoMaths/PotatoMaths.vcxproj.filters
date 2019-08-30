@@ -56,6 +56,7 @@
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\OpenGL\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\D3D\Ext.hpp" />
+    <ClInclude Include="Sources\Includes\Ext\Vulkan\Matrix.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -67,5 +68,6 @@
     <None Include="Sources\Includes\Angles\Degree.inl" />
     <None Include="Sources\Includes\Angles\Radians.inl" />
     <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
+    <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
   </ItemGroup>
 </Project>
