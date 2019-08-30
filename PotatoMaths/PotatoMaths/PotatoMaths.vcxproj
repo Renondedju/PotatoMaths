@@ -71,6 +71,7 @@
     <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalOr.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Src\Main.cpp" />
