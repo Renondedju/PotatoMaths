@@ -29,6 +29,9 @@
 
 #include "Vector/GenericVector.hpp"
 
+template <typename TType> class Vector2;
+template <typename TType> class Vector3;
+
 /**
  * \brief Vector 4 class 
  * \tparam TType Underlying type
@@ -77,10 +80,23 @@ class Vector4 final : public GenericVector<Vector4<TType>, 4, TType>
 
         #pragma endregion
 
+        #pragma region Methods
+
+        /**
+         * \brief Homogenizes the vector
+         * \return Vector instance
+         */
+        Vector4& Homogenize() noexcept;
+
+        #pragma endregion
+
         #pragma region Operators
 
         constexpr Vector4& operator=(Vector4 const& in_other) noexcept = default;
         constexpr Vector4& operator=(Vector4&&	    in_other) noexcept = default;
+
+        explicit operator Vector2<TType>() const noexcept;
+        explicit operator Vector3<TType>() const noexcept;
 
         #pragma endregion
 };

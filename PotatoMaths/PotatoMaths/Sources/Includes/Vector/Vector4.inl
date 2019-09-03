@@ -34,3 +34,31 @@ constexpr Vector4<TType>::Vector4(TType const in_x, TType const in_y, TType cons
     z {in_z},
     w {in_w}
 {}
+
+template <typename TType>
+Vector4<TType>& Vector4<TType>::Homogenize() noexcept
+{
+    if (w == static_cast<TType>(0))
+        return *this;
+
+    x /= w;
+    y /= w;
+    z /= w;
+    w = static_cast<TType>(1);
+
+    return *this;
+}
+
+template <typename TType>
+Vector4<TType>::operator Vector2<TType>() const noexcept
+{
+    Homogenize();
+    return Vector2<TType>(x, y);
+}
+
+template <typename TType>
+Vector4<TType>::operator Vector3<TType>() const noexcept
+{
+    Homogenize();
+    return Vector3<TType>(x, y, z);
+}
