@@ -72,6 +72,7 @@
     <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalOr.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +88,7 @@
     <None Include="Sources\Includes\Types\NamedType.inl" />
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
+    <None Include="Sources\Includes\Vector\Vector2.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
