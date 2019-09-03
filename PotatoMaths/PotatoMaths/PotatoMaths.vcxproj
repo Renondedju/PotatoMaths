@@ -71,6 +71,7 @@
     <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalNot.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalOr.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\BaseVector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
@@ -87,8 +88,9 @@
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
     <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
     <None Include="Sources\Includes\Types\NamedType.inl" />
-    <None Include="Sources\Includes\Vector\GenericVector.inl" />
+    <None Include="Sources\Includes\Vector\BaseVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
+    <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
     <None Include="Sources\Includes\Vector\Vector3.inl" />
     <None Include="Sources\Includes\Vector\Vector4.inl" />

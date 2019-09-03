@@ -13,7 +13,6 @@
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x3.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Addition.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Decrement.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Division.hpp" />
@@ -60,10 +59,11 @@
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\BaseVector.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
-    <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
     <None Include="Sources\Includes\Types\NamedType.inl" />
     <None Include="Sources\Includes\Angles\Angle.inl" />
@@ -74,5 +74,7 @@
     <None Include="Sources\Includes\Vector\Vector3.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
     <None Include="Sources\Includes\Vector\Vector4.inl" />
+    <None Include="Sources\Includes\Vector\BaseVector.inl" />
+    <None Include="Sources\Includes\Vector\GenericVector.inl" />
   </ItemGroup>
 </Project>

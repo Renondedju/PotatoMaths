@@ -27,7 +27,7 @@
 #pragma warning(push)
 #pragma warning(disable : 4201) // Warning C4201 nonstandard extension used: nameless struct/union
 
-#include "Vector/GenericVector.hpp"
+#include "Vector/BaseVector.hpp"
 
 template <typename TType> class Vector3;
 template <typename TType> class Vector4;
@@ -37,11 +37,11 @@ template <typename TType> class Vector4;
  * \tparam TType Underlying type
  */
 template <typename TType = float>
-class Vector2 final : public GenericVector<Vector2<TType>, 2, TType>
+class Vector2 final : public BaseVector<Vector2<TType>, 2, TType>
 {
     public:
 
-        using Parent = GenericVector<Vector2<TType>, 2, TType>;
+        using Parent = BaseVector<Vector2<TType>, 2, TType>;
 
         #pragma region Members
 
