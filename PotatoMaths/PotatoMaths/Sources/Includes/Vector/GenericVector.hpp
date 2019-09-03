@@ -26,19 +26,20 @@
 
 #include <type_traits>
 
-template <size_t TLength, typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
-class GenericVector;
+template <typename TDerived, size_t TLength, typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+class _declspec(novtable) GenericVector;
 
-template <size_t TLength, typename TType>
-class _declspec(novtable) GenericVector<TLength, TType>
+/**
+ * \brief Generic vector class, this class is meant to be inherited from. See Vector2/3/4 as examples
+ *
+ * \tparam TDerived Derived class, used for crtp 
+ * \tparam TLength Length of the vector
+ * \tparam TType Underlying type of the vector
+ */
+template <typename TDerived, size_t TLength, typename TType>
+class _declspec(novtable) GenericVector<TDerived, TLength, TType>
 {
     public:
-
-        #pragma region Members
-
-        TType data[TLength];
-
-        #pragma endregion
 
         #pragma region Constructors
 
@@ -47,9 +48,6 @@ class _declspec(novtable) GenericVector<TLength, TType>
         constexpr GenericVector(GenericVector&&      in_vector) noexcept = default;
                  ~GenericVector()                               noexcept = default;
 
-        template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TLength>>
-        constexpr GenericVector(TValues... in_values) noexcept;
-
         #pragma endregion
 
         #pragma region Methods
@@ -57,11 +55,11 @@ class _declspec(novtable) GenericVector<TLength, TType>
         /**
          * \brief Performs a linear interpolation between 2 vectors of the same type.
          *
-         * \param in_from 
-         * \param in_to 
-         * \param in_ratio
+         * \param in_from Initial vector
+         * \param in_to Destination vector
+         * \param in_ratio Translation ratio
          *
-         * \return 
+         * \return Interpolated vector
          */
         [[nodiscard]]
         constexpr static GenericVector Lerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept;
@@ -69,14 +67,15 @@ class _declspec(novtable) GenericVector<TLength, TType>
         /**
          * \brief Performs a circular interpolation between 2 vectors of the same type.
          *
-         * \param in_from
-         * \param in_to
-         * \param in_ratio
+         * \param in_from Initial vector
+         * \param in_to Destination vector
+         * \param in_ratio Translation ratio
          *
-         * \return
+         * \return Interpolated vector
          */
         [[nodiscard]]
         constexpr static GenericVector Slerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept;
+
         /**
          * \brief Return the dot product value performed with 2 vectors
          *
@@ -276,49 +275,165 @@ class _declspec(novtable) GenericVector<TLength, TType>
         #pragma region Operators
 
         constexpr GenericVector& operator=(GenericVector const& in_vector) noexcept = default;
-
         constexpr GenericVector& operator=(GenericVector&&      in_vector) noexcept = default;
 
+        /**
+         * \brief Equality operator
+         * \param in_rhs Other vector
+         * \return True if the 2 vectors are equals, false otherwise
+         */
+        [[nodiscard]]
         constexpr bool operator==(GenericVector const& in_rhs) const noexcept;
 
+        /**
+         * \brief Inequality operator
+         * \param in_rhs Other vector
+         * \return False if the 2 vectors are equals, true otherwise
+         */
+        [[nodiscard]]
         constexpr bool operator!=(GenericVector const& in_rhs) const noexcept;
 
+        /**
+         * \brief Addition operator
+         * \param in_rhs Other vector
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator+(GenericVector const& in_rhs) const noexcept;
 
+        /**
+         * \brief Subtraction operator
+         * \param in_rhs Other vector
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator-(GenericVector const& in_rhs) const noexcept;
 
+        /**
+         * \brief Multiplication operator
+         * \param in_rhs Other vector
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator*(GenericVector const& in_rhs) const noexcept;
 
+        /**
+         * \brief Division operator
+         * \param in_rhs Other vector
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator/(GenericVector const& in_rhs) const noexcept;
 
-        constexpr GenericVector& operator+=(GenericVector const& in_rhs) const noexcept;
+        /**
+         * \brief Addition assignment operator
+         * \param in_rhs Other vector
+         * \return Instance
+         */
+        constexpr GenericVector& operator+=(GenericVector const& in_rhs) noexcept;
 
-        constexpr GenericVector& operator-=(GenericVector const& in_rhs) const noexcept;
+        /**
+         * \brief Subtraction assignment operator
+         * \param in_rhs Other vector
+         * \return Instance
+         */
+        constexpr GenericVector& operator-=(GenericVector const& in_rhs) noexcept;
 
-        constexpr GenericVector& operator*=(GenericVector const& in_rhs) const noexcept;
+        /**
+         * \brief Multiplication assignment operator
+         * \param in_rhs Other vector
+         * \return Instance
+         */
+        constexpr GenericVector& operator*=(GenericVector const& in_rhs) noexcept;
 
-        constexpr GenericVector& operator/=(GenericVector const& in_rhs) const noexcept;
+        /**
+         * \brief Division assignment operator
+         * \param in_rhs Other vector
+         * \return Instance
+         */
+        constexpr GenericVector& operator/=(GenericVector const& in_rhs) noexcept;
 
+        /**
+         * \brief Scalar addition operator
+         * \param in_factor Scalar operand
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator+(TType in_factor) const noexcept;
 
+        /**
+         * \brief Scalar subtraction operator
+         * \param in_factor Scalar operand
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator-(TType in_factor) const noexcept;
 
+        /**
+         * \brief Scalar multiplication operator
+         * \param in_factor Scalar operand
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator*(TType in_factor) const noexcept;
 
+        /**
+         * \brief Scalar division operator
+         * \param in_factor Scalar operand
+         * \return Resulting vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator/(TType in_factor) const noexcept;
 
-        constexpr GenericVector& operator+=(TType in_factor) const noexcept;
+        /**
+         * \brief Scalar addition assignment operator
+         * \param in_factor Scalar operand
+         * \return Instance
+         */
+        constexpr GenericVector& operator+=(TType in_factor) noexcept;
 
-        constexpr GenericVector& operator-=(TType in_factor) const noexcept;
+        /**
+         * \brief Scalar subtraction assignment operator
+         * \param in_factor Scalar operand
+         * \return Instance
+         */
+        constexpr GenericVector& operator-=(TType in_factor) noexcept;
 
-        constexpr GenericVector& operator*=(TType in_factor) const noexcept;
+        /**
+         * \brief Scalar multiplication assignment operator
+         * \param in_factor Scalar operand
+         * \return Instance
+         */
+        constexpr GenericVector& operator*=(TType in_factor) noexcept;
 
-        constexpr GenericVector& operator/=(TType in_factor) const noexcept;
+        /**
+         * \brief Scalar division assignment operator
+         * \param in_factor Scalar operand
+         * \return Instance
+         */
+        constexpr GenericVector& operator/=(TType in_factor) noexcept;
 
+        /**
+         * \brief Constant access operator
+         * \param in_index Data index
+         * \return Requested operand
+         */
+        [[nodiscard]]
         constexpr TType const& operator[](size_t in_index) const noexcept;
 
+        /**
+         * \brief Access operator
+         * \param in_index Data index
+         * \return Requested operand
+         */
+        [[nodiscard]]
         constexpr TType& operator[](size_t in_index) noexcept;
 
+        /**
+         * \brief Unary minus operator
+         * \return Negated vector
+         */
+        [[nodiscard]]
         constexpr GenericVector operator-() const noexcept;
 
         #pragma endregion

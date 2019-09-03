@@ -26,240 +26,251 @@
 
 #pragma region Constructors
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>
-    ::GenericVector() noexcept :
-        data {static_cast<TType>(0)}
-{}
-
-template <size_t TLength, typename TType>
-template <typename ... TValues, typename>
-constexpr GenericVector<TLength, TType>
-    ::GenericVector(TValues ... in_values) noexcept :
-        data {TType(in_values)...}
-{}
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>
+    ::GenericVector() noexcept
+{
+    TDerived& derived = static_cast<TDerived&>(*this);
+    memset(&derived.data, 0, TLength * sizeof TType);
+}
 
 #pragma endregion
 
 #pragma region Methods
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::Lerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept
 {
     return in_from + in_ratio * (in_to - in_from);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::Slerp(GenericVector const& in_from, GenericVector const& in_to, float in_ratio) noexcept
 {
-    TType const dot = Dot(in_from, in_to);
+    TType const dot   = Dot(in_from, in_to);
     TType const theta = acos(dot) * in_ratio;
 
-    GenericVector relativeVec = in_from - in_to * dot;
+    GenericVector relative_vec = in_from - in_to * dot;
 
-    relativeVec.Normalize();
+    relative_vec.Normalize();
 
-    return ((in_from * cos(theta)) + relativeVec * sin(theta));
+    return ((in_from * cos(theta)) + relative_vec * sin(theta));
 }
 
-template <size_t TLength, typename TType>
-constexpr TType GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType GenericVector<TDerived, TLength, TType>
     ::Dot(GenericVector const& in_lhs, GenericVector const& in_rhs) noexcept
 {
     return in_lhs.Dot(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::Cross(GenericVector const& in_lhs, GenericVector const& in_rhs) noexcept
 {
     return in_lhs.Cross(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr TType& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType& GenericVector<TDerived, TLength, TType>
     ::At(size_t in_index) noexcept
 {
-    return data[in_index];
+    TDerived& derived = static_cast<TDerived&>(*this);
+    return derived.data[in_index];
 }
 
-template <size_t TLength, typename TType>
-constexpr TType const& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType const& GenericVector<TDerived, TLength, TType>
     ::At(size_t in_index) const noexcept
 {
-    return data[in_index];
+    TDerived const& derived = static_cast<TDerived const&>(*this);
+    return derived.data[in_index];
 }
 
-template <size_t TLength, typename TType>
-constexpr TType GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType GenericVector<TDerived, TLength, TType>
     ::SqrLength() const noexcept
 {
-    size_t sqrLength = 0;
+    TDerived const& derived = static_cast<TDerived const&>(*this);
+    size_t sqr_length = 0;
 
-    for (size_t i = 0; i < TLength; i++)
-        sqrLength = data[i] * data[i];
+    for (size_t i = 0; i < TLength; ++i)
+        sqr_length += derived.data[i] * derived.data[i];
 
-    return sqrLength;
+    return sqr_length;
 }
 
-template <size_t TLength, typename TType>
-constexpr TType GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType GenericVector<TDerived, TLength, TType>
     ::Length() const noexcept
 {
     return sqrt(SqrLength());
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Normalize() noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     TType const length (Length());
 
     if (length)
     {
         for (size_t i = 0; i < TLength; i++)
-            data[i] /= length;
+            derived.data[i] /= length;
     }
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::GetNormalized() const noexcept
 {
-    return GenericVector<TLength, TType>(*this).Normalize();
+    return GenericVector<TDerived, TLength, TType>(*this).Normalize();
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Add(GenericVector const& in_other) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] += in_other.At(i);
+        derived.data[i] += in_other.At(i);
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Subtract(GenericVector const& in_other) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] -= in_other.At(i);
+        derived.data[i] -= in_other.At(i);
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Multiply(GenericVector const& in_other) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] *= in_other.At(i);
+        derived.data[i] *= in_other.At(i);
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Divide(GenericVector const& in_other) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] = (in_other.At(i) != 0) ? data[i] / in_other.At(i) : 0;
+        derived.data[i] = (in_other.At(i) != 0) ? derived.data[i] / in_other.At(i) : 0;
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Add(TType in_value) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] += in_value;
+        derived.data[i] += in_value;
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Subtract(TType in_value) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] -= in_value;
+        derived.data[i] -= in_value;
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Multiply(TType in_value) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] *= in_value;
+        derived.data[i] *= in_value;
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
     ::Divide(TType in_value) noexcept
 {
+    TDerived& derived = static_cast<TDerived&>(*this);
     for (size_t i = 0; i < TLength; i++)
-        data[i] = (in_value != 0) ? data[i] / in_value : 0;
+        derived.data[i] = (in_value != 0) ? derived.data[i] / in_value : 0;
 
     return *this;
 }
 
-template <size_t TLength, typename TType>
-constexpr bool GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr bool GenericVector<TDerived, TLength, TType>
     ::IsEqual(GenericVector const& in_other) const noexcept
 {
+    TDerived const& derived = static_cast<TDerived const&>(*this);
     for (size_t i = 0; i < TLength; i++)
     {
-        if (data[i] != in_other.At(i))
+        if (derived.data[i] != in_other.At(i))
             return false;
     }
 
     return true;
 }
 
-template <size_t TLength, typename TType>
-constexpr bool GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr bool GenericVector<TDerived, TLength, TType>
     ::IsNotEqual(GenericVector const& in_other) const noexcept
 {
+    TDerived const& derived = static_cast<TDerived const&>(*this);
     for (size_t i = 0; i < TLength; i++)
     {
-        if (data[i] == in_other.At(i))
+        if (derived.data[i] == in_other.At(i))
             return false;
     }
 
     return true;
 }
 
-template <size_t TLength, typename TType>
-constexpr TType GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType GenericVector<TDerived, TLength, TType>
     ::Dot(GenericVector const& in_other) const noexcept
 {
+    TDerived const& derived = static_cast<TDerived const&>(*this);
     TType dot = 0;
 
     for (size_t i = 0; i < TLength; i++)
-        dot += data[i] * in_other.At(i);
+        dot += derived.data[i] * in_other.At(i);
 
     return dot;
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::Cross(GenericVector const& in_other) const noexcept
 {
+    TDerived const& derived = static_cast<TDerived const&>(*this);
     GenericVector result;
 
     for (size_t i = 0; i < TLength; i++)
-        result.At(i) =  data[(i + 1) % TLength] * in_other.At((i + 2) % TLength) -
-                        in_other.At((i + 1) % TLength) * data[(i + 2) % TLength];
+        result.At(i) =  derived.data[(i + 1) % TLength] * in_other.At((i + 2) % TLength) -
+                        in_other.At((i + 1) % TLength) * derived.data[(i + 2) % TLength];
 
     return result;
 }
@@ -268,146 +279,146 @@ constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
 
 #pragma region Operators
 
-template <size_t TLength, typename TType>
-constexpr bool GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr bool GenericVector<TDerived, TLength, TType>
     ::operator==(GenericVector const& in_rhs) const noexcept
 {
     return IsEqual(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr bool GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr bool GenericVector<TDerived, TLength, TType>
     ::operator!=(GenericVector const& in_rhs) const noexcept
 {
     return IsNotEqual(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator+(GenericVector const& in_rhs) const noexcept
 {
     return GenericVector(*this).Add(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator-(GenericVector const& in_rhs) const noexcept
 {
     return GenericVector(*this).Subtract(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator*(GenericVector const& in_rhs) const noexcept
 {
     return GenericVector(*this).Multiply(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator/(GenericVector const& in_rhs) const noexcept
 {
     return GenericVector(*this).Divide(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator+(TType in_factor) const noexcept
 {
     return GenericVector(*this).Add(in_factor);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator-(TType in_factor) const noexcept
 {
     return GenericVector(*this).Subtract(in_factor);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator*(TType in_factor) const noexcept
 {
     return GenericVector(*this).Multiply(in_factor);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator/(TType in_factor) const noexcept
 {
     return GenericVector(*this).Divide(in_factor);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator+=(GenericVector const& in_rhs) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator+=(GenericVector const& in_rhs) noexcept
 {
     return Add(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator-=(GenericVector const& in_rhs) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator-=(GenericVector const& in_rhs) noexcept
 {
     return Subtract(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator*=(GenericVector const& in_rhs) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator*=(GenericVector const& in_rhs) noexcept
 {
     return Multiply(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator/=(GenericVector const& in_rhs) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator/=(GenericVector const& in_rhs) noexcept
 {
     return Divide(in_rhs);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator+=(TType in_factor) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator+=(TType in_factor) noexcept
 {
     return Add(in_factor);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator-=(TType in_factor) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator-=(TType in_factor) noexcept
 {
     return Subtract(in_factor);
 }
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator*=(TType in_factor) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator*=(TType in_factor) noexcept
 {
     return Multiply(in_factor);
 }
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType>& GenericVector<TLength, TType>
-    ::operator/=(TType in_factor) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType>& GenericVector<TDerived, TLength, TType>
+    ::operator/=(TType in_factor) noexcept
 {
     return Divide(in_factor);
 }
 
-template <size_t TLength, typename TType>
-constexpr TType const& GenericVector<TLength, TType>
-    ::operator[](size_t in_index) const noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType const& GenericVector<TDerived, TLength, TType>
+    ::operator[](size_t const in_index) const noexcept
 {
     return At(in_index);
 }
 
-template <size_t TLength, typename TType>
-constexpr TType& GenericVector<TLength, TType>
-    ::operator[](size_t in_index) noexcept
+template <typename TDerived, size_t TLength, typename TType>
+constexpr TType& GenericVector<TDerived, TLength, TType>
+    ::operator[](size_t const in_index) noexcept
 {
     return At(in_index);
 }
 
-template <size_t TLength, typename TType>
-constexpr GenericVector<TLength, TType> GenericVector<TLength, TType>
+template <typename TDerived, size_t TLength, typename TType>
+constexpr GenericVector<TDerived, TLength, TType> GenericVector<TDerived, TLength, TType>
     ::operator-() const noexcept
 {
     return GenericVector(*this).Multiply(-1);
