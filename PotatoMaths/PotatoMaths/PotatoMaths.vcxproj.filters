@@ -59,6 +59,7 @@
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Matrix.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
@@ -72,5 +73,6 @@
     <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
     <None Include="Sources\Includes\Vector\Vector3.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
+    <None Include="Sources\Includes\Vector\Vector4.inl" />
   </ItemGroup>
 </Project>

@@ -74,6 +74,7 @@
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Src\Main.cpp" />
@@ -90,6 +91,7 @@
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
     <None Include="Sources\Includes\Vector\Vector3.inl" />
+    <None Include="Sources\Includes\Vector\Vector4.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
