@@ -25,6 +25,7 @@
 #pragma once
 
 #include "Matrix/GenericMatrix.hpp"
+#include "Vector/GenericVector.hpp"
 
 template<size_t TSize, typename TType = float>
 class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TType>
@@ -72,6 +73,20 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
          * \param out_u_matrix Upper triangular matrix
          */
         constexpr void LUDecomposition(SquareMatrix<TSize, TType>& out_l_matrix, SquareMatrix<TSize, TType>& out_u_matrix) const noexcept;
+
+        /**
+         * \brief Solves Ax = b where A is a lower triangular matrix with non-zero diagonal elements.
+         * \param in_vector The b operand in Ax = b
+         * \return The resultant x vector
+         */
+        constexpr GenericVector<TSize, TType> ForwardSubstitution (GenericVector<TSize, TType> const& in_vector) const noexcept;
+
+        /**
+         * \brief Solves Ax = b where A is a upper triangular matrix with non-zero diagonal elements.
+         * \param in_vector The b operand in Ax = b
+         * \return The resultant x vector
+         */
+        constexpr GenericVector<TSize, TType> BackwardSubstitution(GenericVector<TSize, TType> const& in_vector) const noexcept;
 
         /**
          * \brief Inverts this matrix and returns the result

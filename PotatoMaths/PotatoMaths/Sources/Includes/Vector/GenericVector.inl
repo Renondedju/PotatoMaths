@@ -29,6 +29,13 @@ constexpr GenericVector<TSize, TType>::GenericVector(TValuesType... in_values) n
 {}
 
 template <size_t TSize, typename TType>
+constexpr GenericVector<TSize, TType>::GenericVector(TType const* in_array) noexcept:
+    data {}
+{
+    memcpy(data, in_array, TSize * sizeof TType);
+}
+
+template <size_t TSize, typename TType>
 constexpr GenericVector<TSize, TType>::GenericVector() noexcept:
     Parent()
 {}

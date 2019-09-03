@@ -53,6 +53,12 @@ class GenericVector final : public BaseVector<GenericVector<TSize, TType>, TSize
          */
         template <typename... TValuesType, typename = std::enable_if_t<sizeof...(TValuesType) == TSize>>
         constexpr GenericVector(TValuesType... in_values)       noexcept;
+
+        /**
+         * \brief Array constructor
+         * \param in_array Initialization array
+         */
+        constexpr GenericVector(TType const* in_array)          noexcept;
         constexpr GenericVector()                               noexcept;
 
         constexpr GenericVector(GenericVector const& in_matrix) noexcept = default;

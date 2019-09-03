@@ -83,31 +83,68 @@ constexpr void SquareMatrix<TSize, TType>
     }
 }
 
+template <size_t TSize, typename TType>
+constexpr GenericVector<TSize, TType> SquareMatrix<TSize, TType>
+    ::ForwardSubstitution(GenericVector<TSize, TType> const& in_vector) const noexcept
+{
+    GenericVector<TSize, TType> output;
+
+    TType sum;
+    for(size_t row = 0; row < TSize; ++row)
+    {
+        sum = 0;
+        for(size_t column = 0; column < row; ++column)
+            sum = sum + Parent::At(row, column) * output[column];
+
+        output[row] = (in_vector[row] - sum) / Parent::At(row, row);
+    }
+
+    return output;
+}
+
+// FIXME: Not working yet
+template <size_t TSize, typename TType>
+constexpr GenericVector<TSize, TType> SquareMatrix<TSize, TType>
+    ::BackwardSubstitution(GenericVector<TSize, TType> const& in_vector) const noexcept
+{
+    GenericVector<TSize, TType> output;
+
+    output[TSize-1] = in_vector[TSize-1] / Parent::At(TSize-1, TSize-1);
+
+    for (int64_t row = TSize-2; row >= 0; --row)
+    {
+        output[row] = in_vector[row];
+        for (size_t column = row + 1; column < TSize; ++column)
+            output[row] -= Parent::At(column, row) * output[column];
+
+        output[row] = output[row] / Parent::At(row, row);
+    }
+
+    return output;
+}
+
 // FIXME: Not working yet
 template <size_t TSize, typename TType>
 constexpr SquareMatrix<TSize, TType> SquareMatrix<TSize, TType>
     ::GetInverted() const noexcept
 {
     SquareMatrix<TSize, TType> inverted_matrix;
+    SquareMatrix<TSize, TType> const identity = Identity();
 
     // Computing the LU matrices
     SquareMatrix<TSize, TType> l_matrix;
     SquareMatrix<TSize, TType> u_matrix;
     LUDecomposition(l_matrix, u_matrix);
 
-    GenericMatrix<TSize, 1, TType> column_matrix;
     for (size_t column = 0Ui64; column < TSize; ++column)
     {
-        // Filling the column matrix
-        for (size_t row = 0Ui64; row < TSize; ++row)
-            column_matrix.At(row, 0) = Parent::At(row, column);
+        GenericVector<TSize, TType> vector = u_matrix.BackwardSubstitution(
+            l_matrix.ForwardSubstitution(
+                GenericVector<TSize, TType>(&(identity.data[column * TSize]))
+            )
+        );
 
-        // Computing the inverted column
-        column_matrix = u_matrix.GetMultiplied(l_matrix.GetMultiplied(column_matrix));
-
-        // Filling the inverted matrix with the newly computed column
-        for (size_t row = 0Ui64; row < TSize; ++row)
-            inverted_matrix.At(row, column) = column_matrix.At(row, 0);
+        memcpy(&(inverted_matrix.data[column * TSize]), vector.data, sizeof vector);
     }
 
     return inverted_matrix;

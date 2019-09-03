@@ -439,4 +439,26 @@ class _declspec(novtable) BaseVector<TDerived, TLength, TType>
         #pragma endregion
 };
 
-#include "BaseVector.inl"
+#include "Vector/BaseVector.inl"
+
+/**
+ * \brief ostream <<operator overload for the BaseVector class
+ *
+ * \tparam TDerived Derived vector class
+ * \tparam TLength Size of the vector
+ * \tparam TType Underlying type of the vector
+ *
+ * \param inout_stream Output stream 
+ * \param in_vector Vector to display
+ * 
+ * \return Output stream instance
+ */
+template <typename TDerived, size_t TLength, typename TType>
+std::ostream & operator<<(std::ostream & inout_stream, BaseVector<TDerived, TLength, TType> const& in_vector)
+{
+    inout_stream << std::setprecision(3) << std::fixed;
+    for (size_t index = 0ull; index < TLength; ++index)
+        inout_stream << in_vector[index] << ' ';
+
+    return inout_stream;
+}
