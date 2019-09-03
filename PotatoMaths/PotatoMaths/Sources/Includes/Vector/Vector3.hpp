@@ -24,10 +24,69 @@
 
 #pragma once
 
+#pragma warning(push)
+#pragma warning(disable : 4201) // Warning C4201 nonstandard extension used: nameless struct/union
+
 #include "Vector/GenericVector.hpp"
 
-template <typename TType>
-class Vector3 final : public GenericVector<3, TType>
+/**
+ * \brief Vector 3 class 
+ * \tparam TType Underlying type
+ */
+template <typename TType = float>
+class Vector3 final : public GenericVector<Vector3<TType>, 3, TType>
 {
-    
+    public:
+
+        using Parent = GenericVector<Vector3<TType>, 3, TType>;
+
+        #pragma region Members
+
+        union
+        {
+            TType data[3];
+
+            struct
+            {
+                TType x;
+                TType y;
+                TType z;
+            };
+        };
+
+        #pragma endregion
+
+        #pragma region Constructors
+
+        /**
+         * \brief Component constructor
+         * \param in_x X component
+         * \param in_y Y component
+         * \param in_z Z component
+         */
+        constexpr Vector3(TType in_x, TType in_y, TType in_z) noexcept;
+        constexpr Vector3()                                   noexcept;
+
+        constexpr Vector3(Vector3 const& in_matrix) noexcept = default;
+        constexpr Vector3(Vector3&&      in_matrix) noexcept = default;
+                 ~Vector3()                         noexcept = default;
+
+        using Parent::Parent;
+
+        #pragma endregion
+
+        #pragma region Operators
+
+        constexpr Vector3& operator=(Vector3 const& in_other) noexcept = default;
+        constexpr Vector3& operator=(Vector3&&	    in_other) noexcept = default;
+
+        #pragma endregion
 };
+
+#pragma warning(pop) 
+
+#include "Vector/Vector3.inl"
+
+using Vector3f = Vector3<float>;
+using Vector3d = Vector3<double>;
+using Vector3i = Vector3<int>;

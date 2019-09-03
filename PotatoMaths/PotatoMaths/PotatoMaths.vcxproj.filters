@@ -70,6 +70,7 @@
     <None Include="Sources\Includes\Angles\Radians.inl" />
     <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
     <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
+    <None Include="Sources\Includes\Vector\Vector3.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
   </ItemGroup>
 </Project>

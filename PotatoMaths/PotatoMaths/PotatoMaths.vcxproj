@@ -89,6 +89,7 @@
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
+    <None Include="Sources\Includes\Vector\Vector3.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
