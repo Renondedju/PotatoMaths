@@ -27,8 +27,6 @@
 #include "Ext/Vulkan/Ext.hpp"
 
 #include "Matrix/Matrix4x4.hpp"
-#include "Matrix/Matrix3x3.hpp"
-
 #include "Angles/Radians.hpp"
 #include "Vector/Vector3.hpp"
 
@@ -115,7 +113,10 @@ constexpr Matrix4x4<TMatrixType> RotationMatrixZ(GenericRadians<TRadiansType> in
  * \return Rotation matrix
  */
 template<typename TRadiansType, typename TMatrixType = float>
-constexpr Matrix4x4<TMatrixType> RotationMatrix(GenericRadians<TRadiansType> in_angle_x, GenericRadians<TRadiansType> in_angle_y, GenericRadians<TRadiansType> in_angle_z) noexcept;
+constexpr Matrix4x4<TMatrixType> RotationMatrix(
+        GenericRadians<TRadiansType> in_angle_x,
+        GenericRadians<TRadiansType> in_angle_y,
+        GenericRadians<TRadiansType> in_angle_z) noexcept;
 
 /**
  * \brief Creates a scale matrix

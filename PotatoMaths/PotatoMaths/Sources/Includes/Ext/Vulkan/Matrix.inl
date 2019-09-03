@@ -30,3 +30,66 @@ constexpr Matrix4x4<TMatrixType> ClipSpace() noexcept
                                   0.0,  0.0,  0.5,  0.5,
                                   0.0,  0.0,  0.0,  1.0); 
 }
+
+template <typename TVectorType, typename TMatrixType>
+constexpr Matrix4x4<TMatrixType> TranslationMatrix(Vector3<TVectorType> const& in_translation) noexcept
+{
+    return Matrix4x4<TMatrixType>(1.0,  0.0,  0.0,  in_translation.x,
+                                  0.0,  1.0,  0.0,  in_translation.y,
+                                  0.0,  0.0,  1.0,  in_translation.z,
+                                  0.0,  0.0,  0.0,  1.0); 
+}
+
+template <typename TRadiansType, typename TMatrixType>
+constexpr Matrix4x4<TMatrixType> RotationMatrixX(GenericRadians<TRadiansType> in_angle) noexcept
+{
+    TMatrixType cos = std::cos(in_angle);
+    TMatrixType sin = std::sin(in_angle);
+
+    return Matrix4x4<TMatrixType>(1.0,  0.0,  0.0,  0.0,
+                                  0.0,  cos, -sin,  0.0,
+                                  0.0,  sin,  cos,  0.0,
+                                  0.0,  0.0,  0.0,  1.0); 
+}
+
+template <typename TRadiansType, typename TMatrixType>
+constexpr Matrix4x4<TMatrixType> RotationMatrixY(GenericRadians<TRadiansType> in_angle) noexcept
+{
+    TMatrixType cos = std::cos(in_angle);
+    TMatrixType sin = std::sin(in_angle);
+
+    return Matrix4x4<TMatrixType>(cos,  0.0,  sin,  0.0,
+                                  0.0,  1.0,  0.0,  0.0,
+                                 -sin,  0.0,  cos,  0.0,
+                                  0.0,  0.0,  0.0,  1.0); 
+}
+
+template <typename TRadiansType, typename TMatrixType>
+constexpr Matrix4x4<TMatrixType> RotationMatrixZ(GenericRadians<TRadiansType> in_angle) noexcept
+{
+    TMatrixType cos = std::cos(in_angle);
+    TMatrixType sin = std::sin(in_angle);
+
+    return Matrix4x4<TMatrixType>(cos, -sin,  0.0,  0.0,
+                                  sin,  cos,  0.0,  0.0,
+                                  0.0,  0.0,  1.0,  0.0,
+                                  0.0,  0.0,  0.0,  1.0); 
+}
+
+template <typename TRadiansType, typename TMatrixType>
+constexpr Matrix4x4<TMatrixType> RotationMatrix(
+    GenericRadians<TRadiansType> in_angle_x,
+    GenericRadians<TRadiansType> in_angle_y,
+    GenericRadians<TRadiansType> in_angle_z) noexcept
+{
+    return RotationMatrixZ(in_angle_x) * RotationMatrixY(in_angle_y) * RotationMatrixX(in_angle_z);
+}
+
+template <typename TVectorType, typename TMatrixType>
+constexpr Matrix4x4<TMatrixType> ScaleMatrix(Vector3<TVectorType> const& in_scale) noexcept
+{
+    return Matrix4x4<TMatrixType>(in_scale.x,  0.0       ,  0.0       ,  0.0,
+                                  0.0       ,  in_scale.y,  0.0       ,  0.0,
+                                  0.0       ,  0.0       ,  in_scale.z,  0.0,
+                                  0.0       ,  0.0       ,  0.0       ,  1.0); 
+}
