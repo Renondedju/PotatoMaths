@@ -31,12 +31,12 @@
  * \param a First argument to glue
  * \param b Second argument to glue
  */
-#define GLUE(a, b) __GLUE(a, b)
-#define __GLUE(a, b) a ## b
+#define POTATO_GLUE(a, b) __POTATO_GLUE(a, b)
+#define __POTATO_GLUE(a, b) a ## b
 
 /**
  * \brief Stringify the content of the macro
  * \param a Param to stringify
  */
-#define STRING(a) __STRING(a)
-#define __STRING(a) # a
+#define POTATO_STRING(a) __POTATO_STRING(a)
+#define __POTATO_STRING(a) # a
