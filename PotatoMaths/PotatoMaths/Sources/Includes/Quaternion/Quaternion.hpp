@@ -166,6 +166,103 @@ class Quaternion<TType>
 
         #pragma endregion
 
+        #pragma region Methods
+
+        /**
+         * \brief Quaternion linear interpolation
+         * 
+         * \tparam TShortestPath True if the method should lerp from in_lhs to in_rhs using the shortest path, false otherwise
+         *
+         * \param in_other Destination quaternion
+         * \param in_ratio The interpolation ratio. Should be between 0 and 1
+         * 
+         * \return A new quaternion which is the result of the linear interpolation between in_lhs and in_rhs at in_ratio
+         */
+        template <bool TShortestPath = true>
+        [[nodiscard]]
+        constexpr Quaternion Lerp(Quaternion const& in_other, float in_ratio) const noexcept;
+
+        /**
+         * \brief Quaternion spherical interpolation
+         *
+         * \tparam TShortestPath True if the method should slerp from in_lhs to in_rhs using the shortest path, false otherwise
+         *
+         * \param in_other Destination quaternion
+         * \param in_ratio The interpolation ratio. Should be between 0 and 1
+         *
+         * \return A new quaternion which is the result of the spherical linear interpolation between in_lhs and in_rhs at in_ratio
+         */
+        template <bool TShortestPath = true>
+        [[nodiscard]]
+        constexpr Quaternion Slerp(Quaternion const& in_other, float in_ratio) const noexcept;
+
+        /**
+         * \brief Computes the dot product between two quaternions
+         * 
+         * \param in_other Other quaternion
+         * 
+         * \return The resulting dot product
+         */
+        [[nodiscard]]
+        constexpr TType Dot(Quaternion const& in_other) noexcept;
+
+        /**
+         * \brief Normalizes the quaternion
+         * \return New normalized quaternion instance
+         */
+        [[nodiscard]]
+        constexpr Quaternion GetNormalized() const noexcept;
+
+        /**
+         * \brief Normalizes the quaternion
+         * \return Normalized quaternion
+         */
+        constexpr Quaternion& Normalize() noexcept;
+
+        /**
+         * \brief Computes the square length of the quaternion
+         * \return Squared length of the quaternion
+         */
+        [[nodiscard]]
+        constexpr TType SqrLength() noexcept;
+
+        /**
+         * \brief Computes the length of the quaternion
+         * \return Length of the quaternion
+         */
+        [[nodiscard]]
+        constexpr TType Length() noexcept;
+
+        /**
+         * \brief Inverts the quaternion
+         * \return New inverted quaternion instance
+         */
+        [[nodiscard]]
+        constexpr Quaternion GetInverted() const noexcept;
+
+        /**
+         * \brief Inverts the quaternion
+         * \return Inverted quaternion
+         */
+        constexpr Quaternion& Invert() noexcept;
+
+        /**
+         * \brief Multiplies 2 quaternions together. This effectively represents composing the two rotations.
+         * \param in_other Right hand side quaternion
+         * \return New resulting quaternion instance
+         */
+        [[nodiscard]]
+        constexpr Quaternion GetMultiplied(Quaternion const& in_other) const noexcept;
+
+        /**
+         * \brief Multiplies 2 quaternions together. This effectively represents composing the two rotations.
+         * \param in_other Right hand side quaternion
+         * \return Resulting quaternion
+         */
+        constexpr Quaternion& Multiply(Quaternion const& in_other) noexcept;
+
+        #pragma endregion 
+
         #pragma region Operators
 
         constexpr Quaternion& operator=(Quaternion const& in_other) noexcept = default;

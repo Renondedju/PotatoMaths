@@ -150,3 +150,74 @@ constexpr Quaternion<TType>::operator Quaternion<TOtherType>() const noexcept
 {
     return Quaternion<TOtherType>(static_cast<TOtherType>(w), static_cast<TOtherType>(x), static_cast<TOtherType>(y), static_cast<TOtherType>(z));
 }
+
+template <typename TType>
+template <bool TShortestPath>
+constexpr Quaternion<TType> Quaternion<TType>::Lerp(Quaternion const& in_other, float const in_ratio) const noexcept
+{
+    return Lerp<TShortestPath>(*this, in_other, in_ratio);
+}
+
+template <typename TType>
+template <bool TShortestPath>
+constexpr Quaternion<TType> Quaternion<TType>::Slerp(Quaternion const& in_other, float const in_ratio) const noexcept
+{
+    return Slerp<TShortestPath>(*this, in_other, in_ratio);
+}
+
+template <typename TType>
+constexpr TType Quaternion<TType>::Dot(Quaternion const& in_other) noexcept
+{
+    return Dot(*this, in_other);
+}
+
+template <typename TType>
+constexpr Quaternion<TType> Quaternion<TType>::GetNormalized() const noexcept
+{
+    return Normalize(*this);
+}
+
+template <typename TType>
+constexpr Quaternion<TType>& Quaternion<TType>::Normalize() noexcept
+{
+    *this = Normalize(*this);
+    return *this;
+}
+
+template <typename TType>
+constexpr TType Quaternion<TType>::SqrLength() noexcept
+{
+    return SqrLength(*this);
+}
+
+template <typename TType>
+constexpr TType Quaternion<TType>::Length() noexcept
+{
+    return Length(*this);
+}
+
+template <typename TType>
+constexpr Quaternion<TType> Quaternion<TType>::GetInverted() const noexcept
+{
+    return Invert(*this);
+}
+
+template <typename TType>
+constexpr Quaternion<TType>& Quaternion<TType>::Invert() noexcept
+{
+    *this = Invert(*this);
+    return *this;
+}
+
+template <typename TType>
+constexpr Quaternion<TType> Quaternion<TType>::GetMultiplied(Quaternion const& in_other) const noexcept
+{
+    return Multiply(*this, in_other);
+}
+
+template <typename TType>
+constexpr Quaternion<TType>& Quaternion<TType>::Multiply(Quaternion const& in_other) noexcept
+{
+    *this = Multiply(*this, in_other);
+    return *this;
+}
