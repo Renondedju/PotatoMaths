@@ -43,8 +43,8 @@ constexpr Matrix4x4<TMatrixType> TranslationMatrix(Vector3<TVectorType> const& i
 template <typename TRadiansType, typename TMatrixType>
 constexpr Matrix4x4<TMatrixType> RotationMatrixX(GenericRadians<TRadiansType> in_angle) noexcept
 {
-    TMatrixType cos = std::cos(in_angle);
-    TMatrixType sin = std::sin(in_angle);
+    TMatrixType cos = static_cast<TMatrixType>(Cos<TRadiansType>(in_angle));
+    TMatrixType sin = static_cast<TMatrixType>(Sin<TRadiansType>(in_angle));
 
     return Matrix4x4<TMatrixType>(1.0,  0.0,  0.0,  0.0,
                                   0.0,  cos, -sin,  0.0,
@@ -55,8 +55,8 @@ constexpr Matrix4x4<TMatrixType> RotationMatrixX(GenericRadians<TRadiansType> in
 template <typename TRadiansType, typename TMatrixType>
 constexpr Matrix4x4<TMatrixType> RotationMatrixY(GenericRadians<TRadiansType> in_angle) noexcept
 {
-    TMatrixType cos = std::cos(in_angle);
-    TMatrixType sin = std::sin(in_angle);
+    TMatrixType cos = static_cast<TMatrixType>(Cos<TRadiansType>(in_angle));
+    TMatrixType sin = static_cast<TMatrixType>(Sin<TRadiansType>(in_angle));
 
     return Matrix4x4<TMatrixType>(cos,  0.0,  sin,  0.0,
                                   0.0,  1.0,  0.0,  0.0,
@@ -67,8 +67,8 @@ constexpr Matrix4x4<TMatrixType> RotationMatrixY(GenericRadians<TRadiansType> in
 template <typename TRadiansType, typename TMatrixType>
 constexpr Matrix4x4<TMatrixType> RotationMatrixZ(GenericRadians<TRadiansType> in_angle) noexcept
 {
-    TMatrixType cos = std::cos(in_angle);
-    TMatrixType sin = std::sin(in_angle);
+    TMatrixType cos = static_cast<TMatrixType>(Cos<TRadiansType>(in_angle));
+    TMatrixType sin = static_cast<TMatrixType>(Sin<TRadiansType>(in_angle));
 
     return Matrix4x4<TMatrixType>(cos, -sin,  0.0,  0.0,
                                   sin,  cos,  0.0,  0.0,

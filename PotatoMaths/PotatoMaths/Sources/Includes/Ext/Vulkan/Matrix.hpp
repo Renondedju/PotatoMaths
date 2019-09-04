@@ -26,6 +26,7 @@
 
 #include "Ext/Vulkan/Ext.hpp"
 
+#include "Numerics/Numerics.hpp"
 #include "Matrix/Matrix4x4.hpp"
 #include "Angles/Radians.hpp"
 #include "Vector/Vector3.hpp"

@@ -49,13 +49,13 @@ constexpr Quaternion<TType>::Quaternion(GenericDegrees<TAngleType> const in_angl
     GenericRadians<TAngleType> half_y_angle = static_cast<GenericRadians<TAngleType>>(in_angle_y) / 2.0f;
     GenericRadians<TAngleType> half_z_angle = static_cast<GenericRadians<TAngleType>>(in_angle_z) / 2.0f;
 
-    TType const cos_x = std::cos(static_cast<TType>(half_x_angle));
-    TType const cos_y = std::cos(static_cast<TType>(half_y_angle));
-    TType const cos_z = std::cos(static_cast<TType>(half_z_angle));
+    TType const cos_x = Cos<TType>(half_x_angle);
+    TType const cos_y = Cos<TType>(half_y_angle);
+    TType const cos_z = Cos<TType>(half_z_angle);
 
-    TType const sin_x = std::sin(static_cast<TType>(half_x_angle));
-    TType const sin_y = std::sin(static_cast<TType>(half_y_angle));
-    TType const sin_z = std::sin(static_cast<TType>(half_z_angle));
+    TType const sin_x = Sin<TType>(half_x_angle);
+    TType const sin_y = Sin<TType>(half_y_angle);
+    TType const sin_z = Sin<TType>(half_z_angle);
 
     w = cos_x * cos_y * cos_z - sin_x * sin_y * sin_z;
     x = sin_x * cos_y * cos_z + cos_x * sin_y * sin_z;
@@ -90,18 +90,18 @@ template <bool TShortestPath>
 constexpr Quaternion<TType> Quaternion<TType>::Slerp(Quaternion const& in_lhs, Quaternion const& in_rhs, float const in_ratio) noexcept
 {
     TType const dot_result = Quaternion::Dot(in_lhs, in_rhs);
-    TType const abs_dot    = std::abs (dot_result);
-    TType const theta      = std::acos(abs_dot);
-    TType const sin_theta  = std::sin (theta);
+    TType const abs_dot    = Abs <TType>(dot_result);
+    TType const theta      = ACos<TType>(abs_dot);
+    TType const sin_theta  = Sin <TType>(theta);
 
     if constexpr (TShortestPath)
     {
         float const sign = (dot_result < 0.0f) ? -1.0f : 1.0f;
 
-        return Quaternion::Normalize(Quaternion(in_lhs * (std::sin(1.0f - in_ratio) * theta) / sin_theta + in_rhs * std::sin(sign * in_ratio * theta) / sin_theta));
+        return Quaternion::Normalize(Quaternion(in_lhs * (Sin<TType>(1.0f - in_ratio) * theta) / sin_theta + in_rhs * Sin<TType>(sign * in_ratio * theta) / sin_theta));
     }
 
-    return Quaternion::Normalize(Quaternion(in_lhs * (std::sin(1.0f - in_ratio) * theta) / sin_theta + in_rhs * std::sin(in_ratio * theta) / sin_theta));
+    return Quaternion::Normalize(Quaternion(in_lhs * (Sin<TType>(1.0f - in_ratio) * theta) / sin_theta + in_rhs * Sin<TType>(in_ratio * theta) / sin_theta));
 }
 
 template <typename TType>
@@ -126,7 +126,7 @@ constexpr TType Quaternion<TType>::SqrLength(Quaternion const& in_quaternion) no
 template <typename TType>
 constexpr TType Quaternion<TType>::Length(Quaternion const& in_quaternion) noexcept
 {
-    return std::sqrt(Quaternion::SqrLength(in_quaternion));
+    return Sqrt<TType>(Quaternion::SqrLength(in_quaternion));
 }
 
 template <typename TType>

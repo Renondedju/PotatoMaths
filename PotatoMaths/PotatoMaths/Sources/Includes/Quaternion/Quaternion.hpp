@@ -24,8 +24,7 @@
 
 #pragma once
 
-#include <cmath>
-
+#include "Numerics/Numerics.hpp"
 #include "Angles/Degrees.hpp"
 #include "Angles/Radians.hpp"
 
