@@ -26,6 +26,7 @@
 
 #include "Ext/Vulkan/Ext.hpp"
 
+#include "Quaternion/Quaternion.hpp"
 #include "Numerics/Numerics.hpp"
 #include "Matrix/Matrix4x4.hpp"
 #include "Angles/Radians.hpp"
@@ -131,6 +132,80 @@ constexpr Matrix4x4<TMatrixType> RotationMatrix(
  */
 template<typename TVectorType, typename TMatrixType = float>
 constexpr Matrix4x4<TMatrixType> ScaleMatrix(Vector3<TVectorType> const& in_scale) noexcept;
+
+/**
+ * \brief Creates a perspective projection matrix
+ *
+ * \tparam TType Input type
+ * \tparam TMatrixType Underlying matrix type
+ *
+ * \param in_fov Field of view
+ * \param in_aspect Aspect ratio of the viewport
+ * \param in_near Near plane distance (cannot be 0 or negative !)
+ * \param in_far Far plane distance
+ *
+ * \return New perspective projection matrix
+ */
+template <typename TType, typename TMatrixType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(TType in_fov, TType in_aspect, TType in_near, TType in_far) noexcept;
+
+/**
+ * \brief Creates an orthogonal projection matrix
+ *
+ * \tparam TType Input type 
+ * \tparam TMatrixType Underlying matrix type
+ *
+ * \param in_left Left plane distance
+ * \param in_right Right plane distance
+ * \param in_bottom Bottom plane distance
+ * \param in_top Top plane distance
+ * \param in_near Near plane distance
+ * \param in_far Far plane distance
+ *
+ * \return Orthogonal projection matrix
+ */
+template <typename TType, typename TMatrixType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+constexpr Matrix4x4<TMatrixType> OrthogonalProjectionMatrix(
+        TType in_left  , TType in_right, 
+        TType in_bottom, TType in_top, 
+        TType in_near  , TType in_far) noexcept;
+
+/**
+ * \brief Creates model matrix to look at a specific point in the world
+ *
+ * \tparam TVectorType Underlying type of input vectors 
+ * \tparam TMatrixType Underlying type of the output matrix
+ *
+ * \param in_from Position to look from
+ * \param in_to Position to look at
+ * \param in_up Up vector
+ *
+ * \return Look at matrix
+ */
+template<typename TVectorType, typename TMatrixType = float>
+constexpr Matrix4x4<TMatrixType> LookAtMatrix(
+        Vector3<TVectorType> const& in_from,
+        Vector3<TVectorType> const& in_to,
+        Vector3<TVectorType> const& in_up) noexcept;
+
+/**
+ * \brief Model matrix, also called TRS
+ *
+ * \tparam TVectorType Underling type if input vectors
+ * \tparam TQuaternionType Underlying type of input quaternion
+ * \tparam TMatrixType Underlying type of the output matrix
+ *
+ * \param in_position Model position
+ * \param in_rotation Model rotation
+ * \param in_scale Model scale
+ *
+ * \return Model (TRS) matrix
+ */
+template<typename TVectorType, typename TQuaternionType, typename TMatrixType = float>
+constexpr Matrix4x4<TMatrixType> ModelMatrix(
+        Vector3   <TVectorType>     const& in_position,
+        Quaternion<TQuaternionType> const& in_rotation,
+        Vector3   <TVectorType>     const& in_scale) noexcept;
 
 #include "Ext/Vulkan/Matrix.inl"
 
