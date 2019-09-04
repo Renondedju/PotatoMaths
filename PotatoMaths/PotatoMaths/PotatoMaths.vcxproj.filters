@@ -61,6 +61,7 @@
     <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
     <ClInclude Include="Sources\Includes\Vector\BaseVector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
+    <ClInclude Include="Sources\Includes\Ext\Vulkan\Quaternion.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
