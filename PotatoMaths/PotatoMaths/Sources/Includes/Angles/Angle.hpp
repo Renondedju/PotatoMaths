@@ -32,7 +32,7 @@
 #include "Angles/EAngleUnit.hpp"
 
 // Used in conversion operators
-#include "Constants.hpp"
+#include "Numerics/Constants.hpp"
 
 namespace internal
 {
