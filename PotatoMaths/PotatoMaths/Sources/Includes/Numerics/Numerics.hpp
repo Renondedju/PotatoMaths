@@ -133,6 +133,17 @@ template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType
 constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
 
 /**
+ * \brief Compute the arc cosine of an angle given in radians
+ *
+ * \tparam TType Type to operate in
+ * \param in_value Input value
+ *
+ * \return Arc cosine of in_value
+ */
+template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
+
+/**
  * \brief Compute the sine of an angle given in radians
  *
  * \tparam TType Type to operate in

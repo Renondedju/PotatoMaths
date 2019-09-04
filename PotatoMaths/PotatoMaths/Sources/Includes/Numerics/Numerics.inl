@@ -77,6 +77,12 @@ constexpr TType Cos(GenericRadians<TType> in_value) noexcept
 }
 
 template <typename TType, typename>
+constexpr TType ACos(GenericRadians<TType> in_value) noexcept
+{
+    return static_cast<TType>(std::acos(in_value));
+}
+
+template <typename TType, typename>
 constexpr TType Sin(GenericRadians<TType> in_value) noexcept
 {
     return static_cast<TType>(std::sin(in_value));
