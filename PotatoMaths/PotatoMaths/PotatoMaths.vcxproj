@@ -87,6 +87,7 @@
     <None Include="Sources\Includes\Angles\Degree.inl" />
     <None Include="Sources\Includes\Angles\Radians.inl" />
     <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
+    <None Include="Sources\Includes\Ext\Vulkan\Quaternion.inl" />
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
     <None Include="Sources\Includes\Numerics\Numerics.inl" />
     <None Include="Sources\Includes\Quaternion\Quaternion.inl" />

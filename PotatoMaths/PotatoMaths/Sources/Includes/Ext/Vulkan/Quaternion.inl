@@ -22,27 +22,25 @@
  * SOFTWARE.
  */
 
-#pragma once
-
-#include "Ext/Vulkan/Ext.hpp"
-#include "Matrix/Matrix3x3.hpp"
-#include "Quaternion/Quaternion.hpp"
-
-POTATO_BEGIN_VK_EXT
-
-/**
- * \brief Computes an homogenous rotation 3x3 matrix for a given quaternion
- *
- * \tparam TMatrixType Underlying type of the rotation matrix
- * \tparam TQuaternionType Underlying type of the quaternion
- *
- * \param in_quaternion Quaternion to compute the rotation matrix for
- *
- * \return Homogenous 3x3 rotation matrix
- */
 template <typename TMatrixType, typename TQuaternionType>
-constexpr Matrix3x3<TMatrixType> RotationMatrix(Quaternion<TQuaternionType> const& in_quaternion) noexcept;
+constexpr Matrix3x3<TMatrixType> RotationMatrix(Quaternion<TQuaternionType> const& in_quaternion) noexcept
+{
+    float const sqr_x (in_quaternion.x * in_quaternion.x);
+    float const sqr_y (in_quaternion.y * in_quaternion.y);
+    float const sqr_z (in_quaternion.z * in_quaternion.z);
 
-#include "Ext/Vulkan/Quaternion.inl"
+    return Matrix3x3<TMatrixType>
+    (
+        1 - 2 * (sqr_y + sqr_z),
+        2 * (in_quaternion.m_x * in_quaternion.m_y - in_quaternion.m_z * in_quaternion.m_w),
+        2 * (in_quaternion.m_x * in_quaternion.m_z + in_quaternion.m_y * in_quaternion.m_w),
 
-POTATO_END_VK_EXT
+        2 * (in_quaternion.m_x * in_quaternion.m_y + in_quaternion.m_z * in_quaternion.m_w),
+        1 - 2 * (sqr_x + sqr_z),
+        2 * (in_quaternion.m_y * in_quaternion.m_z - in_quaternion.m_x * in_quaternion.m_w),
+
+        2 * (in_quaternion.m_x * in_quaternion.m_z - in_quaternion.m_y * in_quaternion.m_w),
+        2 * (in_quaternion.m_y * in_quaternion.m_z + in_quaternion.m_x * in_quaternion.m_w),
+        1 - 2 * (sqr_x + sqr_y)
+    );
+}

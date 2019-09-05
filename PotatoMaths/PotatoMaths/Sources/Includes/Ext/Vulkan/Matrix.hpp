@@ -30,6 +30,7 @@
 #include "Numerics/Numerics.hpp"
 #include "Matrix/Matrix4x4.hpp"
 #include "Angles/Radians.hpp"
+#include "Angles/Degrees.hpp"
 #include "Vector/Vector3.hpp"
 
 POTATO_BEGIN_VK_EXT
@@ -147,7 +148,7 @@ constexpr Matrix4x4<TMatrixType> ScaleMatrix(Vector3<TVectorType> const& in_scal
  * \return New perspective projection matrix
  */
 template <typename TType, typename TMatrixType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
-constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(TType in_fov, TType in_aspect, TType in_near, TType in_far) noexcept;
+constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(GenericDegrees<TType> in_fov, TType in_aspect, TType in_near, TType in_far) noexcept;
 
 /**
  * \brief Creates an orthogonal projection matrix
