@@ -70,9 +70,9 @@ class Vector3 final : public BaseVector<Vector3<TType>, 3, TType>
         constexpr Vector3(TType in_x, TType in_y, TType in_z) noexcept;
         constexpr Vector3()                                   noexcept;
 
-        constexpr Vector3(Vector3 const& in_matrix) noexcept = default;
-        constexpr Vector3(Vector3&&      in_matrix) noexcept = default;
-                 ~Vector3()                         noexcept = default;
+        constexpr Vector3(Vector3 const& in_matrix) = default;
+        constexpr Vector3(Vector3&&      in_matrix) = default;
+                 ~Vector3()                         = default;
 
         using Parent::Parent;
 

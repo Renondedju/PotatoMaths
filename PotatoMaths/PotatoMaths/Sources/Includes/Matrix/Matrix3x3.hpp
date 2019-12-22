@@ -41,10 +41,10 @@ class Matrix3x3 final : public SquareMatrix<3, TType>
 
         #pragma region Constructors
 
-        constexpr Matrix3x3()                           noexcept = default;
-        constexpr Matrix3x3(Matrix3x3 const& in_matrix) noexcept = default;
-        constexpr Matrix3x3(Matrix3x3&&      in_matrix) noexcept = default;
-                 ~Matrix3x3()                           noexcept = default;
+        constexpr Matrix3x3()                           = default;
+        constexpr Matrix3x3(Matrix3x3 const& in_matrix) = default;
+        constexpr Matrix3x3(Matrix3x3&&      in_matrix) = default;
+                 ~Matrix3x3()                           = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix3x3, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix3x3, Parent)

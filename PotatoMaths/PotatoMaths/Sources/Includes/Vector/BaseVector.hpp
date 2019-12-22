@@ -24,9 +24,9 @@
 
 #pragma once
 
-#include <type_traits>
+#include "Meta/TypeSubstitution.hpp"
 
-template <typename TDerived, size_t TLength, typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TDerived, size_t TLength, typename TType = float, IsArithmetic<TType> = true>
 class _declspec(novtable) BaseVector;
 
 /**
@@ -43,10 +43,10 @@ class _declspec(novtable) BaseVector<TDerived, TLength, TType>
 
         #pragma region Constructors
 
-        constexpr BaseVector()                               noexcept;
-        constexpr BaseVector(BaseVector const& in_vector) noexcept = default;
-        constexpr BaseVector(BaseVector&&      in_vector) noexcept = default;
-                 ~BaseVector()                               noexcept = default;
+        constexpr BaseVector() noexcept;
+        constexpr BaseVector(BaseVector const& in_vector) = default;
+        constexpr BaseVector(BaseVector&&      in_vector) = default;
+                 ~BaseVector()                            = default;
 
         #pragma endregion
 

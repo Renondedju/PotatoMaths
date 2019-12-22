@@ -24,11 +24,12 @@
 
 #pragma once
 
-#include <type_traits>
 #include <iomanip>
 #include <ostream>
 
-template <size_t TRows, size_t TColumns, typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+#include "Meta/TypeSubstitution.hpp"
+
+template <size_t TRows, size_t TColumns, typename TType, IsArithmetic<TType> = true>
 class GenericMatrix;
 
 /**
@@ -53,17 +54,17 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
 
         #pragma region Constructors
 
-        constexpr GenericMatrix()                               noexcept;
-        constexpr GenericMatrix(GenericMatrix const& in_matrix) noexcept = default;
-        constexpr GenericMatrix(GenericMatrix&&      in_matrix) noexcept = default;
-                 ~GenericMatrix()                               noexcept = default;
+        constexpr GenericMatrix() noexcept;
+        constexpr GenericMatrix(GenericMatrix const& in_matrix) = default;
+        constexpr GenericMatrix(GenericMatrix&&      in_matrix) = default;
+                 ~GenericMatrix()                               = default;
 
         /**
          * \brief Element by element constructor
          * \tparam TValues Initial values types
          * \param in_values Initial values
          */
-        template<typename... TValues, typename = std::enable_if_t<sizeof...(TValues) == TRows * TColumns>>
+        template<typename... TValues, std::enable_if_t<sizeof...(TValues) == TRows * TColumns, bool> = true>
         constexpr GenericMatrix(TValues... in_values) noexcept;
 
         /**
@@ -106,7 +107,7 @@ class __declspec(novtable) GenericMatrix<TRows, TColumns, TType>
          */
         template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType,
             typename TReturnType = std::common_type_t<TType, TOtherType>,
-            typename			 = std::enable_if_t<TColumns == TOtherRows>>
+                                   std::enable_if_t<TColumns == TOtherRows, bool> = true>
         [[nodiscard]]
         constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept;
 

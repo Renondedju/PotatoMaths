@@ -51,19 +51,19 @@ class GenericVector final : public BaseVector<GenericVector<TSize, TType>, TSize
          * \tparam TValuesType Type of passed values
          * \param in_values Values to init the vector with
          */
-        template <typename... TValuesType, typename = std::enable_if_t<sizeof...(TValuesType) == TSize>>
-        constexpr GenericVector(TValuesType... in_values)       noexcept;
+        template <typename... TValuesType, std::enable_if_t<sizeof...(TValuesType) == TSize, bool> = true>
+        constexpr GenericVector(TValuesType... in_values) noexcept;
 
         /**
          * \brief Array constructor
          * \param in_array Initialization array
          */
-        constexpr GenericVector(TType const* in_array)          noexcept;
-        constexpr GenericVector()                               noexcept;
+        constexpr GenericVector(TType const* in_array) noexcept;
+        constexpr GenericVector()                      noexcept;
 
-        constexpr GenericVector(GenericVector const& in_matrix) noexcept = default;
-        constexpr GenericVector(GenericVector&&      in_matrix) noexcept = default;
-                 ~GenericVector()                               noexcept = default;
+        constexpr GenericVector(GenericVector const& in_matrix) = default;
+        constexpr GenericVector(GenericVector&&      in_matrix) = default;
+                 ~GenericVector()                               = default;
 
         using Parent::Parent;
 

@@ -70,7 +70,7 @@ class NamedType
 		 * \tparam TArgs Arguments type
 		 * \param in_args arguments
 		 */
-		template <typename ...TArgs, typename = std::enable_if_t<std::is_constructible_v<TBase, TArgs...>>>
+		template <typename ...TArgs, std::enable_if_t<std::is_constructible_v<TBase, TArgs...>, bool> = true>
 		constexpr NamedType(TArgs&&... in_args) noexcept(noexcept(TBase(std::forward<TArgs>(in_args)...)));
 
 		/**
@@ -161,8 +161,8 @@ namespace internal
  * To avoid this issue, please create a complex NamedType instead
  */
 #define CREATE_SIMPLE_NAMED_TYPE(in_typename, in_basetype) \
-	namespace internal { struct GLUE(Phantom, in_typename) {}; } \
-	using in_typename = NamedType<in_basetype, internal::GLUE(Phantom, in_typename)>;
+	namespace internal { struct POTATO_GLUE(Phantom, in_typename) {}; } \
+	using in_typename = NamedType<in_basetype, internal::POTATO_GLUE(Phantom, in_typename)>;
 
 /**
  * \brief Creates a literal for a NamedType
@@ -176,6 +176,6 @@ namespace internal
  * would allow to create test objects by writing ``12.2_test``
  */
 #define CREATE_NAMED_TYPE_LITERAL(in_typename, in_literaltype, in_literalname) \
-	constexpr in_typename operator"" GLUE(_, in_literalname)(in_literaltype const in_param) noexcept \
-	{ return in_typename(static_cast<GLUE(in_typename, ::UnderlyingType)>(in_param)); }
+	constexpr in_typename operator"" POTATO_GLUE(_, in_literalname)(in_literaltype const in_param) noexcept \
+	{ return in_typename(static_cast<POTATO_GLUE(in_typename, ::UnderlyingType)>(in_param)); }
 	

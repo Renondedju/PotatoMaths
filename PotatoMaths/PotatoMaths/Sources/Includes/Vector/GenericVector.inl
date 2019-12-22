@@ -23,7 +23,7 @@
  */
 
 template <size_t TSize, typename TType>
-template <typename ... TValuesType, typename>
+template <typename ... TValuesType, std::enable_if_t<sizeof...(TValuesType) == TSize, bool>>
 constexpr GenericVector<TSize, TType>::GenericVector(TValuesType... in_values) noexcept:
     data {TType(in_values)...}
 {}

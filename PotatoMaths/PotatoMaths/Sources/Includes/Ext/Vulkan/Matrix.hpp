@@ -147,7 +147,7 @@ constexpr Matrix4x4<TMatrixType> ScaleMatrix(Vector3<TVectorType> const& in_scal
  *
  * \return New perspective projection matrix
  */
-template <typename TType, typename TMatrixType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, typename TMatrixType = float, IsArithmetic<TType> = true>
 constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(GenericDegrees<TType> in_fov, TType in_aspect, TType in_near, TType in_far) noexcept;
 
 /**
@@ -165,7 +165,7 @@ constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(GenericDegrees<TTyp
  *
  * \return Orthogonal projection matrix
  */
-template <typename TType, typename TMatrixType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, typename TMatrixType = float, IsArithmetic<TType> = true>
 constexpr Matrix4x4<TMatrixType> OrthogonalProjectionMatrix(
         TType in_left  , TType in_right, 
         TType in_bottom, TType in_top, 

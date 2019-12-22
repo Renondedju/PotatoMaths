@@ -63,6 +63,7 @@
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Quaternion.hpp" />
     <ClInclude Include="Sources\Includes\Numerics\Numerics.hpp" />
     <ClInclude Include="Sources\Includes\Numerics\Constants.hpp" />
+    <ClInclude Include="Sources\Includes\Meta\TypeSubstitution.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />

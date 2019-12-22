@@ -72,9 +72,9 @@ class Vector4 final : public BaseVector<Vector4<TType>, 4, TType>
         constexpr Vector4(TType in_x, TType in_y, TType in_z, TType in_w) noexcept;
         constexpr Vector4()                                               noexcept;
 
-        constexpr Vector4(Vector4 const& in_matrix) noexcept = default;
-        constexpr Vector4(Vector4&&      in_matrix) noexcept = default;
-                 ~Vector4()                         noexcept = default;
+        constexpr Vector4(Vector4 const& in_matrix) = default;
+        constexpr Vector4(Vector4&&      in_matrix) = default;
+                 ~Vector4()                         = default;
 
         using Parent::Parent;
 

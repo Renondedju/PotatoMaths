@@ -41,10 +41,10 @@ class Matrix2x2 final : public SquareMatrix<2, TType>
 
         #pragma region Constructors
 
-        constexpr Matrix2x2()                           noexcept = default;
-        constexpr Matrix2x2(Matrix2x2 const& in_matrix) noexcept = default;
-        constexpr Matrix2x2(Matrix2x2&&      in_matrix) noexcept = default;
-                 ~Matrix2x2()                           noexcept = default;
+        constexpr Matrix2x2()                           = default;
+        constexpr Matrix2x2(Matrix2x2 const& in_matrix) = default;
+        constexpr Matrix2x2(Matrix2x2&&      in_matrix) = default;
+                 ~Matrix2x2()                           = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix2x2, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix2x2, Parent)

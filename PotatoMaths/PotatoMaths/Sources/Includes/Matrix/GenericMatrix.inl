@@ -29,7 +29,7 @@ constexpr GenericMatrix<TRows, TColumns, TType>
 {}
 
 template <size_t TRows, size_t TColumns, typename TType>
-template <typename ... TValues, typename>
+template<typename... TValues, std::enable_if_t<sizeof...(TValues) == TRows * TColumns, bool> = true>
 constexpr GenericMatrix<TRows, TColumns, TType>
     ::GenericMatrix(TValues... in_values) noexcept:
         data {TType(in_values)...}
@@ -63,7 +63,7 @@ constexpr GenericMatrix<TColumns, TRows, TType> GenericMatrix<TRows, TColumns, T
 }
 
 template <size_t TRows, size_t TColumns, typename TType>
-template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType, typename TReturnType, typename>
+template <size_t TOtherRows, size_t TOtherColumns, typename TOtherType, typename TReturnType, std::enable_if_t<TColumns == TOtherRows, bool> = true>
 constexpr GenericMatrix<TRows, TOtherColumns, TReturnType> GenericMatrix<TRows, TColumns, TType>
     ::GetMultiplied(GenericMatrix<TOtherRows, TOtherColumns, TOtherType> const& in_other_matrix) const noexcept
 {

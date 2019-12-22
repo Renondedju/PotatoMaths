@@ -23,7 +23,7 @@
  */
 
 template <typename TBase, typename TUniquePhantom>
-template <typename ...TArgs, typename>
+template <typename ...TArgs, std::enable_if_t<std::is_constructible_v<TBase, TArgs...>, bool> = true>
 constexpr NamedType<TBase, TUniquePhantom>::NamedType(TArgs&&... in_args) noexcept(noexcept(TBase(std::forward<TArgs>(in_args)...))):
 	m_value {TBase(std::forward<TArgs>(in_args)...)}
 {}

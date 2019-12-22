@@ -24,10 +24,10 @@
 
 #pragma once
 
-#include <type_traits>
 #include <cmath>
 
 #include "Angles/Radians.hpp"
+#include "Meta/TypeSubstitution.hpp"
 
 /**
  * \brief Absolute value function
@@ -37,7 +37,7 @@
  *
  * \return Absolute value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Abs(TType in_value) noexcept;
 
 /**
@@ -49,7 +49,7 @@ constexpr TType Abs(TType in_value) noexcept;
  *
  * \return Empowered value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Pow(TType in_value, TType in_exponent) noexcept;
 
 /**
@@ -60,7 +60,7 @@ constexpr TType Pow(TType in_value, TType in_exponent) noexcept;
  *
  * \return Ceiled value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Ceil(TType in_value) noexcept;
 
 /**
@@ -73,7 +73,7 @@ constexpr TType Ceil(TType in_value) noexcept;
  *
  * \return Clamped value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Clamp(TType in_value, TType in_min, TType in_max) noexcept;
 
 /**
@@ -84,7 +84,7 @@ constexpr TType Clamp(TType in_value, TType in_min, TType in_max) noexcept;
  *
  * \return Clamped value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Clamp01(TType in_value) noexcept;
 
 /**
@@ -95,7 +95,7 @@ constexpr TType Clamp01(TType in_value) noexcept;
  *
  * \return Rounded value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Round(TType in_value) noexcept;
 
 /**
@@ -106,7 +106,7 @@ constexpr TType Round(TType in_value) noexcept;
  *
  * \return Floored value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Floor(TType in_value) noexcept;
 
 /**
@@ -118,7 +118,7 @@ constexpr TType Floor(TType in_value) noexcept;
  *
  * \return Signed value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType CopySign(TType in_value, TType in_sign) noexcept;
 
 /**
@@ -129,7 +129,7 @@ constexpr TType CopySign(TType in_value, TType in_sign) noexcept;
  *
  * \return Cosine of in_value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
 
 /**
@@ -140,7 +140,7 @@ constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
  *
  * \return Arc cosine of in_value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
 
 /**
@@ -151,7 +151,7 @@ constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
  *
  * \return Sinus of in_value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Sin(GenericRadians<TType> in_value) noexcept;
 
 /**
@@ -162,7 +162,7 @@ constexpr TType Sin(GenericRadians<TType> in_value) noexcept;
  *
  * \return The tangent of in_value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Tan(GenericRadians<TType> in_value) noexcept;
 
 /**
@@ -173,7 +173,7 @@ constexpr TType Tan(GenericRadians<TType> in_value) noexcept;
  *
  * \return Exponential value of in_value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Exp(TType in_value) noexcept;
 
 /**
@@ -184,7 +184,7 @@ constexpr TType Exp(TType in_value) noexcept;
  *
  * \return Result of two raised to the power of in_value.
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Exp2(TType in_value) noexcept;
 
 /**
@@ -198,7 +198,7 @@ constexpr TType Exp2(TType in_value) noexcept;
  *
  * \return Remainder of in_value / in_modulo.
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Mod(TType in_value, TType in_modulo) noexcept;
 
 /**
@@ -209,7 +209,7 @@ constexpr TType Mod(TType in_value, TType in_modulo) noexcept;
  *
  * \return Fractional part of in_value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Frac(TType in_value) noexcept;
 
 /**
@@ -220,7 +220,7 @@ constexpr TType Frac(TType in_value) noexcept;
  *
  * \return Square root of in_value.
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Sqrt(TType in_value) noexcept;
 
 /**
@@ -231,7 +231,7 @@ constexpr TType Sqrt(TType in_value) noexcept;
  *
  * \return Inverse square root of in_value.
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType InvSqrt(TType in_value) noexcept;
 
 /**
@@ -244,7 +244,7 @@ constexpr TType InvSqrt(TType in_value) noexcept;
  *
  * \return True if the value is finite, false otherwise
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr bool IsFinite(TType in_value) noexcept;
 
 /**
@@ -255,7 +255,7 @@ constexpr bool IsFinite(TType in_value) noexcept;
  *
  * \return True if the value is infinite, false otherwise
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr bool IsInfinite(TType in_value) noexcept;
 
 /**
@@ -266,7 +266,7 @@ constexpr bool IsInfinite(TType in_value) noexcept;
  *
  * \return True if the value is Nan, false otherwise
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr bool IsNan(TType in_value) noexcept;
 
 /**
@@ -280,7 +280,7 @@ constexpr bool IsNan(TType in_value) noexcept;
  *
  * \return Interpolated value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Lerp(TType in_source, TType in_destination, TType in_ratio) noexcept;
 
 /**
@@ -294,7 +294,7 @@ constexpr TType Lerp(TType in_source, TType in_destination, TType in_ratio) noex
  *
  * \return Transformed value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType PingPong(TType in_value, TType in_range) noexcept;
 
 /**
@@ -306,7 +306,7 @@ constexpr TType PingPong(TType in_value, TType in_range) noexcept;
  *
  * \return Looped value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Repeat(TType in_value, TType in_range) noexcept;
 
 /**
@@ -318,7 +318,7 @@ constexpr TType Repeat(TType in_value, TType in_range) noexcept;
  *
  * \return Minimum value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
 
 /**
@@ -330,7 +330,7 @@ constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
  *
  * \return Maximum value
  */
-template <typename TType, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Max(TType in_lhs, TType in_rhs) noexcept;
 
 #include "Numerics/Numerics.inl"

@@ -39,10 +39,10 @@ class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 
         #pragma region Constructors
 
-        constexpr Matrix4x4()                           noexcept = default;
-        constexpr Matrix4x4(Matrix4x4 const& in_matrix) noexcept = default;
-        constexpr Matrix4x4(Matrix4x4&&      in_matrix) noexcept = default;
-                 ~Matrix4x4()                           noexcept = default;
+        constexpr Matrix4x4()                           = default;
+        constexpr Matrix4x4(Matrix4x4 const& in_matrix) = default;
+        constexpr Matrix4x4(Matrix4x4&&      in_matrix) = default;
+                 ~Matrix4x4()                           = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix4x4, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix4x4, Parent)

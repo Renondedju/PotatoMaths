@@ -25,10 +25,11 @@
 #pragma once
 
 #include "Numerics/Numerics.hpp"
-#include "Angles/Degrees.hpp"
-#include "Angles/Radians.hpp"
 
-template <typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+#include "Angles/Degrees.hpp"
+#include "Meta/TypeSubstitution.hpp"
+
+template <typename TType = float, IsArithmetic<TType> = true>
 class Quaternion;
 
 /**
@@ -56,10 +57,10 @@ class Quaternion<TType>
 
         #pragma region Constructors
 
-        constexpr Quaternion()                            noexcept;
-        constexpr Quaternion(Quaternion const& in_matrix) noexcept = default;
-        constexpr Quaternion(Quaternion&&      in_matrix) noexcept = default;
-                 ~Quaternion()                            noexcept = default;
+        constexpr Quaternion() noexcept;
+        constexpr Quaternion(Quaternion const& in_matrix) = default;
+        constexpr Quaternion(Quaternion&&      in_matrix) = default;
+                 ~Quaternion()                            = default;
 
         /**
          * \brief Creates a quaternion with the given values

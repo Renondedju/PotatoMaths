@@ -36,10 +36,10 @@ class __declspec(novtable) SquareMatrix : public GenericMatrix<TSize, TSize, TTy
 
         #pragma region Constructors
 
-        constexpr SquareMatrix()                              noexcept = default;
-        constexpr SquareMatrix(SquareMatrix const& in_matrix) noexcept = default;
-        constexpr SquareMatrix(SquareMatrix&&      in_matrix) noexcept = default;
-                 ~SquareMatrix()                              noexcept = default;
+        constexpr SquareMatrix()                              = default;
+        constexpr SquareMatrix(SquareMatrix const& in_matrix) = default;
+        constexpr SquareMatrix(SquareMatrix&&      in_matrix) = default;
+                 ~SquareMatrix()                              = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(SquareMatrix, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(SquareMatrix, Parent)

@@ -68,9 +68,9 @@ class Vector2 final : public BaseVector<Vector2<TType>, 2, TType>
         constexpr Vector2(TType in_x, TType in_y) noexcept;
         constexpr Vector2()                       noexcept;
 
-        constexpr Vector2(Vector2 const& in_matrix) noexcept = default;
-        constexpr Vector2(Vector2&&      in_matrix) noexcept = default;
-                 ~Vector2()                         noexcept = default;
+        constexpr Vector2(Vector2 const& in_matrix) = default;
+        constexpr Vector2(Vector2&&      in_matrix) = default;
+                 ~Vector2()                         = default;
 
         using Parent::Parent;
 

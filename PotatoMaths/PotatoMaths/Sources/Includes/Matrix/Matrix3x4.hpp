@@ -41,10 +41,10 @@ class Matrix3x4 final : public GenericMatrix<3, 4, TType>
 
         #pragma region Constructors
 
-        constexpr Matrix3x4()                           noexcept = default;
-        constexpr Matrix3x4(Matrix3x4 const& in_matrix) noexcept = default;
-        constexpr Matrix3x4(Matrix3x4&&      in_matrix) noexcept = default;
-                 ~Matrix3x4()                           noexcept = default;
+        constexpr Matrix3x4()                           = default;
+        constexpr Matrix3x4(Matrix3x4 const& in_matrix) = default;
+        constexpr Matrix3x4(Matrix3x4&&      in_matrix) = default;
+                 ~Matrix3x4()                           = default;
 
         DECLARE_MATRIX_COMPATIBILITY_COPY_CONSTRUCTOR(Matrix3x4, Parent)
         DECLARE_MATRIX_COMPATIBILITY_MOVE_CONSTRUCTOR(Matrix3x4, Parent)

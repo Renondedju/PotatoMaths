@@ -31,6 +31,8 @@
 
 #include "Angles/EAngleUnit.hpp"
 
+#include "Meta/TypeSubstitution.hpp"
+
 // Used in conversion operators
 #include "Numerics/Constants.hpp"
 
@@ -39,7 +41,7 @@ namespace internal
     struct AnglePhantom {};
 }
 
-template <enum class EAngleUnit TAngleUnit, typename TType = float, typename = std::enable_if_t<std::is_arithmetic_v<TType>>>
+template <enum class EAngleUnit TAngleUnit, typename TType = float, IsArithmetic<TType> = true>
 class Angle;
 
 /**
@@ -57,10 +59,10 @@ class __declspec(novtable) Angle<TAngleUnit, TType> final:
 
         #pragma region Constructors
 
-        constexpr Angle()                       noexcept = default;
-        constexpr Angle(Angle const& in_matrix) noexcept = default;
-        constexpr Angle(Angle&&      in_matrix) noexcept = default;
-        ~Angle()                                noexcept = default;
+        constexpr Angle()                       = default;
+        constexpr Angle(Angle const& in_matrix) = default;
+        constexpr Angle(Angle&&      in_matrix) = default;
+        ~Angle()                                = default;
 
         using NamedType<TType, internal::AnglePhantom>::NamedType;
 
