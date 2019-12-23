@@ -24,6 +24,9 @@
 
 #pragma once
 
+#include <ostream>
+#include <iomanip>
+
 #include "Meta/TypeSubstitution.hpp"
 
 template <typename TDerived, size_t TLength, typename TType = float, IsArithmetic<TType> = true>

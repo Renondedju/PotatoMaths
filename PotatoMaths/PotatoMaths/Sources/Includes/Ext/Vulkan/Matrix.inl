@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-template<typename TMatrixType = float>
+template<typename TMatrixType>
 constexpr Matrix4x4<TMatrixType> ClipSpace() noexcept
 {
     return Matrix4x4<TMatrixType>(1.0,  0.0,  0.0,  0.0,
@@ -94,7 +94,7 @@ constexpr Matrix4x4<TMatrixType> ScaleMatrix(Vector3<TVectorType> const& in_scal
                                   0.0       ,  0.0       ,  0.0       ,  1.0); 
 }
 
-template <typename TType, typename TMatrixType = float, IsArithmetic<TType> = true>
+template <typename TType, typename TMatrixType, IsArithmetic<TType>>
 constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(GenericDegrees<TType> const in_fov, TType const in_aspect, TType const in_near, TType const in_far) noexcept
 {
     float scale = 1.0f / Tan(static_cast<GenericRadians<TType>>(in_fov / static_cast<TType>(2)));
@@ -105,7 +105,7 @@ constexpr Matrix4x4<TMatrixType> PerspectiveProjectionMatrix(GenericDegrees<TTyp
                                   0.0              ,  0.0  , (in_near * in_far) / (in_near - in_far),  0.0);
 }
 
-template <typename TType, typename TMatrixType = float, IsArithmetic<TType> = true>
+template <typename TType, typename TMatrixType, IsArithmetic<TType>>
 constexpr Matrix4x4<TMatrixType> OrthogonalProjectionMatrix(
         TType const in_left, TType const in_right, TType const in_bottom,
         TType const in_top,  TType const in_near , TType const in_far) noexcept
