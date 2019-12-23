@@ -30,9 +30,10 @@
  * \brief Decrement operator class
  * 
  * This class is meant to be used in conjunction with the NamedType class.
- * This allows for better and quicker operator integrations to named types
+ * This allows for better and quicker operator integrations to named types.
  * 
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>
@@ -40,28 +41,29 @@ struct Decrement
 {
 	/**
 	 * \brief Pre-Decrement operator
-	 * \param in_instance Class instance
-	 * \return Reference to the new instance
+     *
+     * \param in_instance Operand instance
+     *
+     * \return Reference to the instance
 	 */
 	friend constexpr TStrongTypedef& operator--(TStrongTypedef& in_instance) noexcept
 	{
 		using Type = internal::UnderlyingType<TStrongTypedef>;
 
-		--static_cast<Type&>(in_instance);
-		return in_instance;
+        return --static_cast<Type&>(in_instance);
 	}
 
 	/**
 	 * \brief Post-Decrement operator
-	 * \param in_instance Class instance
-	 * \return Reference to the new instance
+     *
+     * \param in_instance Operand instance
+     *
+     * \return Value of the new instance
 	 */
 	friend constexpr TStrongTypedef operator--(TStrongTypedef& in_instance, int) noexcept
 	{
 		using Type = internal::UnderlyingType<TStrongTypedef>;
 
-		TStrongTypedef const temp(in_instance);
-		--static_cast<Type&>(in_instance);
-		return temp;
+        return static_cast<Type&>(in_instance)--;
 	}
 };

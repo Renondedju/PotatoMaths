@@ -30,8 +30,10 @@
 #include "Types/Operators/Comparison.hpp"
 
 /**
- * \brief Module regrouping all operators
+ * \brief Module gathering all operators
+ *
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>

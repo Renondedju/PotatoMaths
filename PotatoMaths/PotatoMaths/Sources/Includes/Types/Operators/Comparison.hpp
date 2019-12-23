@@ -33,8 +33,10 @@
 #include "Types/Operators/Comparison/GreaterEqual.hpp"
 
 /**
- * \brief Module regrouping all commons comparison operators
+ * \brief Module gathering all common comparison operators
+ *
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>

@@ -24,15 +24,16 @@
 
 #pragma once
 
-//#include "Types/NamedType.hpp"
+#include "Types/NamedType.hpp"
 
 /**
  * \brief Spaceship than or equal class
  * 
  * This class is meant to be used in conjunction with the NamedType class.
- * This allows for better and quicker operator integrations to named types
+ * This allows for better and quicker operator integrations to named types.
  * 
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>

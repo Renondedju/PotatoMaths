@@ -35,8 +35,10 @@
 #include "Types/Operators/Arithmetic/Multiplication.hpp"
 
 /**
- * \brief Module regrouping all commons arithmetic operators
+ * \brief Module gathering all common arithmetic operators
+ *
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>

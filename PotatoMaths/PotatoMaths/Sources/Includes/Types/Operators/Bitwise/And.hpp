@@ -30,9 +30,10 @@
  * \brief Bitwise AND operator class
  * 
  * This class is meant to be used in conjunction with the NamedType class.
- * This allows for better and quicker operator integrations to named types
+ * This allows for better and quicker operator integrations to named types.
  * 
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>
@@ -40,28 +41,33 @@ struct And
 {
 	/**
 	 * \brief Bitwise AND assignment operator
-	 * \param in_lhs Left hand side operand
-	 * \param in_rhs Right hand side operand
-	 * \return Reference to in_lhs
+     *
+     * \param in_lhs Left-hand side operand
+     * \param in_rhs Right-hand side operand
+     *
+     * \return Reference to the instance
 	 */
 	friend constexpr TStrongTypedef& operator&=(TStrongTypedef& in_lhs, TStrongTypedef const& in_rhs) noexcept
 	{
 		using Type = internal::UnderlyingType<TStrongTypedef>;
 
-		in_lhs = static_cast<TStrongTypedef>(static_cast<Type&>(in_lhs) & static_cast<Type&>(in_rhs));
+        in_lhs = static_cast<TStrongTypedef>(static_cast<Type&>(in_lhs) & static_cast<Type const&>(in_rhs));
+
 		return in_lhs;
 	}
 
 	/**
 	 * \brief Bitwise AND operator
-	 * \param in_lhs Left hand side operand
-	 * \param in_rhs Right hand side operand
-	 * \return Reference to the new instance
+     *
+     * \param in_lhs Left-hand side operand
+     * \param in_rhs Right-hand side operand
+     *
+     * \return Value of the new instance
 	 */
 	friend constexpr TStrongTypedef operator&(TStrongTypedef const& in_lhs, TStrongTypedef const& in_rhs) noexcept
 	{
 		using Type = internal::UnderlyingType<TStrongTypedef>;
 
-		return TStrongTypedef(static_cast<Type&>(in_lhs) & static_cast<Type&>(in_rhs));
+        return TStrongTypedef(static_cast<Type const&>(in_lhs) & static_cast<Type const&>(in_rhs));
 	}
 };

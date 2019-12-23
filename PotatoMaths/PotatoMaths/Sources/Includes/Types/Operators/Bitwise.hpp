@@ -32,8 +32,10 @@
 #include "Types/Operators/Bitwise/RightShift.hpp"
 
 /**
- * \brief Module regrouping all commons bitwise operators
+ * \brief Module gathering all common bitwise operators
+ *
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>
@@ -42,5 +44,5 @@ struct Bitwise:	Or		  <TStrongTypedef>,
 				Not		  <TStrongTypedef>,
 				Xor		  <TStrongTypedef>,
 				LeftShift <TStrongTypedef>,
-				RightShift<TStrongTypedef>
+                RightShift  <TStrongTypedef>
 {};

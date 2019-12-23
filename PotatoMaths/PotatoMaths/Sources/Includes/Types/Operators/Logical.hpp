@@ -29,8 +29,10 @@
 #include "Types/Operators/Logical/LogicalNot.hpp"
 
 /**
- * \brief Module regrouping all commons logical operators
+ * \brief Module gathering all common logical operators
+ *
  * \tparam TStrongTypedef Base NamedType
+ *
  * \see NamedType
  */
 template <typename TStrongTypedef>
