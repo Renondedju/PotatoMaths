@@ -1,7 +1,7 @@
 /*
  *  MIT License
  *
- *  Copyright (c) 2019 Renondedju, 6xray
+ *  Copyright (c) 2019-2020 Basile Combet
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -39,17 +39,17 @@
 template <typename TStrongTypedef>
 struct LogicalNot
 {
-	/**
-	 * \brief Logical NOT operator
+    /**
+     * \brief Logical NOT operator
      *
-	 * \param in_instance Operand instance
+     * \param in_instance Operand instance
      *
      * \return Value of the operation
-	 */
-	friend constexpr bool operator!(TStrongTypedef const& in_instance) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
+     */
+    friend constexpr bool operator!(TStrongTypedef const& in_instance) noexcept
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
 
         return !static_cast<Type const&>(in_instance);
-	}
+    }
 };

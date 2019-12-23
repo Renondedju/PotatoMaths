@@ -1,7 +1,7 @@
 /*
  *  MIT License
  *
- *  Copyright (c) 2019 Renondedju, 6xray
+ *  Copyright (c) 2019-2020 Basile Combet
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -39,18 +39,18 @@
 template <typename TStrongTypedef>
 struct Less
 {
-	/**
-	 * \brief Less than operator
+    /**
+     * \brief Less than operator
      *
      * \param in_lhs Left-hand side operand
      * \param in_rhs Right-hand side operand
      *
      * \return True if the left operand is lesser than the right operand, false otherwise.
-	 */
+     */
     friend constexpr bool operator<(TStrongTypedef const& in_lhs, TStrongTypedef const& in_rhs) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
 
         return static_cast<Type const&>(in_lhs) < static_cast<Type const&>(in_rhs);
-	}
+    }
 };

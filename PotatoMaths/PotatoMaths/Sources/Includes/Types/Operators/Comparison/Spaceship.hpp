@@ -1,7 +1,7 @@
 /*
  *  MIT License
  *
- *  Copyright (c) 2019 Renondedju, 6xray
+ *  Copyright (c) 2019-2020 Basile Combet
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -39,5 +39,5 @@
 template <typename TStrongTypedef>
 struct Spaceship
 {
-	// Not yet implemented (C++20)
+    // Not yet implemented (C++20)
 };

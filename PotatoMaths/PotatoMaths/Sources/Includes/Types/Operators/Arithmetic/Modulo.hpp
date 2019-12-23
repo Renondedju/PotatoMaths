@@ -1,7 +1,7 @@
 /*
  *  MIT License
  *
- *  Copyright (c) 2019 Renondedju, 6xray
+ *  Copyright (c) 2019-2020 Basile Combet
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -39,38 +39,38 @@
 template <typename TStrongTypedef>
 struct Modulo
 {
-	/**
-	 * \brief Modulo assignment operator
+    /**
+     * \brief Modulo assignment operator
      *
      * \param in_lhs Left-hand side operand
      * \param in_rhs Right-hand side operand
      *
-	 * \return Reference to the instance
-	 */
-	friend constexpr TStrongTypedef& operator%=(TStrongTypedef&       in_lhs,
-	                                            TStrongTypedef const& in_rhs) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
-		
+     * \return Reference to the instance
+     */
+    friend constexpr TStrongTypedef& operator%=(TStrongTypedef&       in_lhs,
+                                                TStrongTypedef const& in_rhs) noexcept
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
+        
         static_cast<Type&>(in_lhs) %= static_cast<Type const&>(in_rhs);
 
-		return in_lhs;
-	}
+        return in_lhs;
+    }
 
-	/**
-	 * \brief Modulo operator
+    /**
+     * \brief Modulo operator
      *
      * \param in_lhs Left-hand side operand
      * \param in_rhs Right-hand side operand
      *
      * \return Value of the new instance
-	 */
-	friend constexpr TStrongTypedef operator%(TStrongTypedef const& in_lhs,
-	                                          TStrongTypedef const& in_rhs) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
-		
-		return TStrongTypedef(static_cast<Type const&>(in_lhs) %
-							  static_cast<Type const&>(in_rhs));
-	}
+     */
+    friend constexpr TStrongTypedef operator%(TStrongTypedef const& in_lhs,
+                                              TStrongTypedef const& in_rhs) noexcept
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
+        
+        return TStrongTypedef(static_cast<Type const&>(in_lhs) %
+                              static_cast<Type const&>(in_rhs));
+    }
 };

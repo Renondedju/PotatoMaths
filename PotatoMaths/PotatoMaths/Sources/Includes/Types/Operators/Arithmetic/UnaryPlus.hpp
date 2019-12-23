@@ -1,7 +1,7 @@
 /*
  *  MIT License
  *
- *  Copyright (c) 2019 Renondedju, 6xray
+ *  Copyright (c) 2019-2020 Basile Combet
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -39,17 +39,17 @@
 template <typename TStrongTypedef>
 struct UnaryPlus
 {
-	/**
-	 * \brief UnaryPlus operator
+    /**
+     * \brief UnaryPlus operator
      *
      * \param in_instance Operand instance
      *
      * \return Value of the new instance
-	 */
-	friend constexpr TStrongTypedef operator+(TStrongTypedef const& in_instance) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
+     */
+    friend constexpr TStrongTypedef operator+(TStrongTypedef const& in_instance) noexcept
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
 
-		return TStrongTypedef(+static_cast<Type const&>(in_instance));
-	}
+        return TStrongTypedef(+static_cast<Type const&>(in_instance));
+    }
 };

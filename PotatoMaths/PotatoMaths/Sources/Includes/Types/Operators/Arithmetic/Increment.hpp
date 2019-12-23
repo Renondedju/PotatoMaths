@@ -1,7 +1,7 @@
 /*
  *  MIT License
  *
- *  Copyright (c) 2019 Renondedju, 6xray
+ *  Copyright (c) 2019-2020 Basile Combet
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -39,31 +39,31 @@
 template <typename TStrongTypedef>
 struct Increment
 {
-	/**
-	 * \brief Pre-Increment operator
+    /**
+     * \brief Pre-Increment operator
      *
      * \param in_instance Operand instance
      *
-	 * \return Reference to the new instance
-	 */
-	friend constexpr TStrongTypedef& operator++(TStrongTypedef& in_instance) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
+     * \return Reference to the new instance
+     */
+    friend constexpr TStrongTypedef& operator++(TStrongTypedef& in_instance) noexcept
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
 
         return ++static_cast<Type&>(in_instance);
-	}
+    }
 
-	/**
-	 * \brief Post-Increment operator
+    /**
+     * \brief Post-Increment operator
      *
      * \param in_instance Operand instance
      *
      * \return Value of the new instance
-	 */
-	friend constexpr TStrongTypedef operator++(TStrongTypedef& in_instance, int) noexcept
-	{
-		using Type = internal::UnderlyingType<TStrongTypedef>;
+     */
+    friend constexpr TStrongTypedef operator++(TStrongTypedef& in_instance, int) noexcept
+    {
+        using Type = internal::UnderlyingType<TStrongTypedef>;
 
         return static_cast<Type&>(in_instance)++;
-	}
+    }
 };
