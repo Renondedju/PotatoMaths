@@ -31,7 +31,7 @@
  * \tparam TType Matrix data type
  */
 template<typename TType = float>
-class Matrix4x1 final : public GenericMatrix<4, 1, TType>
+class __declspec(novtable) Matrix4x1 final : public GenericMatrix<4, 1, TType>
 {
     public:
 
@@ -63,6 +63,6 @@ class Matrix4x1 final : public GenericMatrix<4, 1, TType>
 };
 
 // Matrix specializations
+using Matrix4x1i = Matrix4x1<int>;
 using Matrix4x1f = Matrix4x1<float>;
 using Matrix4x1d = Matrix4x1<double>;
-using Matrix4x1i = Matrix4x1<int>;

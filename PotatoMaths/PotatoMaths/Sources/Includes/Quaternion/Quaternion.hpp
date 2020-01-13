@@ -24,6 +24,9 @@
 
 #pragma once
 
+#pragma warning(push)
+#pragma warning(disable : 4201) // Warning C4201 nonstandard extension used: nameless struct/union
+
 #include "Numerics/Numerics.hpp"
 
 #include "Angles/Degrees.hpp"
@@ -278,4 +281,10 @@ class Quaternion<TType>
         #pragma endregion
 };
 
+#pragma warning(pop)
+
 #include "Quaternion/Quaternion.inl"
+
+// Pre instantiation
+extern template class Quaternion<float>;
+extern template class Quaternion<double>;

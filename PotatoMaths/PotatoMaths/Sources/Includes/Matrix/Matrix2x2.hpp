@@ -31,7 +31,7 @@
  * \tparam TType Matrix data type
  */
 template<typename TType = float>
-class Matrix2x2 final : public SquareMatrix<2, TType>
+class __declspec(novtable) Matrix2x2 final : public SquareMatrix<2, TType>
 {
     private:
 
@@ -71,6 +71,6 @@ class Matrix2x2 final : public SquareMatrix<2, TType>
 };
 
 // Matrix specializations
+using Matrix2x2i = Matrix2x2<int>;
 using Matrix2x2f = Matrix2x2<float>;
 using Matrix2x2d = Matrix2x2<double>;
-using Matrix2x2i = Matrix2x2<int>;

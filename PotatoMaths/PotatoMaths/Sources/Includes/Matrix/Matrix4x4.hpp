@@ -69,6 +69,6 @@ class __declspec(novtable) Matrix4x4 final : public SquareMatrix<4, TType>
 };
 
 // Matrix specializations
+using Matrix4x4i = Matrix4x4<int>;
 using Matrix4x4f = Matrix4x4<float>;
 using Matrix4x4d = Matrix4x4<double>;
-using Matrix4x4i = Matrix4x4<int>;

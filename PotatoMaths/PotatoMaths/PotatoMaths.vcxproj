@@ -81,7 +81,12 @@
     <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Src\Main.cpp" />
+    <ClCompile Include="Sources\Src\Angles\Degrees.cpp" />
+    <ClCompile Include="Sources\Src\Angles\Radians.cpp" />
+    <ClCompile Include="Sources\Src\Quaternion\Quaternion.cpp" />
+    <ClCompile Include="Sources\Src\Vector\Vector2.cpp" />
+    <ClCompile Include="Sources\Src\Vector\Vector3.cpp" />
+    <ClCompile Include="Sources\Src\Vector\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Angles\Angle.inl" />

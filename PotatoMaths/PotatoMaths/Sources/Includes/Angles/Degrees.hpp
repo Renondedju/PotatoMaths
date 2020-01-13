@@ -53,3 +53,8 @@ constexpr RelativeAngle<EAngleUnit::Degree> operator"" _rdeg(long double in_angl
 constexpr RelativeAngle<EAngleUnit::Degree> operator"" _rdeg(size_t      in_angle) noexcept;
 
 #include "Angles/Degree.inl"
+
+// Pre instantiation
+extern template class Angle<EAngleUnit::Degree, int>;
+extern template class Angle<EAngleUnit::Degree, float>;
+extern template class Angle<EAngleUnit::Degree, double>;

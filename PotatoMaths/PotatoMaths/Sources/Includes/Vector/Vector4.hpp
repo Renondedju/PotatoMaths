@@ -37,7 +37,7 @@ template <typename TType> class Vector3;
  * \tparam TType Underlying type
  */
 template <typename TType = float>
-class Vector4 final : public BaseVector<Vector4<TType>, 4, TType>
+class __declspec(novtable) Vector4 final : public BaseVector<Vector4<TType>, 4, TType>
 {
     public:
 
@@ -105,6 +105,11 @@ class Vector4 final : public BaseVector<Vector4<TType>, 4, TType>
 
 #include "Vector/Vector4.inl"
 
-using Vector4f = Vector4<float>;
-using Vector4d = Vector4<double>;
-using Vector4i = Vector4<int>;
+using Vector4I = Vector4<int>;
+using Vector4F = Vector4<float>;
+using Vector4D = Vector4<double>;
+
+// Pre instantiation
+extern template class Vector4<int>;
+extern template class Vector4<float>;
+extern template class Vector4<double>;

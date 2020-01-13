@@ -32,7 +32,7 @@
  * \tparam TType Underlying type
  */
 template <size_t TSize, typename TType = float>
-class GenericVector final : public BaseVector<GenericVector<TSize, TType>, TSize, TType>
+class __declspec(novtable) GenericVector final : public BaseVector<GenericVector<TSize, TType>, TSize, TType>
 {
     public:
 

@@ -53,3 +53,8 @@ constexpr RelativeAngle<EAngleUnit::Radian> operator"" _rrad(long double in_angl
 constexpr RelativeAngle<EAngleUnit::Radian> operator"" _rrad(size_t      in_angle) noexcept;
 
 #include "Angles/Radians.inl"
+
+// Pre instantiation
+extern template class Angle<EAngleUnit::Radian, int>;
+extern template class Angle<EAngleUnit::Radian, float>;
+extern template class Angle<EAngleUnit::Radian, double>;
