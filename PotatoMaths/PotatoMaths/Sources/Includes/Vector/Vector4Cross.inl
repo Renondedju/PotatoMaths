@@ -22,8 +22,18 @@
  * SOFTWARE.
  */
 
-#include "Quaternion/Quaternion.hpp"
+template <typename TType>
+constexpr Vector4<TType>::operator Vector2<TType>() const noexcept
+{
+    TType divisor = w == 0 ? 1 : w;
 
-// Pre instantiation
-template class Quaternion<float>;
-template class Quaternion<double>;
+    return Vector2<TType>(x / divisor, y / divisor);
+}
+
+template <typename TType>
+constexpr Vector4<TType>::operator Vector3<TType>() const noexcept
+{
+    TType divisor = w == 0 ? 1 : w;
+
+    return Vector3<TType>(x / divisor, y / divisor, z / divisor);
+}

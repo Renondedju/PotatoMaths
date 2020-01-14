@@ -76,9 +76,12 @@
     <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
     <ClInclude Include="Sources\Includes\Vector\BaseVector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector3Cross.inl" />
     <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
+    <ClInclude Include="Sources\Includes\Vector\Vector4Cross.inl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Src\Angles\Degrees.cpp" />
@@ -102,6 +105,7 @@
     <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
     <None Include="Sources\Includes\Vector\Vector2.inl" />
+    <None Include="Sources\Includes\Vector\Vector2Cross.inl" />
     <None Include="Sources\Includes\Vector\Vector3.inl" />
     <None Include="Sources\Includes\Vector\Vector4.inl" />
   </ItemGroup>

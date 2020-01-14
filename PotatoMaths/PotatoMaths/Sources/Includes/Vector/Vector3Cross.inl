@@ -22,8 +22,14 @@
  * SOFTWARE.
  */
 
-#include "Quaternion/Quaternion.hpp"
+template <typename TType>
+constexpr Vector3<TType>::operator Vector2<TType>() const noexcept
+{
+    return Vector2<TType>(x, y);
+}
 
-// Pre instantiation
-template class Quaternion<float>;
-template class Quaternion<double>;
+template <typename TType>
+constexpr Vector3<TType>::operator Vector4<TType>() const noexcept
+{
+    return Vector4<TType>(x, y, z, static_cast<TType>(1));
+}

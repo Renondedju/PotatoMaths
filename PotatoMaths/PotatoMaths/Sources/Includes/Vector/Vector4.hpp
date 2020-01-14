@@ -24,6 +24,10 @@
 
 #pragma once
 
+#ifndef POTATO_INTERNAL_VECTOR_INCLUDE_PASS
+    #error Vector4.hpp is meant to be included from the Vector/Vector.hpp file
+#endif
+
 #pragma warning(push)
 #pragma warning(disable : 4201) // Warning C4201 nonstandard extension used: nameless struct/union
 
@@ -95,8 +99,8 @@ class __declspec(novtable) Vector4 final : public BaseVector<Vector4<TType>, 4, 
         constexpr Vector4& operator=(Vector4 const& in_other) noexcept = default;
         constexpr Vector4& operator=(Vector4&&	    in_other) noexcept = default;
 
-        explicit operator Vector2<TType>() const noexcept;
-        explicit operator Vector3<TType>() const noexcept;
+        explicit constexpr operator Vector2<TType>() const noexcept;
+        explicit constexpr operator Vector3<TType>() const noexcept;
 
         #pragma endregion
 };

@@ -22,8 +22,19 @@
  * SOFTWARE.
  */
 
-#include "Quaternion/Quaternion.hpp"
+#pragma once
 
-// Pre instantiation
-template class Quaternion<float>;
-template class Quaternion<double>;
+#define POTATO_INTERNAL_VECTOR_INCLUDE_PASS
+
+#include "Vector/Vector2.hpp"
+#include "Vector/Vector3.hpp"
+#include "Vector/Vector4.hpp"
+
+// Every vector class is now defined, we can define cross vector methods and operators
+// such as the cast operator
+
+#include "Vector/Vector2Cross.inl"
+#include "Vector/Vector3Cross.inl"
+#include "Vector/Vector4Cross.inl"
+
+#undef POTATO_INTERNAL_VECTOR_INCLUDE_PASS

@@ -33,15 +33,3 @@ constexpr Vector3<TType>::Vector3(TType const in_x, TType const in_y, TType cons
     y {in_y},
     z {in_z}
 {}
-
-template <typename TType>
-Vector3<TType>::operator Vector2<TType>() const noexcept
-{
-    return Vector2<TType>(x, y);
-}
-
-template <typename TType>
-Vector3<TType>::operator Vector4<TType>() const noexcept
-{
-    return Vector4<TType>(x, y, z, static_cast<TType>(1));
-}

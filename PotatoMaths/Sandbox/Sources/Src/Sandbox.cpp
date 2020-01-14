@@ -24,16 +24,17 @@
 
 #include <iostream>
 
-#include <Matrix/Matrix3x3.hpp>
-#include <Vector/Vector3.hpp>
-
+#include "Vector/Vector.hpp"
 #include "Benchmark.hpp"
 
 int main(int, char const**)
 {
-    Matrix3x3f const matrix(25, 5, 1, 64, 8, 1, 144, 12, 1);
+    Vector2F test2;
+    Vector3F const test3(1, 2, 3);
 
-    std::cout << matrix.GetInverted() << std::endl;
+    test2 = static_cast<Vector2F>(test3);
+
+    std::cout << test2 << std::endl;
 
     return EXIT_SUCCESS;
 }

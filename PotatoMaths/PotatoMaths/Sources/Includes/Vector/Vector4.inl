@@ -48,17 +48,3 @@ Vector4<TType>& Vector4<TType>::Homogenize() noexcept
 
     return *this;
 }
-
-template <typename TType>
-Vector4<TType>::operator Vector2<TType>() const noexcept
-{
-    Homogenize();
-    return Vector2<TType>(x, y);
-}
-
-template <typename TType>
-Vector4<TType>::operator Vector3<TType>() const noexcept
-{
-    Homogenize();
-    return Vector3<TType>(x, y, z);
-}
