@@ -72,8 +72,8 @@ class __declspec(novtable) Vector2 final : public BaseVector<Vector2<TType>, 2, 
         constexpr Vector2(TType in_x, TType in_y) noexcept;
         constexpr Vector2()                       noexcept;
 
-        constexpr Vector2(Vector2 const& in_matrix) = default;
-        constexpr Vector2(Vector2&&      in_matrix) = default;
+        constexpr Vector2(Vector2 const& in_vector) = default;
+        constexpr Vector2(Vector2&&      in_vector) = default;
                  ~Vector2()                         = default;
 
         using Parent::Parent;
@@ -95,8 +95,8 @@ class __declspec(novtable) Vector2 final : public BaseVector<Vector2<TType>, 2, 
 
 #include "Vector/Vector2.inl"
 
-using Vector2I = Vector2<int>;
-using Vector2F = Vector2<float>;
+using Vector2i = Vector2<int>;
+using Vector2f = Vector2<float>;
 using Vector2d = Vector2<double>;
 
 // Pre instantiation

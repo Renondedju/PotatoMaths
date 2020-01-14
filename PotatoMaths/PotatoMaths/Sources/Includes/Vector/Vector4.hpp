@@ -76,8 +76,8 @@ class __declspec(novtable) Vector4 final : public BaseVector<Vector4<TType>, 4, 
         constexpr Vector4(TType in_x, TType in_y, TType in_z, TType in_w) noexcept;
         constexpr Vector4()                                               noexcept;
 
-        constexpr Vector4(Vector4 const& in_matrix) = default;
-        constexpr Vector4(Vector4&&      in_matrix) = default;
+        constexpr Vector4(Vector4 const& in_vector) = default;
+        constexpr Vector4(Vector4&&      in_vector) = default;
                  ~Vector4()                         = default;
 
         using Parent::Parent;
@@ -109,9 +109,9 @@ class __declspec(novtable) Vector4 final : public BaseVector<Vector4<TType>, 4, 
 
 #include "Vector/Vector4.inl"
 
-using Vector4I = Vector4<int>;
-using Vector4F = Vector4<float>;
-using Vector4D = Vector4<double>;
+using Vector4i = Vector4<int>;
+using Vector4f = Vector4<float>;
+using Vector4d = Vector4<double>;
 
 // Pre instantiation
 extern template class Vector4<int>;

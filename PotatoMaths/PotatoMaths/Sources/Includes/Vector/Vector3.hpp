@@ -74,8 +74,8 @@ class __declspec(novtable) Vector3 final : public BaseVector<Vector3<TType>, 3, 
         constexpr Vector3(TType in_x, TType in_y, TType in_z) noexcept;
         constexpr Vector3()                                   noexcept;
 
-        constexpr Vector3(Vector3 const& in_matrix) = default;
-        constexpr Vector3(Vector3&&      in_matrix) = default;
+        constexpr Vector3(Vector3 const& in_vector) = default;
+        constexpr Vector3(Vector3&&      in_vector) = default;
                  ~Vector3()                         = default;
 
         using Parent::Parent;
@@ -97,9 +97,9 @@ class __declspec(novtable) Vector3 final : public BaseVector<Vector3<TType>, 3, 
 
 #include "Vector/Vector3.inl"
 
-using Vector3I = Vector3<int>;
-using Vector3F = Vector3<float>;
-using Vector3D = Vector3<double>;
+using Vector3i = Vector3<int>;
+using Vector3f = Vector3<float>;
+using Vector3d = Vector3<double>;
 
 // Pre instantiation
 extern template class Vector3<int>;

@@ -29,10 +29,10 @@
 
 int main(int, char const**)
 {
-    Vector2F test2;
-    Vector3F const test3(1, 2, 3);
+    Vector2f test2;
+    Vector3f const test3(1, 2, 3);
 
-    test2 = static_cast<Vector2F>(test3);
+    test2 = static_cast<Vector2f>(test3);
 
     std::cout << test2 << std::endl;
 
