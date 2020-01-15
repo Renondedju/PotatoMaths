@@ -24,8 +24,6 @@
 
 #pragma once
 
-#include <cmath>
-
 #include "Angles/Radians.hpp"
 #include "Meta/TypeSubstitution.hpp"
 
@@ -38,7 +36,7 @@
  * \return Absolute value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Abs(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Abs(TType in_value) noexcept;
 
 /**
  * \brief Power function
@@ -50,7 +48,7 @@ constexpr TType Abs(TType in_value) noexcept;
  * \return Empowered value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Pow(TType in_value, TType in_exponent) noexcept;
+[[nodiscard]] constexpr TType Pow(TType in_value, TType in_exponent) noexcept;
 
 /**
  * \brief Converts a value given to the nearest greater or equal integer.
@@ -61,7 +59,7 @@ constexpr TType Pow(TType in_value, TType in_exponent) noexcept;
  * \return Ceiled value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Ceil(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Ceil(TType in_value) noexcept;
 
 /**
  * \brief Clamps the value given between two value given min and max included
@@ -74,7 +72,7 @@ constexpr TType Ceil(TType in_value) noexcept;
  * \return Clamped value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Clamp(TType in_value, TType in_min, TType in_max) noexcept;
+[[nodiscard]] constexpr TType Clamp(TType in_value, TType in_min, TType in_max) noexcept;
 
 /**
  * \brief Clamps the value given between 0 and 1 included
@@ -85,7 +83,7 @@ constexpr TType Clamp(TType in_value, TType in_min, TType in_max) noexcept;
  * \return Clamped value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Clamp01(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Clamp01(TType in_value) noexcept;
 
 /**
  * \brief Converts a value to the nearest integer. Rounds up when the fraction is .5
@@ -96,7 +94,7 @@ constexpr TType Clamp01(TType in_value) noexcept;
  * \return Rounded value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Round(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Round(TType in_value) noexcept;
 
 /**
  * \brief Converts a value given to the nearest less or equal integer.
@@ -107,7 +105,7 @@ constexpr TType Round(TType in_value) noexcept;
  * \return Floored value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Floor(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Floor(TType in_value) noexcept;
 
 /**
  * \brief Compute a value with the magnitude of first argument and the sign of the second.
@@ -119,7 +117,7 @@ constexpr TType Floor(TType in_value) noexcept;
  * \return Signed value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType CopySign(TType in_value, TType in_sign) noexcept;
+[[nodiscard]] constexpr TType CopySign(TType in_value, TType in_sign) noexcept;
 
 /**
  * \brief Compute the cosine of an angle given in radians
@@ -130,7 +128,7 @@ constexpr TType CopySign(TType in_value, TType in_sign) noexcept;
  * \return Cosine of in_value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
+[[nodiscard]] constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
 
 /**
  * \brief Compute the arc cosine of an angle given in radians
@@ -141,7 +139,7 @@ constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
  * \return Arc cosine of in_value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
+[[nodiscard]] constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
 
 /**
  * \brief Compute the sine of an angle given in radians
@@ -152,7 +150,7 @@ constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
  * \return Sinus of in_value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Sin(GenericRadians<TType> in_value) noexcept;
+[[nodiscard]] constexpr TType Sin(GenericRadians<TType> in_value) noexcept;
 
 /**
  * \brief Compute the tangent of an angle given in radians
@@ -163,7 +161,7 @@ constexpr TType Sin(GenericRadians<TType> in_value) noexcept;
  * \return The tangent of in_value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Tan(GenericRadians<TType> in_value) noexcept;
+[[nodiscard]] constexpr TType Tan(GenericRadians<TType> in_value) noexcept;
 
 /**
  * \brief Computes the exponential raised to the specified power
@@ -174,7 +172,7 @@ constexpr TType Tan(GenericRadians<TType> in_value) noexcept;
  * \return Exponential value of in_value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Exp(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Exp(TType in_value) noexcept;
 
 /**
  * \brief Compute the base 2 raised to the power given
@@ -185,7 +183,7 @@ constexpr TType Exp(TType in_value) noexcept;
  * \return Result of two raised to the power of in_value.
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Exp2(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Exp2(TType in_value) noexcept;
 
 /**
  * \brief Compute the modulo of in_value by in_modulo
@@ -199,7 +197,7 @@ constexpr TType Exp2(TType in_value) noexcept;
  * \return Remainder of in_value / in_modulo.
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Mod(TType in_value, TType in_modulo) noexcept;
+[[nodiscard]] constexpr TType Mod(TType in_value, TType in_modulo) noexcept;
 
 /**
  * \brief Returns the fractional part of the given value.
@@ -210,7 +208,7 @@ constexpr TType Mod(TType in_value, TType in_modulo) noexcept;
  * \return Fractional part of in_value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Frac(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Frac(TType in_value) noexcept;
 
 /**
  * \brief Compute the square root of the given value
@@ -221,7 +219,7 @@ constexpr TType Frac(TType in_value) noexcept;
  * \return Square root of in_value.
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Sqrt(TType in_value) noexcept;
+[[nodiscard]] constexpr TType Sqrt(TType in_value) noexcept;
 
 /**
  * \brief Compute the inverse square root of the given value
@@ -232,7 +230,7 @@ constexpr TType Sqrt(TType in_value) noexcept;
  * \return Inverse square root of in_value.
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType InvSqrt(TType in_value) noexcept;
+[[nodiscard]] constexpr TType InvSqrt(TType in_value) noexcept;
 
 /**
  * \brief Check if the given value is a finite value.
@@ -245,7 +243,7 @@ constexpr TType InvSqrt(TType in_value) noexcept;
  * \return True if the value is finite, false otherwise
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr bool IsFinite(TType in_value) noexcept;
+[[nodiscard]] constexpr bool IsFinite(TType in_value) noexcept;
 
 /**
  * \brief Check if the given value is a infinite value.
@@ -256,7 +254,7 @@ constexpr bool IsFinite(TType in_value) noexcept;
  * \return True if the value is infinite, false otherwise
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr bool IsInfinite(TType in_value) noexcept;
+[[nodiscard]] constexpr bool IsInfinite(TType in_value) noexcept;
 
 /**
  * \brief Check if the value given is not a number (NaN)
@@ -267,7 +265,7 @@ constexpr bool IsInfinite(TType in_value) noexcept;
  * \return True if the value is Nan, false otherwise
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr bool IsNan(TType in_value) noexcept;
+[[nodiscard]] constexpr bool IsNan(TType in_value) noexcept;
 
 /**
  * \brief Computes a linear interpolation between two value
@@ -281,7 +279,7 @@ constexpr bool IsNan(TType in_value) noexcept;
  * \return Interpolated value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Lerp(TType in_source, TType in_destination, TType in_ratio) noexcept;
+[[nodiscard]] constexpr TType Lerp(TType in_source, TType in_destination, TType in_ratio) noexcept;
 
 /**
  * \brief PingPongs in_value, so that it is never larger than in_range and never smaller than 0.0.
@@ -295,7 +293,7 @@ constexpr TType Lerp(TType in_source, TType in_destination, TType in_ratio) noex
  * \return Transformed value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType PingPong(TType in_value, TType in_range) noexcept;
+[[nodiscard]] constexpr TType PingPong(TType in_value, TType in_range) noexcept;
 
 /**
  * \brief Loops a given value on a given range
@@ -307,7 +305,7 @@ constexpr TType PingPong(TType in_value, TType in_range) noexcept;
  * \return Looped value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Repeat(TType in_value, TType in_range) noexcept;
+[[nodiscard]] constexpr TType Repeat(TType in_value, TType in_range) noexcept;
 
 /**
  * \brief Returns the minimum of the 2 passed values
@@ -319,7 +317,7 @@ constexpr TType Repeat(TType in_value, TType in_range) noexcept;
  * \return Minimum value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
+[[nodiscard]] constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
 
 /**
  * \brief  Returns the maximum of the 2 passed values
@@ -331,6 +329,88 @@ constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
  * \return Maximum value
  */
 template <typename TType, IsArithmetic<TType> = true>
-constexpr TType Max(TType in_lhs, TType in_rhs) noexcept;
+[[nodiscard]] constexpr TType Max(TType in_lhs, TType in_rhs) noexcept;
 
 #include "Common/Numerics.inl"
+
+#ifdef POTATO_ENABLE_TEMPLATE_PREGEN
+
+extern template float  Abs(float)  noexcept;
+extern template double Abs(double) noexcept;
+
+extern template float  Pow(float , float ) noexcept;
+extern template double Pow(double, double) noexcept;
+
+extern template float  Ceil(float)  noexcept;
+extern template double Ceil(double) noexcept;
+
+extern template float  Clamp(float , float , float)  noexcept;
+extern template double Clamp(double, double, double) noexcept;
+
+extern template float  Clamp01(float)  noexcept;
+extern template double Clamp01(double) noexcept;
+
+extern template float  Round(float)  noexcept;
+extern template double Round(double) noexcept;
+
+extern template float  Floor(float)  noexcept;
+extern template double Floor(double) noexcept;
+
+extern template float  CopySign(float , float)  noexcept;
+extern template double CopySign(double, double) noexcept;
+
+extern template float  Cos(GenericRadians<float>)  noexcept;
+extern template double Cos(GenericRadians<double>) noexcept;
+
+extern template float  ACos(GenericRadians<float>)  noexcept;
+extern template double ACos(GenericRadians<double>) noexcept;
+
+extern template float  Sin(GenericRadians<float>)  noexcept;
+extern template double Sin(GenericRadians<double>) noexcept;
+
+extern template float  Tan(GenericRadians<float>)  noexcept;
+extern template double Tan(GenericRadians<double>) noexcept;
+
+extern template float  Exp(float)  noexcept;
+extern template double Exp(double) noexcept;
+
+extern template float  Exp2(float)  noexcept;
+extern template double Exp2(double) noexcept;
+
+extern template float  Mod(float , float)  noexcept;
+extern template double Mod(double, double) noexcept;
+
+extern template float  Frac(float)  noexcept;
+extern template double Frac(double) noexcept;
+
+extern template float  Sqrt(float)  noexcept;
+extern template double Sqrt(double) noexcept;
+
+extern template float  InvSqrt(float)  noexcept;
+extern template double InvSqrt(double) noexcept;
+
+extern template bool IsFinite(float)  noexcept;
+extern template bool IsFinite(double) noexcept;
+
+extern template bool IsInfinite(float)  noexcept;
+extern template bool IsInfinite(double) noexcept;
+
+extern template bool IsNan(float)  noexcept;
+extern template bool IsNan(double) noexcept;
+
+extern template float  Lerp(float , float , float)  noexcept;
+extern template double Lerp(double, double, double) noexcept;
+
+extern template float  PingPong(float , float)  noexcept;
+extern template double PingPong(double, double) noexcept;
+
+extern template float  Repeat(float , float)  noexcept;
+extern template double Repeat(double, double) noexcept;
+
+extern template float  Min(float , float)  noexcept;
+extern template double Min(double, double) noexcept;
+
+extern template float  Max(float , float)  noexcept;
+extern template double Max(double, double) noexcept;
+
+#endif

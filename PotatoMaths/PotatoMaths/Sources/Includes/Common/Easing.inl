@@ -22,26 +22,29 @@
  * SOFTWARE.
  */
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType LinearInterpolation(TType in_p)
+#include "Common/Numerics.hpp"
+#include "Common/Constants.hpp"
+
+template <typename TType, IsFloatingPoint<TType>>
+TType LinearInterpolation(TType in_p) noexcept
 {
     return in_p;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuadraticEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuadraticEaseIn(TType in_p) noexcept
 {
     return in_p * in_p;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuadraticEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuadraticEaseOut(TType in_p) noexcept
 {
     return -(in_p * (in_p - 2.0f));
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuadraticEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuadraticEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 2.0f * in_p * in_p;
@@ -50,21 +53,21 @@ TType QuadraticEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType CubicEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType CubicEaseIn(TType in_p) noexcept
 {
     return in_p * in_p * in_p;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType CubicEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType CubicEaseOut(TType in_p) noexcept
 {
     TType f = (in_p - 1.0f);
     return f * f * f + 1.0f;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType CubicEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType CubicEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 4.0f * in_p * in_p * in_p;
@@ -74,21 +77,21 @@ TType CubicEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuarticEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuarticEaseIn(TType in_p) noexcept
 {
     return in_p * in_p * in_p * in_p;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuarticEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuarticEaseOut(TType in_p) noexcept
 {
     TType f = (in_p - 1.0f);
     return f * f * f * (1.0f - in_p) + 1.0f;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuarticEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuarticEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 8.0f * in_p * in_p * in_p * in_p;
@@ -98,21 +101,21 @@ TType QuarticEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuinticEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuinticEaseIn(TType in_p) noexcept
 {
     return in_p * in_p * in_p * in_p * in_p;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuinticEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuinticEaseOut(TType in_p) noexcept
 {
     TType f = (in_p - 1.0f);
     return f * f * f * f * f + 1.0f;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType QuinticEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType QuinticEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 16.0f * in_p * in_p * in_p * in_p * in_p;
@@ -122,39 +125,39 @@ TType QuinticEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType SineEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType SineEaseIn(TType in_p) noexcept
 {
     return Sin<TType>((in_p - 1.0f) * POTATO_CONSTANTS_PI_2) + 1.0f;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType SineEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType SineEaseOut(TType in_p) noexcept
 {
     return Sin<TType>(in_p * POTATO_CONSTANTS_PI_2);
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType SineEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType SineEaseInOut(TType in_p) noexcept
 {
     return 0.5f * (1.0f - Cos<TType>(in_p * POTATO_CONSTANTS_PI));
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType CircularEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType CircularEaseIn(TType in_p) noexcept
 {
     return 1.0f - Sqrt<TType>(1.0f - (in_p * in_p));
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType CircularEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType CircularEaseOut(TType in_p) noexcept
 {
     return Sqrt<TType>((2.0f - in_p) * in_p);
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType CircularEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType CircularEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 0.5f * (1.0f - Sqrt<TType>(1.0f - 4.0f * (in_p * in_p)));
@@ -163,20 +166,20 @@ TType CircularEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType ExponentialEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType ExponentialEaseIn(TType in_p) noexcept
 {
     return (in_p == 0.0f) ? in_p : Pow<TType>(2.0f, 10.0f * (in_p - 1.0f));
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType ExponentialEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType ExponentialEaseOut(TType in_p) noexcept
 {
     return (in_p == 1.0f) ? in_p : 1.0f - Pow<TType>(2.0f, -10.0f * in_p);
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType ExponentialEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType ExponentialEaseInOut(TType in_p) noexcept
 {
     if(in_p == 0.0f || in_p == 1.0f) return in_p;
     
@@ -187,20 +190,20 @@ TType ExponentialEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType ElasticEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType ElasticEaseIn(TType in_p) noexcept
 {
     return Sin<TType>(13.0f * POTATO_CONSTANTS_PI_2 * in_p) * Pow<TType>(2.0f, 10.0f * (in_p - 1.0f));
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType ElasticEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType ElasticEaseOut(TType in_p) noexcept
 {
     return Sin<TType>(-13.0f * POTATO_CONSTANTS_PI_2 * (in_p + 1.0f)) * Pow<TType>(2.0f, -10.0f * in_p) + 1.0f;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType ElasticEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType ElasticEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 0.5f * Sin<TType>(13.0f * POTATO_CONSTANTS_PI_2 * (2.0f * in_p)) * Pow<TType>(2.0f, 10.0f * ((2.0f * in_p) - 1.0f));
@@ -209,21 +212,21 @@ TType ElasticEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType BackEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType BackEaseIn(TType in_p) noexcept
 {
     return in_p * in_p * in_p - in_p * Sin<TType>(in_p * POTATO_CONSTANTS_PI);
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType BackEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType BackEaseOut(TType in_p) noexcept
 {
     TType f = (1.0f - in_p);
     return 1.0f - (f * f * f - f * Sin<TType>(f * POTATO_CONSTANTS_PI));
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType BackEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType BackEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
     {
@@ -236,14 +239,14 @@ TType BackEaseInOut(TType in_p)
 }
 
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType BounceEaseIn(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType BounceEaseIn(TType in_p) noexcept
 {
     return 1.0f - BounceEaseOut<TType>(1.0f - in_p);
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType BounceEaseOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType BounceEaseOut(TType in_p) noexcept
 {
     if(in_p < 4.0f/11.0f)
         return (121.0f * in_p * in_p)/16.0f;
@@ -257,8 +260,8 @@ TType BounceEaseOut(TType in_p)
     return (54.0f/5.0f * in_p * in_p) - (513.0f/25.0f * in_p) + 268.0f/25.0f;
 }
 
-template <typename TType, IsFloatingPoint<TType> = true>
-TType BounceEaseInOut(TType in_p)
+template <typename TType, IsFloatingPoint<TType>>
+TType BounceEaseInOut(TType in_p) noexcept
 {
     if(in_p < 0.5f)
         return 0.5f * BounceEaseIn<TType>(in_p*2.0f);

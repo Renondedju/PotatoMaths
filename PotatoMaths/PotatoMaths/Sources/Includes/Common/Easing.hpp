@@ -24,8 +24,6 @@
 
 #pragma once
 
-#include "Common/Numerics.hpp"
-#include "Common/Constants.hpp"
 #include "Meta/TypeSubstitution.hpp"
 
 // -> Linear interpolation (no easing)
@@ -38,7 +36,7 @@
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType LinearInterpolation(TType in_p);
+[[nodiscard]] TType LinearInterpolation(TType in_p) noexcept;
 
 // -> Quadratic easing: p^2
 
@@ -50,7 +48,7 @@ TType LinearInterpolation(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuadraticEaseIn(TType in_p);
+[[nodiscard]] TType QuadraticEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the parabola y = -x^2 + 2x
@@ -60,7 +58,7 @@ TType QuadraticEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuadraticEaseOut(TType in_p);
+[[nodiscard]] TType QuadraticEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise quadratic
@@ -72,7 +70,7 @@ TType QuadraticEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuadraticEaseInOut(TType in_p);
+[[nodiscard]] TType QuadraticEaseInOut(TType in_p) noexcept;
 
 // -> Cubic easing: p^3
 
@@ -84,7 +82,7 @@ TType QuadraticEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType CubicEaseIn(TType in_p);
+[[nodiscard]] TType CubicEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the cubic y = (x - 1)^3 + 1
@@ -94,7 +92,7 @@ TType CubicEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType CubicEaseOut(TType in_p);
+[[nodiscard]] TType CubicEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise cubic
@@ -106,7 +104,7 @@ TType CubicEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType CubicEaseInOut(TType in_p);
+[[nodiscard]] TType CubicEaseInOut(TType in_p) noexcept;
 
 // -> Quartic easing: p^4
 
@@ -118,7 +116,7 @@ TType CubicEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuarticEaseIn(TType in_p);
+[[nodiscard]] TType QuarticEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the quartic y = 1 - (x - 1)^4
@@ -128,7 +126,7 @@ TType QuarticEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuarticEaseOut(TType in_p);
+[[nodiscard]] TType QuarticEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise quartic
@@ -140,7 +138,7 @@ TType QuarticEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuarticEaseInOut(TType in_p);
+[[nodiscard]] TType QuarticEaseInOut(TType in_p) noexcept;
 
 // -> Quintic easing: p^5
 
@@ -152,7 +150,7 @@ TType QuarticEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuinticEaseIn(TType in_p);
+[[nodiscard]] TType QuinticEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the quintic y = (x - 1)^5 + 1
@@ -162,7 +160,7 @@ TType QuinticEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuinticEaseOut(TType in_p);
+[[nodiscard]] TType QuinticEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise quintic
@@ -174,7 +172,7 @@ TType QuinticEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType QuinticEaseInOut(TType in_p);
+[[nodiscard]] TType QuinticEaseInOut(TType in_p) noexcept;
 
 // -> Sine wave easing: sin(p * PI/2)
 
@@ -186,7 +184,7 @@ TType QuinticEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType SineEaseIn(TType in_p);
+[[nodiscard]] TType SineEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after quarter-cycle of sine wave (different phase)
@@ -196,7 +194,7 @@ TType SineEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType SineEaseOut(TType in_p);
+[[nodiscard]] TType SineEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after half sine wave
@@ -206,7 +204,7 @@ TType SineEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType SineEaseInOut(TType in_p);
+[[nodiscard]] TType SineEaseInOut(TType in_p) noexcept;
 
 // -> Circular easing: sqrt(1 - p^2)
 
@@ -218,7 +216,7 @@ TType SineEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType CircularEaseIn(TType in_p);
+[[nodiscard]] TType CircularEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after shifted quadrant II of unit circle
@@ -228,7 +226,7 @@ TType CircularEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType CircularEaseOut(TType in_p);
+[[nodiscard]] TType CircularEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise circular function
@@ -240,7 +238,7 @@ TType CircularEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType CircularEaseInOut(TType in_p);
+[[nodiscard]] TType CircularEaseInOut(TType in_p) noexcept;
 
 // -> Exponential easing, base 2
 
@@ -252,7 +250,7 @@ TType CircularEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType ExponentialEaseIn(TType in_p);
+[[nodiscard]] TType ExponentialEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the exponential function y = -2^(-10x) + 1
@@ -262,7 +260,7 @@ TType ExponentialEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType ExponentialEaseOut(TType in_p);
+[[nodiscard]] TType ExponentialEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise exponential
@@ -274,7 +272,7 @@ TType ExponentialEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType ExponentialEaseInOut(TType in_p);
+[[nodiscard]] TType ExponentialEaseInOut(TType in_p) noexcept;
 
 // -> Exponentially-damped sine wave easing
 
@@ -286,7 +284,7 @@ TType ExponentialEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType ElasticEaseIn(TType in_p);
+[[nodiscard]] TType ElasticEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the damped sine wave y = sin(-13pi/2*(x + 1))*pow(2, -10x) + 1
@@ -296,7 +294,7 @@ TType ElasticEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType ElasticEaseOut(TType in_p);
+[[nodiscard]] TType ElasticEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise exponentially-damped sine wave:
@@ -308,7 +306,7 @@ TType ElasticEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType ElasticEaseInOut(TType in_p);
+[[nodiscard]] TType ElasticEaseInOut(TType in_p) noexcept;
 
 // -> Overshooting cubic easing
 
@@ -320,7 +318,7 @@ TType ElasticEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType BackEaseIn(TType in_p);
+[[nodiscard]] TType BackEaseIn(TType in_p) noexcept;
 
 /**
  * \brief Modeled after overshooting cubic y = 1-((1-x)^3-(1-x)*sin((1-x)*pi))
@@ -330,7 +328,7 @@ TType BackEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType BackEaseOut(TType in_p);
+[[nodiscard]] TType BackEaseOut(TType in_p) noexcept;
 
 /**
  * \brief Modeled after the piecewise overshooting cubic function:
@@ -342,7 +340,7 @@ TType BackEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType BackEaseInOut(TType in_p);
+[[nodiscard]] TType BackEaseInOut(TType in_p) noexcept;
 
 // -> Exponentially-decaying bounce easing
 
@@ -353,7 +351,7 @@ TType BackEaseInOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType BounceEaseIn(TType in_p);
+[[nodiscard]] TType BounceEaseIn(TType in_p) noexcept;
 
 /**
  * \brief
@@ -362,7 +360,7 @@ TType BounceEaseIn(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType BounceEaseOut(TType in_p);
+[[nodiscard]] TType BounceEaseOut(TType in_p) noexcept;
 
 /**
  * \brief
@@ -371,6 +369,84 @@ TType BounceEaseOut(TType in_p);
  * \return Eased value, contained in the following range [0; 1]
  */
 template <typename TType, IsFloatingPoint<TType> = true>
-TType BounceEaseInOut(TType in_p);
+[[nodiscard]] TType BounceEaseInOut(TType in_p) noexcept;
 
 #include "Common/Easing.inl"
+
+#ifdef POTATO_ENABLE_TEMPLATE_PREGEN
+
+// Template pre generation
+extern template float  LinearInterpolation<float> (float)  noexcept;
+extern template double LinearInterpolation<double>(double) noexcept;
+
+extern template float  QuadraticEaseIn<float> (float)  noexcept;
+extern template double QuadraticEaseIn<double>(double) noexcept;
+extern template float  QuadraticEaseOut<float> (float)  noexcept;
+extern template double QuadraticEaseOut<double>(double) noexcept;
+extern template float  QuadraticEaseInOut<float> (float)  noexcept;
+extern template double QuadraticEaseInOut<double>(double) noexcept;
+
+extern template float  CubicEaseIn<float> (float)  noexcept;
+extern template double CubicEaseIn<double>(double) noexcept;
+extern template float  CubicEaseOut<float> (float)  noexcept;
+extern template double CubicEaseOut<double>(double) noexcept;
+extern template float  CubicEaseInOut<float> (float)  noexcept;
+extern template double CubicEaseInOut<double>(double) noexcept;
+
+extern template float  QuarticEaseIn<float> (float)  noexcept;
+extern template double QuarticEaseIn<double>(double) noexcept;
+extern template float  QuarticEaseOut<float> (float)  noexcept;
+extern template double QuarticEaseOut<double>(double) noexcept;
+extern template float  QuarticEaseInOut<float> (float)  noexcept;
+extern template double QuarticEaseInOut<double>(double) noexcept;
+
+extern template float  QuinticEaseIn<float> (float)  noexcept;
+extern template double QuinticEaseIn<double>(double) noexcept;
+extern template float  QuinticEaseOut<float> (float)  noexcept;
+extern template double QuinticEaseOut<double>(double) noexcept;
+extern template float  QuinticEaseInOut<float> (float)  noexcept;
+extern template double QuinticEaseInOut<double>(double) noexcept;
+
+extern template float  SineEaseIn<float> (float)  noexcept;
+extern template double SineEaseIn<double>(double) noexcept;
+extern template float  SineEaseOut<float> (float)  noexcept;
+extern template double SineEaseOut<double>(double) noexcept;
+extern template float  SineEaseInOut<float> (float)  noexcept;
+extern template double SineEaseInOut<double>(double) noexcept;
+
+extern template float  CircularEaseIn<float> (float)  noexcept;
+extern template double CircularEaseIn<double>(double) noexcept;
+extern template float  CircularEaseOut<float> (float)  noexcept;
+extern template double CircularEaseOut<double>(double) noexcept;
+extern template float  CircularEaseInOut<float> (float)  noexcept;
+extern template double CircularEaseInOut<double>(double) noexcept;
+
+extern template float  ExponentialEaseIn<float> (float)  noexcept;
+extern template double ExponentialEaseIn<double>(double) noexcept;
+extern template float  ExponentialEaseOut<float> (float)  noexcept;
+extern template double ExponentialEaseOut<double>(double) noexcept;
+extern template float  ExponentialEaseInOut<float> (float)  noexcept;
+extern template double ExponentialEaseInOut<double>(double) noexcept;
+
+extern template float  ElasticEaseIn<float> (float)  noexcept;
+extern template double ElasticEaseIn<double>(double) noexcept;
+extern template float  ElasticEaseOut<float> (float)  noexcept;
+extern template double ElasticEaseOut<double>(double) noexcept;
+extern template float  ElasticEaseInOut<float> (float)  noexcept;
+extern template double ElasticEaseInOut<double>(double) noexcept;
+
+extern template float  BackEaseIn<float> (float)  noexcept;
+extern template double BackEaseIn<double>(double) noexcept;
+extern template float  BackEaseOut<float> (float)  noexcept;
+extern template double BackEaseOut<double>(double) noexcept;
+extern template float  BackEaseInOut<float> (float)  noexcept;
+extern template double BackEaseInOut<double>(double) noexcept;
+
+extern template float  BounceEaseIn<float> (float)  noexcept;
+extern template double BounceEaseIn<double>(double) noexcept;
+extern template float  BounceEaseOut<float> (float)  noexcept;
+extern template double BounceEaseOut<double>(double) noexcept;
+extern template float  BounceEaseInOut<float> (float)  noexcept;
+extern template double BounceEaseInOut<double>(double) noexcept;
+
+#endif
