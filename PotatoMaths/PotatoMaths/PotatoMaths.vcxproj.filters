@@ -66,12 +66,13 @@
     <ClInclude Include="Sources\Includes\Vector\BaseVector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Quaternion.hpp" />
-    <ClInclude Include="Sources\Includes\Numerics\Numerics.hpp" />
-    <ClInclude Include="Sources\Includes\Numerics\Constants.hpp" />
     <ClInclude Include="Sources\Includes\Meta\TypeSubstitution.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector.hpp" />
     <ClInclude Include="Sources\Includes\Vector\Vector4Cross.inl" />
     <ClInclude Include="Sources\Includes\Vector\Vector3Cross.inl" />
+    <ClInclude Include="Sources\Includes\Common\Constants.hpp" />
+    <ClInclude Include="Sources\Includes\Common\Numerics.hpp" />
+    <ClInclude Include="Sources\Includes\Common\Easing.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
@@ -87,8 +88,9 @@
     <None Include="Sources\Includes\Vector\Vector4.inl" />
     <None Include="Sources\Includes\Vector\BaseVector.inl" />
     <None Include="Sources\Includes\Vector\GenericVector.inl" />
-    <None Include="Sources\Includes\Numerics\Numerics.inl" />
     <None Include="Sources\Includes\Ext\Vulkan\Quaternion.inl" />
     <None Include="Sources\Includes\Vector\Vector2Cross.inl" />
+    <None Include="Sources\Includes\Common\Numerics.inl" />
+    <None Include="Sources\Includes\Common\Easing.inl" />
   </ItemGroup>
 </Project>

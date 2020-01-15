@@ -32,7 +32,7 @@
 /**
  * \brief Absolute value function
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Value to get the absolute of
  *
  * \return Absolute value
@@ -43,7 +43,7 @@ constexpr TType Abs(TType in_value) noexcept;
 /**
  * \brief Power function
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  * \param in_exponent Exponent
  *
@@ -55,7 +55,7 @@ constexpr TType Pow(TType in_value, TType in_exponent) noexcept;
 /**
  * \brief Converts a value given to the nearest greater or equal integer.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Ceiled value
@@ -66,7 +66,7 @@ constexpr TType Ceil(TType in_value) noexcept;
 /**
  * \brief Clamps the value given between two value given min and max included
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  * \param in_min Minimum value
  * \param in_max Maximum value
@@ -79,7 +79,7 @@ constexpr TType Clamp(TType in_value, TType in_min, TType in_max) noexcept;
 /**
  * \brief Clamps the value given between 0 and 1 included
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Clamped value
@@ -90,7 +90,7 @@ constexpr TType Clamp01(TType in_value) noexcept;
 /**
  * \brief Converts a value to the nearest integer. Rounds up when the fraction is .5
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Rounded value
@@ -101,7 +101,7 @@ constexpr TType Round(TType in_value) noexcept;
 /**
  * \brief Converts a value given to the nearest less or equal integer.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Floored value
@@ -112,7 +112,7 @@ constexpr TType Floor(TType in_value) noexcept;
 /**
  * \brief Compute a value with the magnitude of first argument and the sign of the second.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  * \param in_sign Sign value
  *
@@ -124,7 +124,7 @@ constexpr TType CopySign(TType in_value, TType in_sign) noexcept;
 /**
  * \brief Compute the cosine of an angle given in radians
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Cosine of in_value
@@ -135,7 +135,7 @@ constexpr TType Cos(GenericRadians<TType> in_value) noexcept;
 /**
  * \brief Compute the arc cosine of an angle given in radians
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Arc cosine of in_value
@@ -146,7 +146,7 @@ constexpr TType ACos(GenericRadians<TType> in_value) noexcept;
 /**
  * \brief Compute the sine of an angle given in radians
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Sinus of in_value
@@ -157,7 +157,7 @@ constexpr TType Sin(GenericRadians<TType> in_value) noexcept;
 /**
  * \brief Compute the tangent of an angle given in radians
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return The tangent of in_value
@@ -168,7 +168,7 @@ constexpr TType Tan(GenericRadians<TType> in_value) noexcept;
 /**
  * \brief Computes the exponential raised to the specified power
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Exponential value of in_value
@@ -179,7 +179,7 @@ constexpr TType Exp(TType in_value) noexcept;
 /**
  * \brief Compute the base 2 raised to the power given
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Result of two raised to the power of in_value.
@@ -191,7 +191,7 @@ constexpr TType Exp2(TType in_value) noexcept;
  * \brief Compute the modulo of in_value by in_modulo
  * \note Always returns remainder toward 0, not toward the smaller multiple of in_modulo.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  *
  * \param in_value Input value
  * \param in_modulo Modulo
@@ -204,7 +204,7 @@ constexpr TType Mod(TType in_value, TType in_modulo) noexcept;
 /**
  * \brief Returns the fractional part of the given value.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Fractional part of in_value
@@ -215,7 +215,7 @@ constexpr TType Frac(TType in_value) noexcept;
 /**
  * \brief Compute the square root of the given value
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Square root of in_value.
@@ -226,7 +226,7 @@ constexpr TType Sqrt(TType in_value) noexcept;
 /**
  * \brief Compute the inverse square root of the given value
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return Inverse square root of in_value.
@@ -239,7 +239,7 @@ constexpr TType InvSqrt(TType in_value) noexcept;
  *
  * A finite value is any floating-point value that is neither infinite nor NaN (Not-A-Number).
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return True if the value is finite, false otherwise
@@ -250,7 +250,7 @@ constexpr bool IsFinite(TType in_value) noexcept;
 /**
  * \brief Check if the given value is a infinite value.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return True if the value is infinite, false otherwise
@@ -261,7 +261,7 @@ constexpr bool IsInfinite(TType in_value) noexcept;
 /**
  * \brief Check if the value given is not a number (NaN)
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  *
  * \return True if the value is Nan, false otherwise
@@ -272,7 +272,7 @@ constexpr bool IsNan(TType in_value) noexcept;
 /**
  * \brief Computes a linear interpolation between two value
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  *
  * \param in_source Source number
  * \param in_destination Destination number
@@ -288,7 +288,7 @@ constexpr TType Lerp(TType in_source, TType in_destination, TType in_ratio) noex
  *
  * The returned value will move back and forth between 0 and in_range.
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  * \param in_range Range of the ping pong
  *
@@ -300,7 +300,7 @@ constexpr TType PingPong(TType in_value, TType in_range) noexcept;
 /**
  * \brief Loops a given value on a given range
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_value Input value
  * \param in_range Range of the loop
  *
@@ -312,7 +312,7 @@ constexpr TType Repeat(TType in_value, TType in_range) noexcept;
 /**
  * \brief Returns the minimum of the 2 passed values
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_lhs Left hand side operand
  * \param in_rhs Right hand side operand
  *
@@ -324,7 +324,7 @@ constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
 /**
  * \brief  Returns the maximum of the 2 passed values
  *
- * \tparam TType Type to operate in
+ * \tparam TType Type to operate with
  * \param in_lhs Left hand side operand
  * \param in_rhs Right hand side operand
  *
@@ -333,4 +333,4 @@ constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
 template <typename TType, IsArithmetic<TType> = true>
 constexpr TType Max(TType in_lhs, TType in_rhs) noexcept;
 
-#include "Numerics/Numerics.inl"
+#include "Common/Numerics.inl"

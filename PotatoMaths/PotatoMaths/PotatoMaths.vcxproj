@@ -23,8 +23,9 @@
     <ClInclude Include="Sources\Includes\Angles\Degrees.hpp" />
     <ClInclude Include="Sources\Includes\Angles\EAngleUnit.hpp" />
     <ClInclude Include="Sources\Includes\Angles\Radians.hpp" />
+    <ClInclude Include="Sources\Includes\Common\Easing.hpp" />
     <ClInclude Include="Sources\Includes\Meta\TypeSubstitution.hpp" />
-    <ClInclude Include="Sources\Includes\Numerics\Constants.hpp" />
+    <ClInclude Include="Sources\Includes\Common\Constants.hpp" />
     <ClInclude Include="Sources\Includes\Ext\D3D\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\OpenGL\Ext.hpp" />
     <ClInclude Include="Sources\Includes\Ext\Vulkan\Ext.hpp" />
@@ -41,7 +42,7 @@
     <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
     <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
     <ClInclude Include="Sources\Includes\Meta\Meta.hpp" />
-    <ClInclude Include="Sources\Includes\Numerics\Numerics.hpp" />
+    <ClInclude Include="Sources\Includes\Common\Numerics.hpp" />
     <ClInclude Include="Sources\Includes\Quaternion\Quaternion.hpp" />
     <ClInclude Include="Sources\Includes\Types\NamedType.hpp" />
     <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic.hpp" />
@@ -95,10 +96,11 @@
     <None Include="Sources\Includes\Angles\Angle.inl" />
     <None Include="Sources\Includes\Angles\Degree.inl" />
     <None Include="Sources\Includes\Angles\Radians.inl" />
+    <None Include="Sources\Includes\Common\Easing.inl" />
     <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
     <None Include="Sources\Includes\Ext\Vulkan\Quaternion.inl" />
     <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
-    <None Include="Sources\Includes\Numerics\Numerics.inl" />
+    <None Include="Sources\Includes\Common\Numerics.inl" />
     <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
     <None Include="Sources\Includes\Types\NamedType.inl" />
     <None Include="Sources\Includes\Vector\BaseVector.inl" />

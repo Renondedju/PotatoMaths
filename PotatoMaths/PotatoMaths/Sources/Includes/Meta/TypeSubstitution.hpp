@@ -49,3 +49,11 @@ using IsUnsigned = std::enable_if_t<std::is_unsigned_v<T>, bool>;
  */
 template<typename T>
 using IsArithmetic = std::enable_if_t<std::is_arithmetic_v<T>, bool>;
+
+/**
+ * \brief Sfinae shorthand for std::is_floating_point_v
+ * \note usage : `template<IsFloatingPoint<T> = true>`
+ * \tparam T Type to test
+ */
+template<typename T>
+using IsFloatingPoint = std::enable_if_t<std::is_floating_point_v<T>, bool>;
