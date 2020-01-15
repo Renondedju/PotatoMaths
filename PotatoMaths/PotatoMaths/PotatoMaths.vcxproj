@@ -87,6 +87,8 @@
   <ItemGroup>
     <ClCompile Include="Sources\Src\Angles\Degrees.cpp" />
     <ClCompile Include="Sources\Src\Angles\Radians.cpp" />
+    <ClCompile Include="Sources\Src\Common\Easing.cpp" />
+    <ClCompile Include="Sources\Src\Common\Numerics.cpp" />
     <ClCompile Include="Sources\Src\Quaternion\Quaternion.cpp" />
     <ClCompile Include="Sources\Src\Vector\Vector2.cpp" />
     <ClCompile Include="Sources\Src\Vector\Vector3.cpp" />
@@ -260,7 +262,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;POTATO_ENABLE_TEMPLATE_PREGEN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderFile />
@@ -269,6 +271,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

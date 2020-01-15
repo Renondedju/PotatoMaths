@@ -7,6 +7,8 @@
     <ClCompile Include="Sources\Src\Vector\Vector2.cpp" />
     <ClCompile Include="Sources\Src\Vector\Vector3.cpp" />
     <ClCompile Include="Sources\Src\Vector\Vector4.cpp" />
+    <ClCompile Include="Sources\Src\Common\Easing.cpp" />
+    <ClCompile Include="Sources\Src\Common\Numerics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp" />

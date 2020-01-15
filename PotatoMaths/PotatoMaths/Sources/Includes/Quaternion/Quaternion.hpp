@@ -27,7 +27,7 @@
 #pragma warning(push)
 #pragma warning(disable : 4201) // Warning C4201 nonstandard extension used: nameless struct/union
 
-#include "Numerics/Numerics.hpp"
+#include "Common/Numerics.hpp"
 
 #include "Angles/Degrees.hpp"
 #include "Meta/TypeSubstitution.hpp"

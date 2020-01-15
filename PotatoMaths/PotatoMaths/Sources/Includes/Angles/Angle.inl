@@ -22,6 +22,8 @@
  * SOFTWARE.
  */
 
+#include "Common/Constants.hpp"
+
 template <EAngleUnit TAngleUnit, typename TType>
 template <typename TOtherType>
 constexpr Angle<TAngleUnit, TType>::operator Angle<EAngleUnit::Degree, TOtherType>() const noexcept

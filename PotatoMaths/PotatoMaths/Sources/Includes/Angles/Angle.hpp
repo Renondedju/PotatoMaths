@@ -33,9 +33,6 @@
 
 #include "Meta/TypeSubstitution.hpp"
 
-// Used in conversion operators
-#include "Numerics/Constants.hpp"
-
 namespace internal
 {
     struct AnglePhantom {};
