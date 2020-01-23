@@ -19,99 +19,99 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Includes\Angles\Angle.hpp" />
-    <ClInclude Include="Sources\Includes\Angles\Degrees.hpp" />
-    <ClInclude Include="Sources\Includes\Angles\EAngleUnit.hpp" />
-    <ClInclude Include="Sources\Includes\Angles\Radians.hpp" />
-    <ClInclude Include="Sources\Includes\Common\Easing.hpp" />
-    <ClInclude Include="Sources\Includes\Meta\TypeSubstitution.hpp" />
-    <ClInclude Include="Sources\Includes\Common\Constants.hpp" />
-    <ClInclude Include="Sources\Includes\Ext\D3D\Ext.hpp" />
-    <ClInclude Include="Sources\Includes\Ext\OpenGL\Ext.hpp" />
-    <ClInclude Include="Sources\Includes\Ext\Vulkan\Ext.hpp" />
-    <ClInclude Include="Sources\Includes\Ext\Vulkan\Matrix.hpp" />
-    <ClInclude Include="Sources\Includes\Ext\Vulkan\Quaternion.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\EMatrixLayout.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\GenericMatrix.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix1x4.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix2x2.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix3x3.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix3x4.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix4x1.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix4x3.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\Matrix4x4.hpp" />
-    <ClInclude Include="Sources\Includes\Matrix\SquareMatrix.hpp" />
-    <ClInclude Include="Sources\Includes\Meta\Meta.hpp" />
-    <ClInclude Include="Sources\Includes\Common\Numerics.hpp" />
-    <ClInclude Include="Sources\Includes\Quaternion\Quaternion.hpp" />
-    <ClInclude Include="Sources\Includes\Types\NamedType.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Addition.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Decrement.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Division.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Increment.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Modulo.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Multiplication.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\Subtraction.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\UnaryMinus.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Arithmetic\UnaryPlus.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\And.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\LeftShift.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Not.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Or.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\RightShift.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Bitwise\Xor.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Equal.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Greater.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\GreaterEqual.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Less.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\LessEqual.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\NotEqual.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Comparison\Spaceship.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Logical.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalAnd.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalNot.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Logical\LogicalOr.hpp" />
-    <ClInclude Include="Sources\Includes\Types\Operators\Operators.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\BaseVector.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\GenericVector.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\Vector.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\Vector2.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\Vector3.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\Vector3Cross.inl" />
-    <ClInclude Include="Sources\Includes\Vector\Vector4.hpp" />
-    <ClInclude Include="Sources\Includes\Vector\Vector4Cross.inl" />
+    <ClInclude Include="Source\Include\Angles\Angle.hpp" />
+    <ClInclude Include="Source\Include\Angles\Degrees.hpp" />
+    <ClInclude Include="Source\Include\Angles\EAngleUnit.hpp" />
+    <ClInclude Include="Source\Include\Angles\Radians.hpp" />
+    <ClInclude Include="Source\Include\Common\Constants.hpp" />
+    <ClInclude Include="Source\Include\Common\Easing.hpp" />
+    <ClInclude Include="Source\Include\Common\Numerics.hpp" />
+    <ClInclude Include="Source\Include\Ext\D3D\Ext.hpp" />
+    <ClInclude Include="Source\Include\Ext\OpenGL\Ext.hpp" />
+    <ClInclude Include="Source\Include\Ext\Vulkan\Ext.hpp" />
+    <ClInclude Include="Source\Include\Ext\Vulkan\Matrix.hpp" />
+    <ClInclude Include="Source\Include\Ext\Vulkan\Quaternion.hpp" />
+    <ClInclude Include="Source\Include\Matrix\EMatrixLayout.hpp" />
+    <ClInclude Include="Source\Include\Matrix\GenericMatrix.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix1x4.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix2x2.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix3x3.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix3x4.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix4x1.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix4x3.hpp" />
+    <ClInclude Include="Source\Include\Matrix\Matrix4x4.hpp" />
+    <ClInclude Include="Source\Include\Matrix\SquareMatrix.hpp" />
+    <ClInclude Include="Source\Include\Meta\Meta.hpp" />
+    <ClInclude Include="Source\Include\Meta\TypeSubstitution.hpp" />
+    <ClInclude Include="Source\Include\Quaternion\Quaternion.hpp" />
+    <ClInclude Include="Source\Include\Types\NamedType.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Addition.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Decrement.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Division.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Increment.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Modulo.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Multiplication.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\Subtraction.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\UnaryMinus.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Arithmetic\UnaryPlus.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise\And.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise\LeftShift.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise\Not.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise\Or.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise\RightShift.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Bitwise\Xor.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\Equal.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\Greater.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\GreaterEqual.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\Less.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\LessEqual.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\NotEqual.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Comparison\Spaceship.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Logical.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Logical\LogicalAnd.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Logical\LogicalNot.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Logical\LogicalOr.hpp" />
+    <ClInclude Include="Source\Include\Types\Operators\Operators.hpp" />
+    <ClInclude Include="Source\Include\Vector\BaseVector.hpp" />
+    <ClInclude Include="Source\Include\Vector\GenericVector.hpp" />
+    <ClInclude Include="Source\Include\Vector\Vector.hpp" />
+    <ClInclude Include="Source\Include\Vector\Vector2.hpp" />
+    <ClInclude Include="Source\Include\Vector\Vector3.hpp" />
+    <ClInclude Include="Source\Include\Vector\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Src\Angles\Degrees.cpp" />
-    <ClCompile Include="Sources\Src\Angles\Radians.cpp" />
-    <ClCompile Include="Sources\Src\Common\Easing.cpp" />
-    <ClCompile Include="Sources\Src\Common\Numerics.cpp" />
-    <ClCompile Include="Sources\Src\Quaternion\Quaternion.cpp" />
-    <ClCompile Include="Sources\Src\Vector\Vector2.cpp" />
-    <ClCompile Include="Sources\Src\Vector\Vector3.cpp" />
-    <ClCompile Include="Sources\Src\Vector\Vector4.cpp" />
+    <ClCompile Include="Source\Src\Angles\Degrees.cpp" />
+    <ClCompile Include="Source\Src\Angles\Radians.cpp" />
+    <ClCompile Include="Source\Src\Common\Easing.cpp" />
+    <ClCompile Include="Source\Src\Common\Numerics.cpp" />
+    <ClCompile Include="Source\Src\Quaternion\Quaternion.cpp" />
+    <ClCompile Include="Source\Src\Vector\Vector2.cpp" />
+    <ClCompile Include="Source\Src\Vector\Vector3.cpp" />
+    <ClCompile Include="Source\Src\Vector\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sources\Includes\Angles\Angle.inl" />
-    <None Include="Sources\Includes\Angles\Degree.inl" />
-    <None Include="Sources\Includes\Angles\Radians.inl" />
-    <None Include="Sources\Includes\Common\Easing.inl" />
-    <None Include="Sources\Includes\Ext\Vulkan\Matrix.inl" />
-    <None Include="Sources\Includes\Ext\Vulkan\Quaternion.inl" />
-    <None Include="Sources\Includes\Matrix\GenericMatrix.inl" />
-    <None Include="Sources\Includes\Common\Numerics.inl" />
-    <None Include="Sources\Includes\Quaternion\Quaternion.inl" />
-    <None Include="Sources\Includes\Types\NamedType.inl" />
-    <None Include="Sources\Includes\Vector\BaseVector.inl" />
-    <None Include="Sources\Includes\Matrix\SquareMatrix.inl" />
-    <None Include="Sources\Includes\Vector\GenericVector.inl" />
-    <None Include="Sources\Includes\Vector\Vector2.inl" />
-    <None Include="Sources\Includes\Vector\Vector2Cross.inl" />
-    <None Include="Sources\Includes\Vector\Vector3.inl" />
-    <None Include="Sources\Includes\Vector\Vector4.inl" />
+    <None Include="Source\Include\Angles\Angle.inl" />
+    <None Include="Source\Include\Angles\Degree.inl" />
+    <None Include="Source\Include\Angles\Radians.inl" />
+    <None Include="Source\Include\Common\Easing.inl" />
+    <None Include="Source\Include\Common\Numerics.inl" />
+    <None Include="Source\Include\Ext\Vulkan\Matrix.inl" />
+    <None Include="Source\Include\Ext\Vulkan\Quaternion.inl" />
+    <None Include="Source\Include\Matrix\GenericMatrix.inl" />
+    <None Include="Source\Include\Matrix\SquareMatrix.inl" />
+    <None Include="Source\Include\Quaternion\Quaternion.inl" />
+    <None Include="Source\Include\Types\NamedType.inl" />
+    <None Include="Source\Include\Vector\BaseVector.inl" />
+    <None Include="Source\Include\Vector\GenericVector.inl" />
+    <None Include="Source\Include\Vector\Vector2.inl" />
+    <None Include="Source\Include\Vector\Vector2Cross.inl" />
+    <None Include="Source\Include\Vector\Vector3.inl" />
+    <None Include="Source\Include\Vector\Vector3Cross.inl" />
+    <None Include="Source\Include\Vector\Vector4.inl" />
+    <None Include="Source\Include\Vector\Vector4Cross.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -167,27 +167,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)Sources\Includes</IncludePath>
-    <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\Build\Binaries\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName)\Build\Intermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)Sources\Includes</IncludePath>
-    <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\Build\Binaries\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName)\Build\Intermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)Sources\Includes</IncludePath>
-    <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\Build\Binaries\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName)\Build\Intermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)Sources\Includes</IncludePath>
-    <OutDir>$(ProjectDir)Binaries\Bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\Obj\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(ProjectName)\Build\Binaries\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName)\Build\Intermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -202,7 +202,8 @@
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Include</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -221,7 +222,10 @@
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Include</AdditionalIncludeDirectories>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableModules>false</EnableModules>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -245,7 +249,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Include</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -270,8 +275,11 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Sources\Includes</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Include</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableModules>false</EnableModules>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
