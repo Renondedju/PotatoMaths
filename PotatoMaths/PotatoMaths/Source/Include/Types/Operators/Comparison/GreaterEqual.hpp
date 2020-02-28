@@ -49,7 +49,7 @@ struct GreaterEqual
      */
     friend constexpr bool operator>=(TStrongTypedef const& in_lhs, TStrongTypedef const& in_rhs) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return static_cast<Type const&>(in_lhs) >= static_cast<Type const&>(in_rhs);
     }

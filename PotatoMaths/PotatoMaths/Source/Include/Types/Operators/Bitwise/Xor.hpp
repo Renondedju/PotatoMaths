@@ -49,7 +49,7 @@ struct Xor
      */
     friend constexpr TStrongTypedef& operator^=(TStrongTypedef& in_lhs, TStrongTypedef const& in_rhs) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         in_lhs = static_cast<TStrongTypedef>(static_cast<Type&>(in_lhs) ^ static_cast<Type const&>(in_rhs));
 
@@ -66,7 +66,7 @@ struct Xor
      */
     friend constexpr TStrongTypedef operator^(TStrongTypedef const& in_lhs, TStrongTypedef const& in_rhs) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return TStrongTypedef(static_cast<Type const&>(in_lhs) ^ static_cast<Type const&>(in_rhs));
     }

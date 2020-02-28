@@ -41,28 +41,24 @@ struct Increment
 {
     /**
      * \brief Pre-Increment operator
-     *
      * \param in_instance Operand instance
-     *
      * \return Reference to the new instance
      */
-    friend constexpr TStrongTypedef& operator++(TStrongTypedef& in_instance) noexcept
+    friend constexpr TStrongTypedef operator++(TStrongTypedef& in_instance) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return ++static_cast<Type&>(in_instance);
     }
 
     /**
      * \brief Post-Increment operator
-     *
      * \param in_instance Operand instance
-     *
      * \return Value of the new instance
      */
     friend constexpr TStrongTypedef operator++(TStrongTypedef& in_instance, int) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return static_cast<Type&>(in_instance)++;
     }

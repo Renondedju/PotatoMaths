@@ -116,7 +116,7 @@ class NamedType
 
 // --- Underlying Type
 
-namespace internal
+namespace potato_internal
 {
 	/**
 	 * \brief Implementation of the UnderlyingType method

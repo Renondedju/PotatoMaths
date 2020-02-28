@@ -48,7 +48,7 @@ struct LogicalNot
      */
     friend constexpr bool operator!(TStrongTypedef const& in_instance) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return !static_cast<Type const&>(in_instance);
     }

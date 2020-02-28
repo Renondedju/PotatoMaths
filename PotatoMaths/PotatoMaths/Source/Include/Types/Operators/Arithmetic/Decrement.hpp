@@ -48,7 +48,7 @@ struct Decrement
      */
     friend constexpr TStrongTypedef& operator--(TStrongTypedef& in_instance) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return --static_cast<Type&>(in_instance);
     }
@@ -62,7 +62,7 @@ struct Decrement
      */
     friend constexpr TStrongTypedef operator--(TStrongTypedef& in_instance, int) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return static_cast<Type&>(in_instance)--;
     }

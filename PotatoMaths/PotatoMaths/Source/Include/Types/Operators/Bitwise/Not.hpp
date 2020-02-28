@@ -48,7 +48,7 @@ struct Not
      */
     friend constexpr TStrongTypedef operator~(TStrongTypedef const& in_instance) noexcept
     {
-        using Type = internal::UnderlyingType<TStrongTypedef>;
+        using Type = potato_internal::UnderlyingType<TStrongTypedef>;
 
         return TStrongTypedef(~static_cast<Type const&>(in_instance));
     }

@@ -33,7 +33,7 @@
 
 #include "Meta/TypeSubstitution.hpp"
 
-namespace internal
+namespace potato_internal
 {
     struct AnglePhantom {};
 }
@@ -47,7 +47,7 @@ class Angle;
  */
 template <enum class EAngleUnit TAngleUnit, typename TType>
 class __declspec(novtable) Angle<TAngleUnit, TType> final:
-    public NamedType<TType, internal::AnglePhantom>,
+    public NamedType<TType, potato_internal::AnglePhantom>,
     public Arithmetic<Angle<TAngleUnit, TType>>,
     public Comparison<Angle<TAngleUnit, TType>>,
     public Bitwise   <Angle<TAngleUnit, TType>>
@@ -61,7 +61,7 @@ class __declspec(novtable) Angle<TAngleUnit, TType> final:
         constexpr Angle(Angle&&      in_matrix) = default;
         ~Angle()                                = default;
 
-        using NamedType<TType, internal::AnglePhantom>::NamedType;
+        using NamedType<TType, potato_internal::AnglePhantom>::NamedType;
 
         #pragma endregion
 
