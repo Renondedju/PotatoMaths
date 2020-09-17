@@ -320,6 +320,29 @@ template <typename TType, IsArithmetic<TType> = true>
 [[nodiscard]] constexpr TType Min(TType in_lhs, TType in_rhs) noexcept;
 
 /**
+ * \brief Returns the minimum of the 2 passed values except if one of the 2 is zero
+ *
+ * \tparam TType Type to operate with
+ * \param in_lhs Left hand side operand
+ * \param in_rhs Right hand side operand
+ *
+ * \return Minimum value
+ */
+template <typename TType, IsArithmetic<TType> = true>
+[[nodiscard]] constexpr TType MinExceptZero(TType in_lhs, TType in_rhs) noexcept;
+
+/**
+ * \brief Returns the minimum of the 2 passed values except if one of the 2 is zero
+ *
+ * \tparam TType Type to operate with
+ * \param in_list Operands
+ *
+ * \return Minimum value
+ */
+template <typename TType, IsArithmetic<TType> = true>
+[[nodiscard]] constexpr TType MinExceptZero(std::initializer_list<TType> in_list) noexcept;
+
+/**
  * \brief  Returns the maximum of the 2 passed values
  *
  * \tparam TType Type to operate with
@@ -409,6 +432,9 @@ extern template double Repeat(double, double) noexcept;
 
 extern template float  Min(float , float)  noexcept;
 extern template double Min(double, double) noexcept;
+
+extern template int    MinExceptZero(int   , int)    noexcept;
+extern template size_t MinExceptZero(size_t, size_t) noexcept;
 
 extern template float  Max(float , float)  noexcept;
 extern template double Max(double, double) noexcept;

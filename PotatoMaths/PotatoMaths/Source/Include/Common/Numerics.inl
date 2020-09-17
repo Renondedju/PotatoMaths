@@ -175,6 +175,25 @@ constexpr TType Min(TType in_lhs, TType in_rhs) noexcept
 }
 
 template <typename TType, IsArithmetic<TType>>
+constexpr TType MinExceptZero(TType in_lhs, TType in_rhs) noexcept
+{
+    if (in_lhs == static_cast<TType>(0))
+        return in_rhs;
+
+    return Min<TType>(in_lhs, in_rhs);
+}
+
+template <typename TType, IsArithmetic<TType>>
+constexpr TType MinExceptZero(std::initializer_list<TType> in_list) noexcept
+{
+    TType count = std::numeric_limits<TType>::max();
+    for (TType const& element: in_list)
+        count = MinExceptZero<TType>(count, element);
+
+    return count;
+}
+
+template <typename TType, IsArithmetic<TType>>
 constexpr TType Max(TType in_lhs, TType in_rhs) noexcept
 {
     return (in_lhs < in_rhs) ? in_rhs : in_lhs;
